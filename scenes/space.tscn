@@ -1,0 +1,68 @@
+[gd_scene load_steps=12 format=3 uid="uid://8keytrhfjiji"]
+
+[ext_resource type="Shader" uid="uid://ckjc1clqaw02l" path="res://scripts/space.gdshader" id="1_gk1qj"]
+[ext_resource type="PackedScene" uid="uid://bnxmf8waol6sn" path="res://scenes/ship.tscn" id="2_dv837"]
+[ext_resource type="PackedScene" uid="uid://fqwiliyihkrs" path="res://scenes/crate.tscn" id="3_a65qk"]
+[ext_resource type="PackedScene" uid="uid://b2cpljbh1tc6g" path="res://scenes/ui.tscn" id="4_85sbg"]
+[ext_resource type="Script" uid="uid://m86nywm3fg2d" path="res://scripts/camera_2d.gd" id="4_dv837"]
+[ext_resource type="Script" uid="uid://n16noti6n5gw" path="res://scripts/asteroid_spawner.gd" id="5_rlquo"]
+[ext_resource type="PackedScene" uid="uid://b4oo467og1rry" path="res://scenes/asteroid_medium.tscn" id="6_7a7lp"]
+[ext_resource type="PackedScene" uid="uid://81f212dnabx0" path="res://scenes/asteroid_big.tscn" id="7_7wx0h"]
+[ext_resource type="Script" uid="uid://ch736j1ut80mj" path="res://scripts/crates.gd" id="8_skhc4"]
+[ext_resource type="PackedScene" uid="uid://b11bx1b6xyayj" path="res://scenes/planet.tscn" id="10_a65qk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8uh7m"]
+shader = ExtResource("1_gk1qj")
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/bigStarSlow = 2.0
+shader_parameter/mediumStarSlow = 6.0
+shader_parameter/smallStarSlow = 8.0
+shader_parameter/smallStarAmount = 0.002
+shader_parameter/mediumStarAmount = 0.01
+shader_parameter/bigStarAmount = 0.02
+
+[node name="Space" type="Node2D"]
+
+[node name="SpaceBackground" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_8uh7m")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 100000.0
+offset_bottom = 900000.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="AsteroidSpawner" type="Node2D" parent="."]
+script = ExtResource("5_rlquo")
+medium_asteroid_scene = ExtResource("6_7a7lp")
+big_asteroid_scene = ExtResource("7_7wx0h")
+player_path = NodePath("../Ship")
+spawn_interval = 0.3
+
+[node name="Planet" parent="." instance=ExtResource("10_a65qk")]
+position = Vector2(80047, 669193)
+scale = Vector2(5, 5)
+
+[node name="Ship" parent="." instance=ExtResource("2_dv837")]
+position = Vector2(78816, 673270)
+crate_scene = ExtResource("3_a65qk")
+
+[node name="Camera2D" type="Camera2D" parent="Ship"]
+zoom = Vector2(0.3, 0.3)
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0
+rotation_smoothing_speed = 1.0
+script = ExtResource("4_dv837")
+metadata/_edit_lock_ = true
+
+[node name="Crates" type="Node2D" parent="."]
+script = ExtResource("8_skhc4")
+crate_scene = ExtResource("3_a65qk")
+spawn_distance_min = 3000.0
+spawn_distance_max = 5000.0
+spawn_interval = 1.0
+
+[node name="UI" parent="." instance=ExtResource("4_85sbg")]

@@ -1,0 +1,139 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2cpljbh1tc6g"]
+
+[ext_resource type="Script" uid="uid://h5j5kka6t0w0" path="res://scripts/ui.gd" id="1_fyqef"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_fyqef")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.89
+anchor_right = 0.7
+anchor_bottom = 0.96
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Energy"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Energy" type="ProgressBar" parent="VBoxContainer"]
+modulate = Color(6.93083e-06, 0.708273, 0, 1)
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.75
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.05
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Structural Integraty"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShipDamage" type="ProgressBar" parent="VBoxContainer2"]
+modulate = Color(0.982653, 0.00102032, 1.34766e-06, 1)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.025
+anchor_top = 0.025
+anchor_right = 0.2
+anchor_bottom = 0.05
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 25
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Food Rations"
+
+[node name="Amount" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "0/3"
+
+[node name="InfoLabel" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.65
+anchor_right = 0.5
+anchor_bottom = 0.65
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+
+[node name="InfoLabel2" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.75
+anchor_right = 0.5
+anchor_bottom = 0.75
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 0.435294)
+theme_override_font_sizes/font_size = 30
+
+[node name="SelfCanniblizeBar" type="ProgressBar" parent="."]
+visible = false
+modulate = Color(1, 0, 0, 1)
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.65
+anchor_right = 0.6
+anchor_bottom = 0.65
+offset_left = -2.0
+offset_top = -13.5
+offset_right = 2.0
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+show_percentage = false
+
+[node name="LandingBar" type="ProgressBar" parent="."]
+visible = false
+modulate = Color(0, 1, 0, 1)
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.65
+anchor_right = 0.6
+anchor_bottom = 0.65
+offset_left = -2.0
+offset_top = -13.5
+offset_right = 2.0
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+show_percentage = false
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)

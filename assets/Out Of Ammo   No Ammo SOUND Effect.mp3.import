@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dm3joq03ki0xw"
+path="res://.godot/imported/Out Of Ammo   No Ammo SOUND Effect.mp3-f82cde2732cf98fe2c89ad450c8fb76e.mp3str"
+
+[deps]
+
+source_file="res://assets/Out Of Ammo   No Ammo SOUND Effect.mp3"
+dest_files=["res://.godot/imported/Out Of Ammo   No Ammo SOUND Effect.mp3-f82cde2732cf98fe2c89ad450c8fb76e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

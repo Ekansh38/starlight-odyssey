@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtge4nkpon4dc"]
+
+[ext_resource type="Texture2D" uid="uid://bjilmvu807ysj" path="res://assets/crate.png" id="1_1momv"]
+[ext_resource type="PackedScene" uid="uid://b086uqul0vcjs" path="res://scenes/player.tscn" id="2_jks8h"]
+
+[node name="OnPlanet" type="Node2D"]
+
+[node name="Ground" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(414, 529)
+texture = ExtResource("1_1momv")
+region_enabled = true
+region_rect = Rect2(-12985.3, -12583.2, 28999.9, 23285.4)
+
+[node name="Player" parent="." instance=ExtResource("2_jks8h")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position_smoothing_enabled = true
