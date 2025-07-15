@@ -28,13 +28,10 @@ func _physics_process(delta):
 		var distance_tolerance = 300.0 
 
 		if distance > desired_distance + distance_tolerance:
-			# Too far → move closer
 			velocity = direction * speed
 		elif distance < desired_distance - distance_tolerance:
-			# Too close → back away
-			velocity = -direction * speed * 0.8  # Slightly slower retreat
+			velocity = -direction * speed * 0.8
 		else:
-			# Within desired range → stop
 			velocity = Vector2.ZERO
 
 		# Face the player no matter what
@@ -45,7 +42,9 @@ func _physics_process(delta):
 		var target_angle = target_direction.angle()
 		rotation = lerp_angle(rotation, target_angle, delta * 2.0)
 
-	move_and_slide()
+	var collision = move_and_collide(velocity * delta)
+	if collision:
+		velocity = Vector2.ZERO
 
 func shoot_at_player():
 	var bullet = bullet_scene.instantiate()
@@ -79,7 +78,7 @@ func _on_shoot_timer_timeout() -> void:
 		shoot_at_player()
 		
 func take_damage():
-	health -= 20
+	health -= 25
 	if health <= 0:
 		queue_free()
 	$HealthBar.value = health

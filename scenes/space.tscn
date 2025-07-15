@@ -47,21 +47,22 @@ script = ExtResource("5_rlquo")
 medium_asteroid_scene = ExtResource("6_7a7lp")
 big_asteroid_scene = ExtResource("7_7wx0h")
 player_path = NodePath("../Ship")
-spawn_interval = 0.3
+spawn_interval = 0.4
+spawn_distance_min = 2000.0
 
 [node name="EnemySpawner" type="Node2D" parent="."]
 script = ExtResource("6_skhc4")
 enemy_scene = ExtResource("13_7a7lp")
 player_path = NodePath("../Ship")
 bullet_scene = ExtResource("14_7wx0h")
-spawn_interval = 4.0
-spawn_distance_min = 2000.0
-spawn_distance_max = 2500.0
-max_enemies = 5
-spawn_chance = 0.5
+spawn_interval = 10.0
+spawn_distance_min = 2700.0
+spawn_distance_max = 3500.0
+max_enemies = 2
+spawn_chance = 0.3
 
 [node name="Planet" parent="." instance=ExtResource("10_a65qk")]
-position = Vector2(47501, 453206)
+position = Vector2(46353, 425234)
 scale = Vector2(5, 5)
 
 [node name="Ship" parent="." instance=ExtResource("2_dv837")]
@@ -71,7 +72,6 @@ crate_scene = ExtResource("3_a65qk")
 [node name="Camera2D" type="Camera2D" parent="Ship"]
 zoom = Vector2(0.3, 0.3)
 position_smoothing_enabled = true
-position_smoothing_speed = 3.0
 rotation_smoothing_speed = 1.0
 script = ExtResource("4_dv837")
 metadata/_edit_lock_ = true
@@ -89,11 +89,6 @@ spawn_interval = 1.5
 
 [node name="CursorSprite" type="Sprite2D" parent="."]
 texture = ExtResource("12_rlquo")
-
-[node name="Enemy" parent="." instance=ExtResource("13_7a7lp")]
-position = Vector2(82506, 456970)
-bullet_scene = ExtResource("14_7wx0h")
-player_path = NodePath("../Ship")
 
 [node name="WorldBorders" type="Node2D" parent="."]
 

@@ -51,3 +51,7 @@ func landing_bar_value():
 	
 func landing_bar_reset():
 	$LandingBar.value = 0
+	
+func speed_lines_visablity(value: bool):
+	$SpeedLines.visible = value
+	

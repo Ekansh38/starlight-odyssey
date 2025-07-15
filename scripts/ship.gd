@@ -1,14 +1,22 @@
 extends CharacterBody2D
 
-@export var thrust_accel_value: float = 400.0
+@export var thrust_accel_value: float = 700.0
 @export var rot_speed: float = 4
 @export var linear_damp_ratio: float = 0.989
-@export var max_speed_value: float = 1000.0
+@export var max_speed_value: float = 1800.0
 @export var side_ratio: float = 0.2
 @export var steer_boost: float = 1.15
 @export var boost_multiplier: float = 2.5
 @export var brake_thrust_value: float = 800.0
 @export var brake_energy_multiplier: float = 5
+
+
+@onready var cam := $Camera2D
+
+@export var min_zoom := Vector2(0.3, 0.3)
+@export var max_zoom := Vector2(0.25, 0.25)
+@export var max_speed_for_zoom := 800.0
+
 
 var energy_alert_active := false
 var damage_alert_active := false
@@ -73,9 +81,68 @@ func _physics_process(delta: float) -> void:
 	var boost := Input.is_action_pressed("boost")
 	var brake := Input.is_action_pressed("brake")
 	
-	if (boost and w) or brake:
-		$Camera2D.start_shake(0.004)
+	$Left.visible = false
+	$Right.visible = false
+	$"../UI".speed_lines_visablity(false)
 
+	$Both.visible = false
+	$PowerLight.visible = false
+	$PowerLight.energy = 1
+	$LeftParticleBoost.emitting = false
+	$RightParticleBoost.emitting = false
+	
+	$LeftParticleThrust.emitting = false
+	$RightParticleThrust.emitting = false
+	
+	if not boost:
+		if (w) or (a and d):
+			$LeftParticleThrust.emitting = true
+			$RightParticleThrust.emitting = true
+			pass
+		elif a:
+			$Right.visible = true
+		elif d:
+			$Left.visible = true
+
+	
+	if (w) or (a and d):
+		$Both.visible = true
+		$PowerLight.visible = true
+
+	elif a:
+		$RightParticleThrust.emitting = true
+	elif d:
+		$LeftParticleThrust.emitting = true
+		pass
+		
+	if not boost:
+		var target_zoom = min_zoom
+		cam.zoom = cam.zoom.lerp(target_zoom, delta * 5.0)
+		
+	if ((w) or (a and d)) and not boost:
+		$AnimationPlayer.play("thrust")
+	elif ((w) or (a and d)) and boost:
+		$AnimationPlayer.play("boost")
+		$PowerLight.energy = 1.5
+		$PowerLight.texture_scale = 0.35
+		$LeftParticleBoost.emitting = true
+		$RightParticleBoost.emitting = true
+		$"../UI".speed_lines_visablity(true)
+
+
+		var current_speed = velocity.length()
+		var speed_ratio = clamp(current_speed / max_speed_for_zoom, 0.0, 1.0)
+
+		var target_zoom = max_zoom
+		cam.zoom = cam.zoom.lerp(target_zoom, delta * 5.0)
+		
+	else:
+
+
+		$AnimationPlayer.stop()
+	
+	if (boost and w) or brake or (a and d and boost):
+		$Camera2D.start_shake(0.007)
 
 	var left_pow  := 0.0
 	var right_pow := 0.0
@@ -96,14 +163,10 @@ func _physics_process(delta: float) -> void:
 	
 	var boost_mix := 1.0 if boost else 0.0
 	
-	$Left.visible  = right_pow  > 0.0
-	$Right.visible = left_pow > 0.0
 	
 	var base_left  = tint_low.lerp(tint_full,  left_pow)
 	var base_right = tint_low.lerp(tint_full, right_pow)
 	
-	$Left.modulate  = base_left .lerp(tint_boost, boost_mix)
-	$Right.modulate = base_right.lerp(tint_boost, boost_mix)
 
 	# rotation
 	
@@ -162,6 +225,10 @@ func _physics_process(delta: float) -> void:
 	_vel = _vel.limit_length(max_speed)
 
 	velocity = _vel
+	
+	
+
+	
 	move_and_slide()
 		
 func take_damage(type):

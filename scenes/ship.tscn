@@ -1,43 +1,126 @@
-[gd_scene load_steps=10 format=3 uid="uid://bnxmf8waol6sn"]
+[gd_scene load_steps=22 format=3 uid="uid://bnxmf8waol6sn"]
 
 [ext_resource type="Script" uid="uid://ch6w73q33dyfw" path="res://scripts/ship.gd" id="1_4cq66"]
-[ext_resource type="Texture2D" uid="uid://6prgcr5reey7" path="res://icon.svg" id="2_v4325"]
+[ext_resource type="Texture2D" uid="uid://bqter8oyhocc6" path="res://assets/Player Sprites/Normal Ship.png" id="2_bseor"]
 [ext_resource type="AudioStream" uid="uid://b1lfusmlwwa3n" path="res://assets/explosion (1).wav" id="3_4tobq"]
+[ext_resource type="Texture2D" uid="uid://d3vqx6er02vs1" path="res://assets/Player Sprites/Left On.png" id="3_tlr80"]
+[ext_resource type="Texture2D" uid="uid://dew2bukm1wg27" path="res://assets/Player Sprites/Right On.png" id="4_bseor"]
 [ext_resource type="AudioStream" uid="uid://chdxiqd472vm3" path="res://assets/crunch.wav" id="4_tfsc7"]
 [ext_resource type="AudioStream" uid="uid://cmmxypdyl3hdq" path="res://assets/boost.wav" id="5_gudjc"]
+[ext_resource type="Texture2D" uid="uid://b6pais52i03mw" path="res://assets/Player Sprites/Both On.png" id="5_tlr80"]
 [ext_resource type="AudioStream" uid="uid://b8ihiwy7m7223" path="res://assets/eating.wav" id="6_7j21i"]
 [ext_resource type="AudioStream" uid="uid://dm3joq03ki0xw" path="res://assets/Out Of Ammo   No Ammo SOUND Effect.mp3" id="7_3m36u"]
 [ext_resource type="Script" uid="uid://b8k1urgk4rma7" path="res://scenes/label_holder.gd" id="8_8qiel"]
+[ext_resource type="Texture2D" uid="uid://c20cc61pj1nae" path="res://assets/light.png" id="12_03y04"]
+[ext_resource type="Texture2D" uid="uid://ta0a45xluiht" path="res://assets/kenney_smoke-particles/PNG/Explosion/explosion00.png" id="13_48mkp"]
+[ext_resource type="Texture2D" uid="uid://dcroqv5v6vyfg" path="res://assets/kenney_smoke-particles/PNG/Flash/flash01.png" id="14_tbq4g"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6uqi0"]
-size = Vector2(128, 128)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tlr80"]
+size = Vector2(160, 265)
+
+[sub_resource type="Animation" id="Animation_03y04"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_tlr80"]
+resource_name = "boost"
+length = 0.08
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.04, 0.06),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_48mkp"]
+resource_name = "thrust"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_48mkp"]
+_data = {
+&"RESET": SubResource("Animation_03y04"),
+&"boost": SubResource("Animation_tlr80"),
+&"thrust": SubResource("Animation_48mkp")
+}
+
+[sub_resource type="Gradient" id="Gradient_48mkp"]
+offsets = PackedFloat32Array(0, 0.64, 1)
+colors = PackedColorArray(1, 0.24524, 0.187846, 1, 0.866667, 0.807843, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_tbq4g"]
+offsets = PackedFloat32Array(0, 0.826667, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="Ship" type="CharacterBody2D" groups=["Ship"]]
 script = ExtResource("1_4cq66")
 
-[node name="Left" type="Sprite2D" parent="."]
-position = Vector2(-45, 112)
-scale = Vector2(0.25, 1)
-texture = ExtResource("2_v4325")
-metadata/_edit_lock_ = true
-
-[node name="Right" type="Sprite2D" parent="."]
-position = Vector2(49, 113)
-scale = Vector2(0.25, 1)
-texture = ExtResource("2_v4325")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 21.5)
+shape = SubResource("RectangleShape2D_tlr80")
 metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_v4325")
+position = Vector2(0, 40)
+scale = Vector2(4, 4.2)
+texture = ExtResource("2_bseor")
+hframes = 4
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_6uqi0")
+[node name="Left" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 40)
+scale = Vector2(4, 4.2)
+texture = ExtResource("3_tlr80")
+
+[node name="Right" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 40)
+scale = Vector2(4, 4.2)
+texture = ExtResource("4_bseor")
+metadata/_edit_lock_ = true
+
+[node name="Both" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 40)
+scale = Vector2(4, 4.2)
+texture = ExtResource("5_tlr80")
 metadata/_edit_lock_ = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_4tobq")
 volume_db = 5.0
+metadata/_edit_lock_ = true
 
 [node name="SelfCannibalizationTimer" type="Timer" parent="."]
 wait_time = 4.0
@@ -46,39 +129,128 @@ one_shot = true
 [node name="CrunchSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_tfsc7")
 volume_db = 15.0
+metadata/_edit_lock_ = true
 
 [node name="BoostSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_gudjc")
 volume_db = -15.0
+metadata/_edit_lock_ = true
 
 [node name="EatingSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_7j21i")
+metadata/_edit_lock_ = true
 
 [node name="OutOfFoodSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_3m36u")
 volume_db = 10.0
+metadata/_edit_lock_ = true
 
 [node name="LabelHolder" type="Node2D" parent="."]
 script = ExtResource("8_8qiel")
+metadata/_edit_lock_ = true
 
 [node name="ControlLabel" type="Label" parent="LabelHolder"]
 offset_left = -279.0
-offset_top = -203.0
+offset_top = -273.0
 offset_right = 301.0
-offset_bottom = -67.0
+offset_bottom = -137.0
 theme_override_font_sizes/font_size = 60
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="BulletSpawnPositions" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="Marker2D" type="Marker2D" parent="BulletSpawnPositions"]
-position = Vector2(-21, -64)
+position = Vector2(-55, -111)
 
 [node name="Marker2D2" type="Marker2D" parent="BulletSpawnPositions"]
-position = Vector2(0, -64)
+position = Vector2(-2, -120)
 
 [node name="Marker2D3" type="Marker2D" parent="BulletSpawnPositions"]
-position = Vector2(20, -64)
+position = Vector2(51, -113)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_48mkp")
+}
+
+[node name="PowerLight" type="PointLight2D" parent="."]
+position = Vector2(0, 7)
+color = Color(1, 0, 0, 1)
+texture = ExtResource("12_03y04")
+texture_scale = 0.25
+
+[node name="OverallLight" type="PointLight2D" parent="."]
+position = Vector2(-1, -95)
+energy = 0.5
+texture = ExtResource("12_03y04")
+texture_scale = 1.5
+
+[node name="LeftParticleThrust" type="CPUParticles2D" parent="."]
+position = Vector2(-129, 222)
+emitting = false
+amount = 40
+texture = ExtResource("13_48mkp")
+lifetime = 1.3
+randomness = 0.5
+emission_shape = 1
+emission_sphere_radius = 10.0
+spread = 180.0
+gravity = Vector2(0, 250)
+angle_min = -360.0
+angle_max = 360.0
+scale_amount_min = 0.08
+scale_amount_max = 0.13
+color_ramp = SubResource("Gradient_48mkp")
+metadata/_edit_lock_ = true
+
+[node name="RightParticleThrust" type="CPUParticles2D" parent="."]
+position = Vector2(124, 216)
+emitting = false
+amount = 40
+texture = ExtResource("13_48mkp")
+lifetime = 1.3
+randomness = 0.5
+emission_shape = 1
+emission_sphere_radius = 10.0
+spread = 180.0
+gravity = Vector2(0, 250)
+angle_min = -360.0
+angle_max = 360.0
+scale_amount_min = 0.08
+scale_amount_max = 0.13
+color_ramp = SubResource("Gradient_48mkp")
+metadata/_edit_lock_ = true
+
+[node name="LeftParticleBoost" type="CPUParticles2D" parent="."]
+position = Vector2(-128, 218)
+emitting = false
+amount = 80
+texture = ExtResource("14_tbq4g")
+randomness = 0.42
+spread = 180.0
+gravity = Vector2(0, 50)
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.08
+scale_amount_max = 0.12
+color_ramp = SubResource("Gradient_tbq4g")
+metadata/_edit_lock_ = true
+
+[node name="RightParticleBoost" type="CPUParticles2D" parent="."]
+position = Vector2(126, 218)
+emitting = false
+amount = 80
+texture = ExtResource("14_tbq4g")
+randomness = 0.42
+spread = 180.0
+gravity = Vector2(0, 50)
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.08
+scale_amount_max = 0.12
+color_ramp = SubResource("Gradient_tbq4g")
+metadata/_edit_lock_ = true
 
 [connection signal="timeout" from="SelfCannibalizationTimer" to="." method="_on_self_cannibalization_timer_timeout"]

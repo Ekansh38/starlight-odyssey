@@ -3,7 +3,7 @@ extends Node2D
 var bullet_scene: PackedScene = preload("res://scenes/bullet.tscn")
 
 func _on_ship_shoot(mouse_pos: Vector2, ship_pos: Vector2) -> void:
-	var angle_offset = randf_range(-0.05, 0.05)
+	var angle_offset = randf_range(-0.02, 0.02)
 	var bullet_direction = (mouse_pos - ship_pos).normalized().rotated(angle_offset)
 	var bullet = bullet_scene.instantiate()
 	bullet.global_position = ship_pos
