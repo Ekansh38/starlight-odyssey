@@ -4,8 +4,8 @@ extends Node2D
 @export var big_asteroid_scene: PackedScene
 @export var player_path: NodePath
 @export var spawn_interval: float = 0.2
-@export var spawn_distance_min: float = 1500.0
-@export var spawn_distance_max: float = 2500.0
+@export var spawn_distance_min: float = 1800.0
+@export var spawn_distance_max: float = 2800.0
 @export var big_chance: float = 0.2
 @export var face_chance: float = 0.4
 

@@ -11,6 +11,8 @@ script = ExtResource("1_ty8qi")
 
 [node name="Icon" type="Sprite2D" parent="."]
 texture = ExtResource("1_dmbgy")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ty8qi")
+metadata/_edit_lock_ = true

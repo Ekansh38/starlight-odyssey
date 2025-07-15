@@ -9,6 +9,7 @@ func update_stats():
 	$VBoxContainer/Energy.value = Globals.player_energy
 	$VBoxContainer2/ShipDamage.value = Globals.ship_damage
 	$HBoxContainer/Amount.text = str(Globals.food_amount) + "/" + str(Globals.max_food)
+	$Ammo/Ammo.text = str(Globals.player_ammo)
 
 func change_info(message):
 	$InfoLabel.text = message

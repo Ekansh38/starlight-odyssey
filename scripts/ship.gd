@@ -22,7 +22,7 @@ var can_self_cannibalize = true
 @export var tint_low  : Color = Color(1, 0.5, 0.5)
 @export var tint_full : Color = Color(1, 1, 1)  
 @export var tint_boost: Color = Color(1, 0.9, 0.2)
-@export var collision_damage: float = 10
+@export var collision_damage: float = 5
 
 var can_collide: bool = true
 
@@ -32,10 +32,23 @@ var boost_penalty := 1.3
 
 var energy_drain_rate := 100 / thrust_drain_seconds
 
+signal shoot(mouse_pos: Vector2, ship_pos: Vector2)
 
 var _vel : Vector2 = Vector2.ZERO
 
 func _physics_process(delta: float) -> void:
+	
+	# Shooting logic
+	
+	if Input.is_action_just_pressed("shoot") and Globals.player_ammo > 0:
+		Globals.player_ammo -= 1
+		var mouse_pos = get_global_mouse_position()
+		var markers = $BulletSpawnPositions.get_children()
+		var random_marker = markers[randi() % markers.size()]
+		var ship_pos = random_marker.global_position
+		
+		shoot.emit(mouse_pos, ship_pos)
+		
 	
 	if (Input.is_action_just_pressed("boost") and Input.is_action_pressed("up")) or (Input.is_action_just_pressed("up") and Input.is_action_pressed("boost")):
 		$BoostSFX.play()
@@ -48,7 +61,7 @@ func _physics_process(delta: float) -> void:
 	var max_speed = max_speed_value
 	var brake_thrust = brake_thrust_value
 		
-	var ship_damage = Globals.ship_damage / 50
+	var ship_damage = Globals.ship_damage / 90
 		
 	thrust_accel *= ship_damage
 	max_speed *= ship_damage
@@ -151,10 +164,12 @@ func _physics_process(delta: float) -> void:
 	velocity = _vel
 	move_and_slide()
 		
-func take_damage():
-	Globals.ship_damage -= collision_damage
+func take_damage(type):
+	if type == "medium":
+		Globals.ship_damage -= collision_damage
+	elif type == "big":
+		Globals.ship_damage -= (collision_damage * 2)
 	$Camera2D.start_shake(1)
-	$AudioStreamPlayer2D.play()
 	
 func alert_zero_energy():
 	$"../UI".change_minor_info("Zero energy. 'G' to self-canibalize")

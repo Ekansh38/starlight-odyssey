@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://iak44inrirb1"]
+
+[ext_resource type="Texture2D" uid="uid://o2rmr1ua4vs7" path="res://assets/enemy.png" id="1_7p1mj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7p1mj"]
+radius = 2390.01
+
+[node name="Enemy" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_7p1mj")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-223, 361, -307, 323, -368, 141, -342, 117, -387, 11, -259, 82, -206, 54, -238, -12, -180, -121, -153, -187, -116, -259, -88, -286, -73, -261, -39, -250, -31, -350, -2, -359, 34, -347, 47, -293, 35, -263, 37, -235, 72, -243, 74, -292, 96, -292, 112, -267, 132, -208, 152, -186, 168, -95, 226, -23, 214, 69, 292, 70, 375, 21, 339, 124, 363, 149, 314, 330, 223, 361, 174, 256, 191, 201, 150, 140, 146, 74, 96, -42, 34, -156, 70, 101, 89, 298, 32, 335, -8, 337, -89, 268, -114, 237, -31, -147, -77, -151, -114, -75, -114, 2, -144, 115, -193, 326)
+
+[node name="DetectionRadius" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRadius"]
+shape = SubResource("CircleShape2D_7p1mj")

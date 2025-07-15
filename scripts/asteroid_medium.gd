@@ -20,6 +20,7 @@ func _physics_process(delta):
 func explode():
 	$AnimationPlayer.play("explode")
 	$CPUParticles2D.emitting = true
+	$ExplosionSoundEffect.play()
 	await $AnimationPlayer.animation_finished
 	queue_free()
 
@@ -30,7 +31,7 @@ func set_direction(direction):
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Ship"):
 		if not inside_planet:
-			body.take_damage()
+			body.take_damage("medium")
 			explode()
 		
 func start_disappear():

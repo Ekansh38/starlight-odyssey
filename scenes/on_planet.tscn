@@ -15,4 +15,5 @@ region_rect = Rect2(-12985.3, -12583.2, 28999.9, 23285.4)
 [node name="Player" parent="." instance=ExtResource("2_jks8h")]
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true

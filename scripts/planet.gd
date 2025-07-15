@@ -7,10 +7,16 @@ func _process(delta: float) -> void:
 		$"../UI".landing_bar_visable(true)
 		$"../UI".landing_bar_update()
 	if $"../UI".landing_bar_value() >= 100:
-		get_tree().change_scene_to_file("res://scenes/on_planet.tscn")
+		
+		land()
+		
 	if Input.is_action_just_released("land"):
 		$"../UI".landing_bar_visable(false)
 		$"../UI".landing_bar_reset()
+		
+func land():
+	TransitionLayer.change_scene("res://scenes/on_planet.tscn")
+
 
 func _on_body_entered(body: Node2D) -> void:
 	

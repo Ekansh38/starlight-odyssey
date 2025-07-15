@@ -2,6 +2,13 @@ extends Node
 
 signal update_stats()
 
+var player_ammo = 20:
+	get:
+		return player_ammo
+	set(value):
+		player_ammo = value
+		update_stats.emit()
+
 var energy_per_food = 35
 
 var food_amount: int = 0:

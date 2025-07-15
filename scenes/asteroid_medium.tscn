@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://b4oo467og1rry"]
+[gd_scene load_steps=9 format=3 uid="uid://b4oo467og1rry"]
 
 [ext_resource type="Texture2D" uid="uid://dhuy5bjdlyi1f" path="res://assets/astriodbig.png" id="1_vlxhm"]
 [ext_resource type="Script" uid="uid://25wracfxwqfw" path="res://scripts/asteroid_medium.gd" id="1_yn6tr"]
 [ext_resource type="Texture2D" uid="uid://drqs1kb0mv8wv" path="res://assets/explosion.png" id="3_pofgt"]
+[ext_resource type="AudioStream" uid="uid://b1lfusmlwwa3n" path="res://assets/explosion (1).wav" id="4_vv68d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yn6tr"]
 radius = 56.3205
@@ -77,5 +78,9 @@ angle_min = -720.0
 angle_max = 720.0
 scale_amount_min = 0.1
 scale_amount_max = 0.2
+
+[node name="ExplosionSoundEffect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_vv68d")
+volume_db = 5.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
