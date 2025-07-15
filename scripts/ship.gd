@@ -61,7 +61,7 @@ func _physics_process(delta: float) -> void:
 	var max_speed = max_speed_value
 	var brake_thrust = brake_thrust_value
 		
-	var ship_damage = Globals.ship_damage / 90
+	var ship_damage = Globals.ship_damage / 80
 		
 	thrust_accel *= ship_damage
 	max_speed *= ship_damage

@@ -2,6 +2,8 @@ extends Node
 
 signal update_stats()
 
+var bullet_speed = 1200
+
 var player_ammo = 20:
 	get:
 		return player_ammo

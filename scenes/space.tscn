@@ -78,5 +78,6 @@ texture = ExtResource("12_rlquo")
 
 [node name="Enemy" parent="." instance=ExtResource("13_7a7lp")]
 position = Vector2(81786, 457041)
+player_path = NodePath("../Ship")
 
 [connection signal="shoot" from="Ship" to="." method="_on_ship_shoot"]

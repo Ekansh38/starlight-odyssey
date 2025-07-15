@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://42lmpx0uk17" path="res://scripts/bullet.gd" id="1_y25gk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mkf8s"]
-radius = 5.0
-height = 54.0
+radius = 8.0
+height = 56.0
 
 [node name="Bullet" type="Area2D"]
 script = ExtResource("1_y25gk")
