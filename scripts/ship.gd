@@ -171,30 +171,21 @@ func take_damage(type):
 		Globals.ship_damage -= (collision_damage * 2)
 	$Camera2D.start_shake(1)
 	
-func alert_zero_energy():
-	$"../UI".change_minor_info("Zero energy. 'G' to self-canibalize")
-	await get_tree().create_timer(3).timeout
-	$"../UI".change_minor_info("")
-
-func alert_zero_damage():
-	$"../UI".change_minor_info("Zero structural integraty. Buy a repair")
-	await get_tree().create_timer(3).timeout
+func alert_low_energy():
+	$"../UI".change_minor_info("LOW ENERGY WARNING. 'G' to self-canibalize or 'F' to eat food")
+	await get_tree().create_timer(5).timeout
 	$"../UI".change_minor_info("")
 
 func _process(delta):
-	if Globals.player_energy <= 0.1 and not energy_alert_active:
+	if Globals.player_energy <= 10 and not energy_alert_active:
 		energy_alert_active = true
-		alert_zero_energy()
+		alert_low_energy()
+	
+	
 
-	if Globals.player_energy > 10.0:
+	if Globals.player_energy > 20.0:
 		energy_alert_active = false
 
-	if Globals.ship_damage <= 0 and not damage_alert_active:
-		damage_alert_active = true
-		alert_zero_damage()
-
-	if Globals.ship_damage > 10.0:
-		damage_alert_active = false
 	
 	if Input.is_action_just_pressed("self-cannibalization") and Globals.max_energy >= 20:
 		$"../UI".can_bar_visable(true)

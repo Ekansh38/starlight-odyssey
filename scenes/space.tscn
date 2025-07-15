@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://8keytrhfjiji"]
+[gd_scene load_steps=18 format=3 uid="uid://8keytrhfjiji"]
 
 [ext_resource type="Script" uid="uid://b8jr2iwrepltv" path="res://scripts/space.gd" id="1_85sbg"]
 [ext_resource type="Shader" uid="uid://ckjc1clqaw02l" path="res://scripts/space.gdshader" id="1_gk1qj"]
@@ -8,11 +8,14 @@
 [ext_resource type="Script" uid="uid://m86nywm3fg2d" path="res://scripts/camera_2d.gd" id="4_dv837"]
 [ext_resource type="Script" uid="uid://n16noti6n5gw" path="res://scripts/asteroid_spawner.gd" id="5_rlquo"]
 [ext_resource type="PackedScene" uid="uid://b4oo467og1rry" path="res://scenes/asteroid_medium.tscn" id="6_7a7lp"]
+[ext_resource type="Script" uid="uid://btsf0ft3gx4ns" path="res://scripts/enemy_spawner.gd" id="6_skhc4"]
 [ext_resource type="PackedScene" uid="uid://81f212dnabx0" path="res://scenes/asteroid_big.tscn" id="7_7wx0h"]
 [ext_resource type="Script" uid="uid://ch736j1ut80mj" path="res://scripts/crates.gd" id="8_skhc4"]
 [ext_resource type="PackedScene" uid="uid://b11bx1b6xyayj" path="res://scenes/planet.tscn" id="10_a65qk"]
 [ext_resource type="Texture2D" uid="uid://dxjjpm8ukq1st" path="res://assets/crosshair066.png" id="12_rlquo"]
 [ext_resource type="PackedScene" uid="uid://iak44inrirb1" path="res://scenes/enemy.tscn" id="13_7a7lp"]
+[ext_resource type="PackedScene" uid="uid://jyrnek7bvq0t" path="res://scenes/enemy_bullet.tscn" id="14_7wx0h"]
+[ext_resource type="PackedScene" uid="uid://danwcvytrencc" path="res://scenes/world_border.tscn" id="16_tc3qt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8uh7m"]
 shader = ExtResource("1_gk1qj")
@@ -46,12 +49,23 @@ big_asteroid_scene = ExtResource("7_7wx0h")
 player_path = NodePath("../Ship")
 spawn_interval = 0.3
 
+[node name="EnemySpawner" type="Node2D" parent="."]
+script = ExtResource("6_skhc4")
+enemy_scene = ExtResource("13_7a7lp")
+player_path = NodePath("../Ship")
+bullet_scene = ExtResource("14_7wx0h")
+spawn_interval = 4.0
+spawn_distance_min = 2000.0
+spawn_distance_max = 2500.0
+max_enemies = 5
+spawn_chance = 0.5
+
 [node name="Planet" parent="." instance=ExtResource("10_a65qk")]
-position = Vector2(81967, 453129)
+position = Vector2(47501, 453206)
 scale = Vector2(5, 5)
 
 [node name="Ship" parent="." instance=ExtResource("2_dv837")]
-position = Vector2(80736, 457206)
+position = Vector2(46270, 457283)
 crate_scene = ExtResource("3_a65qk")
 
 [node name="Camera2D" type="Camera2D" parent="Ship"]
@@ -77,7 +91,26 @@ spawn_interval = 1.5
 texture = ExtResource("12_rlquo")
 
 [node name="Enemy" parent="." instance=ExtResource("13_7a7lp")]
-position = Vector2(81786, 457041)
+position = Vector2(82506, 456970)
+bullet_scene = ExtResource("14_7wx0h")
 player_path = NodePath("../Ship")
+
+[node name="WorldBorders" type="Node2D" parent="."]
+
+[node name="WorldBorder" parent="WorldBorders" instance=ExtResource("16_tc3qt")]
+position = Vector2(2000, 350000)
+scale = Vector2(20, 3500)
+
+[node name="WorldBorder2" parent="WorldBorders" instance=ExtResource("16_tc3qt")]
+position = Vector2(148000, 350000)
+scale = Vector2(20, 3500)
+
+[node name="WorldBorder3" parent="WorldBorders" instance=ExtResource("16_tc3qt")]
+position = Vector2(70000, 2000)
+scale = Vector2(800, 20)
+
+[node name="WorldBorder4" parent="WorldBorders" instance=ExtResource("16_tc3qt")]
+position = Vector2(70000, 698000)
+scale = Vector2(800, 20)
 
 [connection signal="shoot" from="Ship" to="." method="_on_ship_shoot"]

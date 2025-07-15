@@ -4,7 +4,7 @@ signal update_stats()
 
 var bullet_speed = 1200
 
-var player_ammo = 20:
+var player_ammo = 40:
 	get:
 		return player_ammo
 	set(value):
@@ -13,7 +13,7 @@ var player_ammo = 20:
 
 var energy_per_food = 35
 
-var food_amount: int = 0:
+var food_amount: int = 3:
 	get:
 		return food_amount
 	set(value):

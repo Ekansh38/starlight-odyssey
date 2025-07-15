@@ -12,9 +12,9 @@ func _physics_process(delta: float) -> void:
 	position += vel * delta
 
 func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Enemy"):
+	if body.is_in_group("Ship"):
 		if "take_damage" in body:
-			body.take_damage()
+			body.take_damage("medium")
 		queue_free()
 
 func _on_area_entered(area: Area2D) -> void:
