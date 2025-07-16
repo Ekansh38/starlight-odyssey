@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://go6rcdu1plis"]
+
+[ext_resource type="Script" uid="uid://cegu1povo4emk" path="res://scripts/launch_pad.gd" id="1_0xpjp"]
+[ext_resource type="Texture2D" uid="uid://7e3k3ycmxdb5" path="res://assets/helipad.png" id="1_rf4ly"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rf4ly"]
+radius = 253.57
+
+[node name="LaunchPad" type="Area2D"]
+script = ExtResource("1_0xpjp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_rf4ly")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rf4ly")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

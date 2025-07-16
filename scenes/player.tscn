@@ -1,18 +1,42 @@
-[gd_scene load_steps=4 format=3 uid="uid://b086uqul0vcjs"]
+[gd_scene load_steps=6 format=3 uid="uid://b086uqul0vcjs"]
 
-[ext_resource type="Texture2D" uid="uid://6prgcr5reey7" path="res://icon.svg" id="1_dmbgy"]
 [ext_resource type="Script" uid="uid://ckbgll8dw1owc" path="res://scripts/player.gd" id="1_ty8qi"]
+[ext_resource type="Texture2D" uid="uid://j7ienm3q7k51" path="res://assets/Space Stuff 2/Player Sprites/Player RPG overworld sprite.png" id="2_g2els"]
+[ext_resource type="Script" uid="uid://d3uyx6dqoek1t" path="res://scripts/label_holder.gd" id="3_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://qa0plaqh16w0" path="res://scenes/hunger_controller.tscn" id="4_dqkch"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ty8qi"]
-size = Vector2(128, 128)
+size = Vector2(83, 192)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_ty8qi")
 
-[node name="Icon" type="Sprite2D" parent="."]
-texture = ExtResource("1_dmbgy")
+[node name="PlayerSprite" type="Sprite2D" parent="."]
+scale = Vector2(6, 6)
+texture = ExtResource("2_g2els")
+hframes = 3
+vframes = 4
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-5.5, 2)
 shape = SubResource("RectangleShape2D_ty8qi")
 metadata/_edit_lock_ = true
+
+[node name="LabelHolder" type="Node2D" parent="."]
+script = ExtResource("3_qhqgy")
+
+[node name="ControlLabel" type="Label" parent="LabelHolder"]
+offset_left = -174.0
+offset_top = -176.0
+offset_right = 131.0
+offset_bottom = -95.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HungerController" parent="." instance=ExtResource("4_dqkch")]

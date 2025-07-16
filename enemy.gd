@@ -1,15 +1,19 @@
 extends CharacterBody2D
 
 @export var speed: float = 300.0
-@export var shoot_cooldown: float = 1.0
+@export var shoot_cooldown: float = 1.8
 @export var bullet_scene: PackedScene
 @export var player_path: NodePath
+
+
 
 var health = 100
 
 var player: Node2D
 var chase_mode: bool = false
 var target_direction: Vector2 = Vector2.RIGHT
+
+signal died(drop_position: Vector2)
 
 func _ready():
 	player = get_node(player_path)
@@ -19,12 +23,13 @@ func _ready():
 	$HealthBar.value = health
 
 func _physics_process(delta):
+	
 	if chase_mode and is_instance_valid(player):
 		var to_player = player.global_position - global_position
 		var distance = to_player.length()
 		var direction = to_player.normalized()
 
-		var desired_distance = 1500.0 
+		var desired_distance = 1000.0 
 		var distance_tolerance = 300.0 
 
 		if distance > desired_distance + distance_tolerance:
@@ -50,6 +55,7 @@ func shoot_at_player():
 	var bullet = bullet_scene.instantiate()
 	bullet.global_position = global_position
 	var direction = (player.global_position - global_position).normalized()
+	direction = direction.rotated(randf_range(-0.1, 0.1))
 
 	if "vel" in bullet:
 		bullet.vel = direction * Globals.bullet_speed
@@ -80,5 +86,16 @@ func _on_shoot_timer_timeout() -> void:
 func take_damage():
 	health -= 25
 	if health <= 0:
-		queue_free()
+		death()
 	$HealthBar.value = health
+	
+func death():
+	emit_signal("died", global_position)
+	queue_free()
+
+	
+func start_disapear():
+	await get_tree().create_timer(0.2).timeout
+	var tween = create_tween()
+	tween.tween_property(self, "modulate:a", 0.0, 0.5)
+	tween.tween_callback(Callable(self, "queue_free"))

@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtge4nkpon4dc"]
+[gd_scene load_steps=7 format=3 uid="uid://dtge4nkpon4dc"]
 
 [ext_resource type="Texture2D" uid="uid://bjilmvu807ysj" path="res://assets/crate.png" id="1_1momv"]
 [ext_resource type="PackedScene" uid="uid://b086uqul0vcjs" path="res://scenes/player.tscn" id="2_jks8h"]
+[ext_resource type="PackedScene" uid="uid://go6rcdu1plis" path="res://scenes/launch_pad.tscn" id="3_piby2"]
+[ext_resource type="PackedScene" uid="uid://b2cpljbh1tc6g" path="res://scenes/ui.tscn" id="4_mx4r5"]
+[ext_resource type="Script" uid="uid://m86nywm3fg2d" path="res://scripts/camera_2d.gd" id="4_yalgt"]
+[ext_resource type="PackedScene" uid="uid://b4h2jog6b336i" path="res://scenes/blacksmith.tscn" id="6_c4k62"]
 
 [node name="OnPlanet" type="Node2D"]
 
@@ -12,8 +16,17 @@ texture = ExtResource("1_1momv")
 region_enabled = true
 region_rect = Rect2(-12985.3, -12583.2, 28999.9, 23285.4)
 
+[node name="LaunchPad" parent="." instance=ExtResource("3_piby2")]
+position = Vector2(729, -245)
+
 [node name="Player" parent="." instance=ExtResource("2_jks8h")]
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
+script = ExtResource("4_yalgt")
+
+[node name="UI" parent="." instance=ExtResource("4_mx4r5")]
+
+[node name="Blacksmith" parent="." instance=ExtResource("6_c4k62")]
+position = Vector2(-455, 307)

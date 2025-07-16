@@ -10,7 +10,6 @@ extends CharacterBody2D
 @export var brake_thrust_value: float = 800.0
 @export var brake_energy_multiplier: float = 5
 
-
 @onready var cam := $Camera2D
 
 @export var min_zoom := Vector2(0.3, 0.3)
@@ -24,6 +23,9 @@ var damage_alert_active := false
 @export var crate_scene: PackedScene
 @export var crate_offset_distance: float = 3000.0  
 @export var crate_time_to_reach_player: float = 7.0  
+
+var zoom_override: Vector2 = Vector2.ZERO
+var is_zoom_overridden := false
 
 var can_self_cannibalize = true
 
@@ -44,7 +46,33 @@ signal shoot(mouse_pos: Vector2, ship_pos: Vector2)
 
 var _vel : Vector2 = Vector2.ZERO
 
+func _ready():
+	#$ShadowHolder/ShadowSprite.modulate = Color(0, 0, 0, 0.25)
+	if Globals.has_saved_ship_pos:
+		global_position = Globals.last_ship_position
+
+
+
 func _physics_process(delta: float) -> void:
+	
+	
+	
+	# Damage logic, from 75 bellow it is damage1 then 50 bellow damage 2 etc
+	
+	$Sprite2D.visible = false
+	$Damage1.visible = false
+	$Damage2.visible = false
+	$Damage3.visible = false
+
+	if Globals.ship_damage > 75:
+		$Sprite2D.visible = true
+	elif Globals.ship_damage > 50:
+		$Damage1.visible = true
+	elif Globals.ship_damage > 25:
+		$Damage2.visible = true
+	else:
+		$Damage3.visible = true
+	
 	
 	# Shooting logic
 	
@@ -93,18 +121,7 @@ func _physics_process(delta: float) -> void:
 	
 	$LeftParticleThrust.emitting = false
 	$RightParticleThrust.emitting = false
-	
-	if not boost:
-		if (w) or (a and d):
-			$LeftParticleThrust.emitting = true
-			$RightParticleThrust.emitting = true
-			pass
-		elif a:
-			$Right.visible = true
-		elif d:
-			$Left.visible = true
 
-	
 	if (w) or (a and d):
 		$Both.visible = true
 		$PowerLight.visible = true
@@ -115,12 +132,23 @@ func _physics_process(delta: float) -> void:
 		$LeftParticleThrust.emitting = true
 		pass
 		
-	if not boost:
-		var target_zoom = min_zoom
-		cam.zoom = cam.zoom.lerp(target_zoom, delta * 5.0)
+	if not is_zoom_overridden:
+		if not boost:
+			var target_zoom = min_zoom
+			cam.zoom = cam.zoom.lerp(target_zoom, delta * 5.0)
+		elif ((w) or (a and d)) and boost:
+			var target_zoom = max_zoom
+			cam.zoom = cam.zoom.lerp(target_zoom, delta * 5.0)
+		elif a:
+			$Right.visible = true
+		elif d:
+			$Left.visible = true
 		
 	if ((w) or (a and d)) and not boost:
 		$AnimationPlayer.play("thrust")
+		$RightParticleThrust.emitting = true
+		$LeftParticleThrust.emitting = true
+
 	elif ((w) or (a and d)) and boost:
 		$AnimationPlayer.play("boost")
 		$PowerLight.energy = 1.5
@@ -128,17 +156,7 @@ func _physics_process(delta: float) -> void:
 		$LeftParticleBoost.emitting = true
 		$RightParticleBoost.emitting = true
 		$"../UI".speed_lines_visablity(true)
-
-
-		var current_speed = velocity.length()
-		var speed_ratio = clamp(current_speed / max_speed_for_zoom, 0.0, 1.0)
-
-		var target_zoom = max_zoom
-		cam.zoom = cam.zoom.lerp(target_zoom, delta * 5.0)
-		
 	else:
-
-
 		$AnimationPlayer.stop()
 	
 	if (boost and w) or brake or (a and d and boost):
@@ -227,7 +245,12 @@ func _physics_process(delta: float) -> void:
 	velocity = _vel
 	
 	
+	var clamped_gravity = -velocity.limit_length(600)  # 600 is the max gravity force
 
+	#$LeftParticleThrust.gravity = $LeftParticleThrust.gravity.lerp(clamped_gravity, delta * 5.0)
+	#$RightParticleThrust.gravity = $RightParticleThrust.gravity.lerp(clamped_gravity, delta * 5.0)
+	$LeftParticleBoost.gravity = $LeftParticleBoost.gravity.lerp(clamped_gravity, delta * 5.0)
+	$RightParticleBoost.gravity = $RightParticleBoost.gravity.lerp(clamped_gravity, delta * 5.0)
 	
 	move_and_slide()
 		
@@ -238,13 +261,32 @@ func take_damage(type):
 		Globals.ship_damage -= (collision_damage * 2)
 	$Camera2D.start_shake(1)
 	
-func alert_low_energy():
-	$"../UI".change_minor_info("LOW ENERGY WARNING. 'G' to self-canibalize or 'F' to eat food")
-	await get_tree().create_timer(5).timeout
-	$"../UI".change_minor_info("")
+func alert_low_energy() -> void:
+	var tree = get_tree()
+	var ui   = $"../UI"
+	if not is_instance_valid(ui):
+		return
+
+	for i in 8:
+		ui.change_minor_info("LOW ENERGY WARNING.")
+		await tree.create_timer(0.8).timeout
+
+		if not is_instance_valid(ui):
+			return
+
+		ui.change_minor_info("")
+		await tree.create_timer(0.8).timeout
+
+		if not is_instance_valid(ui):
+			return
+
+	if is_instance_valid(ui):
+		ui.change_minor_info("")
+		
+
 
 func _process(delta):
-	if Globals.player_energy <= 10 and not energy_alert_active:
+	if Globals.player_energy <= 20 and not energy_alert_active:
 		energy_alert_active = true
 		alert_low_energy()
 	
@@ -252,6 +294,7 @@ func _process(delta):
 
 	if Globals.player_energy > 20.0:
 		energy_alert_active = false
+		$"../UI".change_minor_info("")
 
 	
 	if Input.is_action_just_pressed("self-cannibalization") and Globals.max_energy >= 20:
@@ -293,7 +336,7 @@ func self_cannibalize() -> void:
 
 	ui.change_info("CANNIBALIZED.")
 	$CrunchSFX.play()
-	Globals.max_energy = max(Globals.max_energy - 20, 10)
+	Globals.max_energy = max(Globals.max_energy - 10, 10)
 	Globals.player_energy = Globals.max_energy
 	ui.modulate_screen(Color(1,0.2,0.2,0.2))
 	cam.start_shake(5)
@@ -313,3 +356,17 @@ func change_controll_label(message):
 
 func apply_outside_drag(drag_vector: Vector2, strength: float, delta: float) -> void:
 	_vel += drag_vector.normalized() * strength * delta
+
+
+
+func override_zoom(target: Vector2):
+	is_zoom_overridden = true
+	zoom_override = target
+	var zoom_tween = create_tween()
+	zoom_tween.tween_property(cam, "zoom", target, 2.5).set_trans(Tween.TRANS_SINE)
+
+func clear_zoom_override():
+	var zoom_tween = create_tween()
+	zoom_tween.tween_property(cam, "zoom", min_zoom, 2.0).set_trans(Tween.TRANS_SINE)
+	await zoom_tween.finished
+	is_zoom_overridden = false

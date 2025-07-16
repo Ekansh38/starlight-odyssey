@@ -13,6 +13,11 @@ extends Node2D
 @export var face_player_chance: float = 0.4
 @export var spawn_chance: float = 1
 
+var metal_scrap: PackedScene = preload("res://scenes/metal_scrap.tscn")
+var energy_orb: PackedScene = preload("res://scenes/energy_orb.tscn")
+
+var drop_list: Array[PackedScene] = [energy_orb, metal_scrap]
+
 @onready var player := get_node(player_path)
 var _spawn_timer: float = 0.0
 
@@ -70,4 +75,14 @@ func _spawn_enemy() -> void:
 		enemy.dir = direction
 
 	enemy.add_to_group("Enemy")
+	
+	enemy.connect("died", Callable(self, "_on_enemy_died"))
+	
 	add_child(enemy)
+	
+func _on_enemy_died(drop_position: Vector2):
+	var drop: PackedScene = drop_list[randi() % drop_list.size()]
+	
+	var item = drop.instantiate()
+	item.global_position = drop_position
+	$".".add_child(item)

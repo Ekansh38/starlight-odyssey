@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://qa0plaqh16w0"]
+
+[ext_resource type="Script" uid="uid://dv6h3hqo6lbyp" path="res://scripts/hunger_controller.gd" id="1_xihnk"]
+
+[node name="HungerController" type="Node2D"]
+script = ExtResource("1_xihnk")

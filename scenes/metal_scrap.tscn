@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://xobxoc2o4n8r"]
+
+[ext_resource type="Script" uid="uid://cur3eu1aset07" path="res://scripts/metal_scrap.gd" id="1_qbmll"]
+[ext_resource type="Texture2D" uid="uid://bpdso4jqxya7j" path="res://assets/metalscrap.png" id="1_qr62x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qr62x"]
+radius = 151.053
+
+[node name="MetalScrap" type="Area2D"]
+script = ExtResource("1_qbmll")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_qr62x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qr62x")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -2,7 +2,10 @@ extends Node
 
 signal update_stats()
 
-var bullet_speed = 2000
+var bullet_speed = 3000
+
+var last_ship_position: Vector2 = Vector2.ZERO
+var has_saved_ship_pos: bool    = false
 
 var player_ammo = 100:
 	get:

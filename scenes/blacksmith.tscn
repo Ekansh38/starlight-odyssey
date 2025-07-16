@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4h2jog6b336i"]
+
+[ext_resource type="Texture2D" uid="uid://dgbhfak5xgjr6" path="res://assets/blacksmith.png" id="1_efgmt"]
+[ext_resource type="Script" uid="uid://dbv0dq6dlv67c" path="res://scripts/blacksmith.gd" id="1_xntkf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_efgmt"]
+size = Vector2(175, 286)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xntkf"]
+size = Vector2(529, 320)
+
+[node name="Blacksmith" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
+skew = 0.0122173
+texture = ExtResource("1_efgmt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3.5, -15)
+shape = SubResource("RectangleShape2D_efgmt")
+
+[node name="ShopArea" type="Area2D" parent="."]
+script = ExtResource("1_xntkf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShopArea"]
+position = Vector2(18.5, -25)
+shape = SubResource("RectangleShape2D_xntkf")
+
+[connection signal="body_entered" from="ShopArea" to="ShopArea" method="_on_body_entered"]
+[connection signal="body_exited" from="ShopArea" to="ShopArea" method="_on_body_exited"]

@@ -36,3 +36,8 @@ func _physics_process(delta: float) -> void:
 
 	velocity = vel
 	move_and_slide()
+	
+	
+func change_controll_label(message):
+	$LabelHolder/ControlLabel.text = message
+	

@@ -55,3 +55,8 @@ func landing_bar_reset():
 func speed_lines_visablity(value: bool):
 	$SpeedLines.visible = value
 	
+func minor_info_shown():
+	if $InfoLabel2.text != "":
+		return true
+	else:
+		return false

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6nh3r67ju7l1"]
+
+[ext_resource type="PackedScene" uid="uid://b11bx1b6xyayj" path="res://scenes/planet.tscn" id="1_s8o8l"]
+[ext_resource type="Texture2D" uid="uid://d0m74q2jd1wov" path="res://assets/Space Stuff 2/Planets and Astroids/Food Planet.png" id="2_ob1dx"]
+
+[node name="FoodPlanet" instance=ExtResource("1_s8o8l")]
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_ob1dx")

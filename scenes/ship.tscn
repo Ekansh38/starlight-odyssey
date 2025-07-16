@@ -1,11 +1,14 @@
-[gd_scene load_steps=22 format=3 uid="uid://bnxmf8waol6sn"]
+[gd_scene load_steps=25 format=3 uid="uid://bnxmf8waol6sn"]
 
 [ext_resource type="Script" uid="uid://ch6w73q33dyfw" path="res://scripts/ship.gd" id="1_4cq66"]
 [ext_resource type="Texture2D" uid="uid://bqter8oyhocc6" path="res://assets/Player Sprites/Normal Ship.png" id="2_bseor"]
 [ext_resource type="AudioStream" uid="uid://b1lfusmlwwa3n" path="res://assets/explosion (1).wav" id="3_4tobq"]
 [ext_resource type="Texture2D" uid="uid://d3vqx6er02vs1" path="res://assets/Player Sprites/Left On.png" id="3_tlr80"]
+[ext_resource type="Texture2D" uid="uid://dod7eipdfdbwb" path="res://assets/Player Sprites/Damaged ship 01.png" id="3_vbj2c"]
 [ext_resource type="Texture2D" uid="uid://dew2bukm1wg27" path="res://assets/Player Sprites/Right On.png" id="4_bseor"]
+[ext_resource type="Texture2D" uid="uid://d0t4u3po0xaiq" path="res://assets/Player Sprites/Damaged ship 02.png" id="4_dschd"]
 [ext_resource type="AudioStream" uid="uid://chdxiqd472vm3" path="res://assets/crunch.wav" id="4_tfsc7"]
+[ext_resource type="Texture2D" uid="uid://jdlupmiomv4n" path="res://assets/Player Sprites/Damaged ship 03.png" id="5_83dbu"]
 [ext_resource type="AudioStream" uid="uid://cmmxypdyl3hdq" path="res://assets/boost.wav" id="5_gudjc"]
 [ext_resource type="Texture2D" uid="uid://b6pais52i03mw" path="res://assets/Player Sprites/Both On.png" id="5_tlr80"]
 [ext_resource type="AudioStream" uid="uid://b8ihiwy7m7223" path="res://assets/eating.wav" id="6_7j21i"]
@@ -32,11 +35,48 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Damage1:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Damage2:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Damage3:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_tlr80"]
 resource_name = "boost"
 length = 0.08
 loop_mode = 1
+step = 0.02
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -49,11 +89,48 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1, 2, 3]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Damage1:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.04, 0.06),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 1, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Damage2:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.04, 0.06),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Damage3:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.04, 0.06),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
 
 [sub_resource type="Animation" id="Animation_48mkp"]
 resource_name = "thrust"
 length = 0.2
 loop_mode = 1
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -61,6 +138,42 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Damage1:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Damage2:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Damage3:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
@@ -75,7 +188,7 @@ _data = {
 }
 
 [sub_resource type="Gradient" id="Gradient_48mkp"]
-offsets = PackedFloat32Array(0, 0.64, 1)
+offsets = PackedFloat32Array(0, 0.566667, 1)
 colors = PackedColorArray(1, 0.24524, 0.187846, 1, 0.866667, 0.807843, 0, 1, 1, 1, 1, 0)
 
 [sub_resource type="Gradient" id="Gradient_tbq4g"]
@@ -84,6 +197,17 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="Ship" type="CharacterBody2D" groups=["Ship"]]
 script = ExtResource("1_4cq66")
+
+[node name="ShadowHolder" type="Node2D" parent="."]
+position = Vector2(20, -30)
+
+[node name="ShadowSprite" type="Sprite2D" parent="ShadowHolder"]
+modulate = Color(0, 0, 0, 0.247059)
+position = Vector2(0, 100)
+scale = Vector2(4, 4.2)
+texture = ExtResource("2_bseor")
+hframes = 4
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 21.5)
@@ -94,6 +218,30 @@ metadata/_edit_lock_ = true
 position = Vector2(0, 40)
 scale = Vector2(4, 4.2)
 texture = ExtResource("2_bseor")
+hframes = 4
+metadata/_edit_lock_ = true
+
+[node name="Damage1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 40)
+scale = Vector2(4, 4.2)
+texture = ExtResource("3_vbj2c")
+hframes = 4
+metadata/_edit_lock_ = true
+
+[node name="Damage2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 40)
+scale = Vector2(4, 4.2)
+texture = ExtResource("4_dschd")
+hframes = 4
+metadata/_edit_lock_ = true
+
+[node name="Damage3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 40)
+scale = Vector2(4, 4.2)
+texture = ExtResource("5_83dbu")
 hframes = 4
 metadata/_edit_lock_ = true
 
@@ -150,11 +298,16 @@ script = ExtResource("8_8qiel")
 metadata/_edit_lock_ = true
 
 [node name="ControlLabel" type="Label" parent="LabelHolder"]
-offset_left = -279.0
-offset_top = -273.0
-offset_right = 301.0
-offset_bottom = -137.0
-theme_override_font_sizes/font_size = 60
+offset_left = -442.0
+offset_top = -410.0
+offset_right = 439.0
+offset_bottom = -199.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 20
+theme_override_constants/outline_size = 40
+theme_override_font_sizes/font_size = 120
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -180,19 +333,20 @@ position = Vector2(0, 7)
 color = Color(1, 0, 0, 1)
 texture = ExtResource("12_03y04")
 texture_scale = 0.25
+metadata/_edit_lock_ = true
 
 [node name="OverallLight" type="PointLight2D" parent="."]
-position = Vector2(-1, -95)
-energy = 0.5
+position = Vector2(-1, -50)
+energy = 0.3
 texture = ExtResource("12_03y04")
-texture_scale = 1.5
+metadata/_edit_lock_ = true
 
 [node name="LeftParticleThrust" type="CPUParticles2D" parent="."]
 position = Vector2(-129, 222)
 emitting = false
 amount = 40
 texture = ExtResource("13_48mkp")
-lifetime = 1.3
+lifetime = 1.5
 randomness = 0.5
 emission_shape = 1
 emission_sphere_radius = 10.0
@@ -210,7 +364,7 @@ position = Vector2(124, 216)
 emitting = false
 amount = 40
 texture = ExtResource("13_48mkp")
-lifetime = 1.3
+lifetime = 1.5
 randomness = 0.5
 emission_shape = 1
 emission_sphere_radius = 10.0
