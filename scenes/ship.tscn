@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bnxmf8waol6sn"]
+[gd_scene load_steps=26 format=3 uid="uid://bnxmf8waol6sn"]
 
 [ext_resource type="Script" uid="uid://ch6w73q33dyfw" path="res://scripts/ship.gd" id="1_4cq66"]
 [ext_resource type="Texture2D" uid="uid://bqter8oyhocc6" path="res://assets/Player Sprites/Normal Ship.png" id="2_bseor"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://c20cc61pj1nae" path="res://assets/light.png" id="12_03y04"]
 [ext_resource type="Texture2D" uid="uid://ta0a45xluiht" path="res://assets/kenney_smoke-particles/PNG/Explosion/explosion00.png" id="13_48mkp"]
 [ext_resource type="Texture2D" uid="uid://dcroqv5v6vyfg" path="res://assets/kenney_smoke-particles/PNG/Flash/flash01.png" id="14_tbq4g"]
+[ext_resource type="AudioStream" uid="uid://dyrahqs1kfhwi" path="res://assets/woosh.wav" id="18_dschd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tlr80"]
 size = Vector2(160, 265)
@@ -406,5 +407,9 @@ scale_amount_min = 0.08
 scale_amount_max = 0.12
 color_ramp = SubResource("Gradient_tbq4g")
 metadata/_edit_lock_ = true
+
+[node name="Woosh" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_dschd")
+volume_db = -18.94
 
 [connection signal="timeout" from="SelfCannibalizationTimer" to="." method="_on_self_cannibalization_timer_timeout"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4h2jog6b336i"]
+[gd_scene load_steps=6 format=3 uid="uid://b4h2jog6b336i"]
 
 [ext_resource type="Texture2D" uid="uid://dgbhfak5xgjr6" path="res://assets/blacksmith.png" id="1_efgmt"]
 [ext_resource type="Script" uid="uid://dbv0dq6dlv67c" path="res://scripts/blacksmith.gd" id="1_xntkf"]
+[ext_resource type="PackedScene" uid="uid://crahrlgwgfepd" path="res://scenes/shop.tscn" id="3_ho0ex"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_efgmt"]
 size = Vector2(175, 286)
@@ -26,6 +27,8 @@ script = ExtResource("1_xntkf")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShopArea"]
 position = Vector2(18.5, -25)
 shape = SubResource("RectangleShape2D_xntkf")
+
+[node name="Shop" parent="." instance=ExtResource("3_ho0ex")]
 
 [connection signal="body_entered" from="ShopArea" to="ShopArea" method="_on_body_entered"]
 [connection signal="body_exited" from="ShopArea" to="ShopArea" method="_on_body_exited"]

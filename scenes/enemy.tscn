@@ -1,25 +1,82 @@
-[gd_scene load_steps=5 format=3 uid="uid://iak44inrirb1"]
+[gd_scene load_steps=11 format=3 uid="uid://iak44inrirb1"]
 
-[ext_resource type="Texture2D" uid="uid://o2rmr1ua4vs7" path="res://assets/enemy.png" id="1_7p1mj"]
 [ext_resource type="Script" uid="uid://dortf3hvj3dv0" path="res://enemy.gd" id="1_md0e3"]
 [ext_resource type="PackedScene" uid="uid://ccr20ehg8758n" path="res://scenes/bullet.tscn" id="2_4ra3w"]
+[ext_resource type="Texture2D" uid="uid://c8c7lb6ilcme0" path="res://assets/Space Stuff 2/Enemy/Enemy Ship Sprites.png" id="3_4ra3w"]
+[ext_resource type="Shader" uid="uid://dif2qa2gdlm1q" path="res://scripts/enemy.gdshader" id="3_c4w8v"]
+[ext_resource type="Script" uid="uid://c17nhnqrujd8c" path="res://scripts/health_bar_container.gd" id="4_5uy6h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c4w8v"]
+shader = ExtResource("3_c4w8v")
+shader_parameter/flash = false
+shader_parameter/flash_strength = 0.8
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7p1mj"]
-radius = 1460.02
+radius = 2089.0
+
+[sub_resource type="Animation" id="Animation_c4w8v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:material:shader_parameter/BooleanParameter")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_5uy6h"]
+resource_name = "shoot"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xwavj"]
+_data = {
+&"RESET": SubResource("Animation_c4w8v"),
+&"shoot": SubResource("Animation_5uy6h")
+}
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_md0e3")
 bullet_scene = ExtResource("2_4ra3w")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_c4w8v")
 rotation = 1.5708
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_7p1mj")
+scale = Vector2(4, 4)
+texture = ExtResource("3_4ra3w")
+hframes = 4
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-rotation = 1.5708
-scale = Vector2(0.5, 0.5)
-polygon = PackedVector2Array(-223, 361, -307, 323, -368, 141, -342, 117, -387, 11, -259, 82, -206, 54, -238, -12, -180, -121, -153, -187, -116, -259, -88, -286, -73, -261, -39, -250, -31, -350, -2, -359, 34, -347, 47, -293, 35, -263, 37, -235, 72, -243, 74, -292, 96, -292, 112, -267, 132, -208, 152, -186, 168, -95, 226, -23, 214, 69, 292, 70, 375, 21, 339, 124, 363, 149, 314, 330, 223, 361, 174, 256, 191, 201, 150, 140, 146, 74, 96, -42, 34, -156, 70, 101, 89, 298, 32, 335, -8, 337, -89, 268, -114, 237, -31, -147, -77, -151, -114, -75, -114, 2, -144, 115, -193, 326)
+scale = Vector2(1.125, 1.125)
+polygon = PackedVector2Array(-35, 140, 31, 31, 31, -31, -35, -137, -33, -160, -45, -156, -96, -154, -156, -152, -156, -139, -129, -22, -142, -20, -143, 16, -129, 19, -158, 143, -154, 153, -99, 152, -95, 157, -47, 156, -47, 160)
 
 [node name="DetectionArea" type="Area2D" parent="."]
 
@@ -32,13 +89,21 @@ wait_time = 2.0
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 1.5
 
-[node name="HealthBar" type="ProgressBar" parent="."]
+[node name="HealthBarContainer" type="Node2D" parent="."]
+script = ExtResource("4_5uy6h")
+
+[node name="HealthBar" type="ProgressBar" parent="HealthBarContainer"]
 modulate = Color(6.78644e-06, 0.882658, 3.85046e-07, 1)
-offset_left = -162.0
-offset_top = -300.0
-offset_right = 186.0
-offset_bottom = -257.0
+offset_left = -173.0
+offset_top = -379.0
+offset_right = 175.0
+offset_bottom = -336.0
 show_percentage = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_xwavj")
+}
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

@@ -24,7 +24,7 @@ func land():
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Ship"):
-		body.change_controll_label("Press 'E' to Land")
+		body.change_controll_label("Press [E] to Land")
 		ship_in_area = body
 		body.override_zoom(Vector2(0.15, 0.15))
 	if body.is_in_group("Enemy"):

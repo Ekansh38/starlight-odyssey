@@ -4,14 +4,14 @@ extends Node2D
 @export var player_path: NodePath
 @export var bullet_scene: PackedScene
 
-@export var spawn_interval: float = 2.0
-@export var spawn_distance_min: float = 1000.0
-@export var spawn_distance_max: float = 2000.0
+@export var spawn_interval: float = 10.0
+@export var spawn_distance_min: float = 3000.0
+@export var spawn_distance_max: float = 3500.0
 
-@export var max_enemies: int = 10
+@export var max_enemies: int = 8
 @export var cleanup_margin: float = 1.3
 @export var face_player_chance: float = 0.4
-@export var spawn_chance: float = 1
+@export var spawn_chance: float = 0.4
 
 var metal_scrap: PackedScene = preload("res://scenes/metal_scrap.tscn")
 var energy_orb: PackedScene = preload("res://scenes/energy_orb.tscn")

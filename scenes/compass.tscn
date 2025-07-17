@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5j58wqnfldb3"]
+
+[ext_resource type="Script" uid="uid://cluhsjj2xanyv" path="res://scripts/compass.gd" id="1_8a3he"]
+[ext_resource type="Texture2D" uid="uid://chfs52yf6r65p" path="res://assets/needle.png" id="2_8a3he"]
+
+[node name="Compass" type="CanvasLayer"]
+script = ExtResource("1_8a3he")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="CosmicCompass" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -3.0
+anchor_top = 0.1
+anchor_right = -3.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = 91.0
+offset_right = 70.0
+offset_bottom = 131.0
+grow_horizontal = 0
+scale = Vector2(3, 3)
+pivot_offset = Vector2(38, 45)
+texture = ExtResource("2_8a3he")
+expand_mode = 2

@@ -1,12 +1,13 @@
 extends CharacterBody2D
 
 @export var speed: float = 300.0
-@export var shoot_cooldown: float = 1.8
+@export var shoot_cooldown: float = 2
 @export var bullet_scene: PackedScene
 @export var player_path: NodePath
 
 
 
+@onready var mat = $Sprite2D.material as ShaderMaterial
 var health = 100
 
 var player: Node2D
@@ -16,17 +17,35 @@ var target_direction: Vector2 = Vector2.RIGHT
 signal died(drop_position: Vector2)
 
 func _ready():
+	var base_mat = $Sprite2D.material
+	var my_mat = base_mat.duplicate() as ShaderMaterial
+	$Sprite2D.material = my_mat
+	my_mat.set_shader_parameter("flash", false)
+	
+	mat = my_mat	
+
 	player = get_node(player_path)
 	$RandomMovementTimer.start()
 	$ShootTimer.wait_time = shoot_cooldown
 	$ShootTimer.start()
-	$HealthBar.value = health
+	$HealthBarContainer/HealthBar.value = health
+	
+	$Sprite2D.visible = false
+	$Sprite2D.modulate = Color(1,1,1,0)
+	$Sprite2D.visible = true
+	
+	var tw = create_tween()
+	tw.tween_property($Sprite2D, "modulate:a", 1.0, 0.6).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
 
 func _physics_process(delta):
+	var to_player = player.global_position - global_position
+	var distance = to_player.length()
+	
+	if distance > 30000:
+		queue_free()
 	
 	if chase_mode and is_instance_valid(player):
-		var to_player = player.global_position - global_position
-		var distance = to_player.length()
 		var direction = to_player.normalized()
 
 		var desired_distance = 1000.0 
@@ -56,7 +75,9 @@ func shoot_at_player():
 	bullet.global_position = global_position
 	var direction = (player.global_position - global_position).normalized()
 	direction = direction.rotated(randf_range(-0.1, 0.1))
-
+	
+	$AnimationPlayer.play("shoot")
+	
 	if "vel" in bullet:
 		bullet.vel = direction * Globals.bullet_speed
 
@@ -87,7 +108,12 @@ func take_damage():
 	health -= 25
 	if health <= 0:
 		death()
-	$HealthBar.value = health
+	$HealthBarContainer/HealthBar.value = health
+	mat.set("shader_parameter/flash", true);
+	await get_tree().create_timer(0.1).timeout
+	mat.set("shader_parameter/flash", false);
+
+	
 	
 func death():
 	emit_signal("died", global_position)

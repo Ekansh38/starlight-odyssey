@@ -23,7 +23,7 @@ func launch():
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		print("PPw")
-		body.change_controll_label("Press 'E' to Launch")
+		body.change_controll_label("Press [E] to Launch")
 		ship_in_area = body
 
 

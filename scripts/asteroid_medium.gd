@@ -9,7 +9,15 @@ class_name Asteroid
 var inside_planet := false
 
 func _ready():
+	$Sprite2D.visible = false
+	$Sprite2D.modulate = Color(1,1,1,0)
+	$Sprite2D.visible = true
 	$CollisionShape2D.disabled = false
+	
+	var tw = create_tween()
+	tw.tween_property($Sprite2D, "modulate:a", 1.0, 0.6).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
+	
 	dir = dir.normalized()
 	set_physics_process(true)
 

@@ -1,21 +1,66 @@
-[gd_scene load_steps=4 format=3 uid="uid://fqwiliyihkrs"]
+[gd_scene load_steps=7 format=3 uid="uid://fqwiliyihkrs"]
 
-[ext_resource type="Texture2D" uid="uid://bjilmvu807ysj" path="res://assets/crate.png" id="1_b66cd"]
 [ext_resource type="Script" uid="uid://d0dtmfjffos8x" path="res://scenes/crate.gd" id="1_dwt0d"]
+[ext_resource type="Texture2D" uid="uid://c3gwx23ylegsw" path="res://assets/Space Stuff 2/Planets and Astroids/Crate.png" id="2_dwt0d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dwt0d"]
-size = Vector2(338.333, 340)
+size = Vector2(496.667, 245.833)
+
+[sub_resource type="Animation" id="Animation_dwt0d"]
+resource_name = "normal"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 2]
+}
+
+[sub_resource type="Animation" id="Animation_kn6iu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_74u5o"]
+_data = {
+&"RESET": SubResource("Animation_kn6iu"),
+&"normal": SubResource("Animation_dwt0d")
+}
 
 [node name="Crate" type="Area2D"]
 script = ExtResource("1_dwt0d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("1_b66cd")
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("2_dwt0d")
+hframes = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.499998, 0.999998)
+position = Vector2(3, -1.75)
 scale = Vector2(0.6, 0.6)
 shape = SubResource("RectangleShape2D_dwt0d")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_74u5o")
+}
+autoplay = "normal"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

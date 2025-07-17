@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://8keytrhfjiji"]
+[gd_scene load_steps=21 format=3 uid="uid://8keytrhfjiji"]
 
 [ext_resource type="Script" uid="uid://b8jr2iwrepltv" path="res://scripts/space.gd" id="1_85sbg"]
 [ext_resource type="Shader" uid="uid://ckjc1clqaw02l" path="res://scripts/space.gdshader" id="1_gk1qj"]
@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://iak44inrirb1" path="res://scenes/enemy.tscn" id="13_7a7lp"]
 [ext_resource type="PackedScene" uid="uid://jyrnek7bvq0t" path="res://scenes/enemy_bullet.tscn" id="14_7wx0h"]
 [ext_resource type="PackedScene" uid="uid://danwcvytrencc" path="res://scenes/world_border.tscn" id="16_tc3qt"]
+[ext_resource type="PackedScene" uid="uid://dljrjoubwe5k6" path="res://scenes/asteroid_zone.tscn" id="18_cu7je"]
+[ext_resource type="PackedScene" uid="uid://b5j58wqnfldb3" path="res://scenes/compass.tscn" id="19_ygrl5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8uh7m"]
 shader = ExtResource("1_gk1qj")
@@ -49,18 +51,14 @@ medium_asteroid_scene = ExtResource("6_7a7lp")
 big_asteroid_scene = ExtResource("7_7wx0h")
 player_path = NodePath("../Ship")
 spawn_interval = 0.4
-spawn_distance_min = 2000.0
+spawn_distance_min = 2500.0
+spawn_distance_max = 3200.0
 
 [node name="EnemySpawner" type="Node2D" parent="."]
 script = ExtResource("6_skhc4")
 enemy_scene = ExtResource("13_7a7lp")
 player_path = NodePath("../Ship")
 bullet_scene = ExtResource("14_7wx0h")
-spawn_interval = 10.0
-spawn_distance_min = 2700.0
-spawn_distance_max = 3500.0
-max_enemies = 2
-spawn_chance = 0.3
 
 [node name="Planet" parent="." instance=ExtResource("10_a65qk")]
 position = Vector2(46206, 401115)
@@ -82,8 +80,12 @@ scale = Vector2(5, 5)
 position = Vector2(72220, 452999)
 scale = Vector2(5, 5)
 
+[node name="FoodPlanet3" parent="." instance=ExtResource("10_lc4uf")]
+position = Vector2(38370, 437422)
+scale = Vector2(5, 5)
+
 [node name="Ship" parent="." instance=ExtResource("2_dv837")]
-position = Vector2(71183, 456436)
+position = Vector2(67719, 460502)
 crate_scene = ExtResource("3_a65qk")
 
 [node name="Camera2D" type="Camera2D" parent="Ship"]
@@ -99,7 +101,6 @@ crate_scene = ExtResource("3_a65qk")
 spawn_distance_min = 3000.0
 spawn_distance_max = 5000.0
 spawn_interval = 1.5
-metadata/_edit_lock_ = true
 
 [node name="Bullets" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
@@ -127,5 +128,31 @@ scale = Vector2(800, 20)
 [node name="WorldBorder4" parent="WorldBorders" instance=ExtResource("16_tc3qt")]
 position = Vector2(70000, 698000)
 scale = Vector2(800, 20)
+
+[node name="AsteroidZone" parent="." instance=ExtResource("18_cu7je")]
+position = Vector2(74639, 467069)
+scale = Vector2(1, 2)
+spawner_path = NodePath("../AsteroidSpawner")
+zone_spawn_interval = 0.3
+zone_max_asteroids = 70
+metadata/_edit_lock_ = true
+
+[node name="AsteroidZone2" parent="." instance=ExtResource("18_cu7je")]
+position = Vector2(73844, 436154)
+spawner_path = NodePath("../AsteroidSpawner")
+zone_spawn_interval = 0.0
+zone_dist_min = 0.0
+zone_dist_max = 0.0
+zone_big_chance = 0.0
+zone_max_asteroids = 0
+zone_cleanup_margin = 0.0
+metadata/_edit_lock_ = true
+
+[node name="EarthMarker" type="Marker2D" parent="."]
+position = Vector2(38487, 437255)
+
+[node name="Compass" parent="." instance=ExtResource("19_ygrl5")]
+ship_path = NodePath("../Ship")
+target_marker_path = NodePath("../EarthMarker")
 
 [connection signal="shoot" from="Ship" to="." method="_on_ship_shoot"]

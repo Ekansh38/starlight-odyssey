@@ -10,6 +10,15 @@ extends CharacterBody2D
 @export var brake_thrust_value: float = 800.0
 @export var brake_energy_multiplier: float = 5
 
+@export var scan_energy_cost : float = 15.0
+@export var scan_duration    : float = 3.0
+@export var scan_zoom        : Vector2 = Vector2(0.015, 0.015)
+
+var is_scanning := false
+var can_scan     := true
+
+
+
 @onready var cam := $Camera2D
 
 @export var min_zoom := Vector2(0.3, 0.3)
@@ -266,8 +275,12 @@ func alert_low_energy() -> void:
 	var ui   = $"../UI"
 	if not is_instance_valid(ui):
 		return
+		
+	if not energy_alert_active:
+		return
+	
+	while energy_alert_active:
 
-	for i in 8:
 		ui.change_minor_info("LOW ENERGY WARNING.")
 		await tree.create_timer(0.8).timeout
 
@@ -280,12 +293,35 @@ func alert_low_energy() -> void:
 		if not is_instance_valid(ui):
 			return
 
-	if is_instance_valid(ui):
-		ui.change_minor_info("")
+		if is_instance_valid(ui):
+			ui.change_minor_info("")
 		
 
 
 func _process(delta):
+	
+	
+	var ui = $"../UI"
+
+	if Input.is_action_just_pressed("scan") and can_scan and Globals.player_energy >= scan_energy_cost:
+		ui.zoom_bar_visable(true)
+
+	if Input.is_action_pressed("scan") and ui.zoom_bar_value() < 100:
+		ui.zoom_bar_update()
+
+	if ui.zoom_bar_value() >= 100 and can_scan:
+		# commit the scan
+		Globals.player_energy -= scan_energy_cost
+		can_scan = false
+		ui.zoom_bar_visable(false)
+		ui.zoom_bar_reset()
+		_start_scan()
+		
+
+	if Input.is_action_just_released("scan"):
+		ui.zoom_bar_visable(false)
+		ui.zoom_bar_reset()
+	
 	if Globals.player_energy <= 20 and not energy_alert_active:
 		energy_alert_active = true
 		alert_low_energy()
@@ -370,3 +406,29 @@ func clear_zoom_override():
 	zoom_tween.tween_property(cam, "zoom", min_zoom, 2.0).set_trans(Tween.TRANS_SINE)
 	await zoom_tween.finished
 	is_zoom_overridden = false
+
+
+func _start_scan() -> void:
+	$"../UI".change_info("ZOOMING OUT")
+	is_scanning = true
+	Globals.player_energy -= scan_energy_cost
+	override_zoom(scan_zoom)
+	$Woosh.play()
+
+	if not is_inside_tree():
+		return
+	await get_tree().create_timer(2).timeout
+	$"../UI".change_info("")
+
+	for rock in get_tree().get_nodes_in_group("Asteroid"):
+		rock.visible = false
+	set_physics_process(false)
+
+	await get_tree().create_timer(scan_duration).timeout
+
+	clear_zoom_override()
+	for rock in get_tree().get_nodes_in_group("Asteroid"):
+		rock.visible = true
+	set_physics_process(true)
+	is_scanning = false
+	can_scan = true

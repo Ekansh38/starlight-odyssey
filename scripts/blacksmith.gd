@@ -7,10 +7,14 @@ func _ready() -> void:
 	# nothing to do here for the prompt
 	connect("body_entered", Callable(self, "_on_body_entered"))
 	connect("body_exited",  Callable(self, "_on_body_exited"))
+	$"../Shop".visible = false
+
 
 func _process(delta: float) -> void:
 	if player_in_range and Input.is_action_just_pressed("land"):
 		print("Shop opened!")
+		get_tree().paused = true
+		$"../Shop".transin()
 		# clear the prompt on the actual player instance
 		player.change_controll_label("")
 

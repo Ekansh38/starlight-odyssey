@@ -16,7 +16,7 @@ func _process(delta):
 		var value = randi()
 		var first_two_digits = int(str(value).substr(0, 2))
 		value = first_two_digits / 100.0
-		if value >= 0.8:
+		if value >= 0.7:
 			_spawn_crate()
 		_spawn_timer = spawn_interval
 		
@@ -29,8 +29,11 @@ func _spawn_crate():
 	var crate = crate_scene.instantiate()
 	crate.global_position = spawn_pos
 
-	var to_player = (player.global_position - spawn_pos).normalized()
+	var travel_angle = randf() * TAU
+	var direction    = Vector2(cos(travel_angle), sin(travel_angle))
+
 	var speed = randf_range(crate_speed_range.x, crate_speed_range.y)
-	crate.set_velocity(to_player * speed)
+
+	crate.set_velocity(direction * speed)
 
 	add_child(crate)
