@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b086uqul0vcjs"]
+[gd_scene load_steps=12 format=3 uid="uid://b086uqul0vcjs"]
 
 [ext_resource type="Script" uid="uid://ckbgll8dw1owc" path="res://scripts/player.gd" id="1_ty8qi"]
 [ext_resource type="Texture2D" uid="uid://j7ienm3q7k51" path="res://assets/Space Stuff 2/Player Sprites/Player RPG overworld sprite.png" id="2_g2els"]
@@ -6,7 +6,99 @@
 [ext_resource type="PackedScene" uid="uid://qa0plaqh16w0" path="res://scenes/hunger_controller.tscn" id="4_dqkch"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ty8qi"]
-size = Vector2(83, 192)
+size = Vector2(63, 68)
+
+[sub_resource type="Animation" id="Animation_qlg0r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [9]
+}
+
+[sub_resource type="Animation" id="Animation_tuyoq"]
+resource_name = "walk_down"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_fjrip"]
+resource_name = "walk_left"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_smehm"]
+resource_name = "walk_right"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [6, 7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_dqkch"]
+resource_name = "walk_up"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [9, 10, 11]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tuyoq"]
+_data = {
+&"RESET": SubResource("Animation_qlg0r"),
+&"walk_down": SubResource("Animation_tuyoq"),
+&"walk_left": SubResource("Animation_fjrip"),
+&"walk_right": SubResource("Animation_smehm"),
+&"walk_up": SubResource("Animation_dqkch")
+}
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_ty8qi")
@@ -16,11 +108,11 @@ scale = Vector2(6, 6)
 texture = ExtResource("2_g2els")
 hframes = 3
 vframes = 4
+frame = 9
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(-5.5, 2)
+position = Vector2(-2.5, 64)
 shape = SubResource("RectangleShape2D_ty8qi")
 metadata/_edit_lock_ = true
 
@@ -40,3 +132,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HungerController" parent="." instance=ExtResource("4_dqkch")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_tuyoq")
+}

@@ -83,7 +83,7 @@ position = Vector2(72220, 452999)
 scale = Vector2(5, 5)
 
 [node name="Ship" parent="." instance=ExtResource("2_dv837")]
-position = Vector2(69749, 463435)
+position = Vector2(71183, 456436)
 crate_scene = ExtResource("3_a65qk")
 
 [node name="Camera2D" type="Camera2D" parent="Ship"]

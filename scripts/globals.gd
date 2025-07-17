@@ -3,6 +3,8 @@ extends Node
 signal update_stats()
 
 var bullet_speed = 3000
+var _game_over_triggered := false
+
 
 var last_ship_position: Vector2 = Vector2.ZERO
 var has_saved_ship_pos: bool    = false
@@ -41,6 +43,10 @@ var player_energy: float = 100:
 			player_energy = max_energy
 			
 		update_stats.emit()
+		
+		if not _game_over_triggered and player_energy <= 0.0:
+			_game_over_triggered = true
+			get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 		
 
 var max_energy: float = 100.0
