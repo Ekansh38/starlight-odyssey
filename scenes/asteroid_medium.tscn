@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4oo467og1rry"]
+[gd_scene load_steps=10 format=3 uid="uid://b4oo467og1rry"]
 
-[ext_resource type="Texture2D" uid="uid://dhuy5bjdlyi1f" path="res://assets/astriodbig.png" id="1_vlxhm"]
 [ext_resource type="Script" uid="uid://25wracfxwqfw" path="res://scripts/asteroid_medium.gd" id="1_yn6tr"]
+[ext_resource type="Texture2D" uid="uid://mdbqpq3gphbk" path="res://assets/Space Stuff 2/Planets and Astroids/pixil-frame-0-509.png" id="2_vv68d"]
 [ext_resource type="Texture2D" uid="uid://drqs1kb0mv8wv" path="res://assets/explosion.png" id="3_pofgt"]
 [ext_resource type="AudioStream" uid="uid://b1lfusmlwwa3n" path="res://assets/explosion (1).wav" id="4_vv68d"]
+[ext_resource type="Texture2D" uid="uid://b35w3jb6uq65b" path="res://assets/Space Stuff 2/Player Sprites/pixil-frame-0-77.png" id="5_si1u6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yn6tr"]
 radius = 56.3205
@@ -51,8 +52,7 @@ script = ExtResource("1_yn6tr")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(-2, 0)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("1_vlxhm")
+texture = ExtResource("2_vv68d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_yn6tr")
@@ -83,5 +83,10 @@ scale_amount_max = 0.2
 [node name="ExplosionSoundEffect" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_vv68d")
 volume_db = 5.0
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(1, 3.8147e-06)
+scale = Vector2(1.93, 1.92)
+texture = ExtResource("5_si1u6")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

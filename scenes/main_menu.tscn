@@ -1,0 +1,76 @@
+[gd_scene load_steps=8 format=3 uid="uid://dcgovhsqgur8y"]
+
+[ext_resource type="Texture2D" uid="uid://dih6d3mpwovnt" path="res://assets/Space Stuff 2/Player Sprites/pixil-frame-0-509.png" id="1_ekxnf"]
+[ext_resource type="Script" uid="uid://bdfs651v4dqd3" path="res://scripts/main_menu.gd" id="1_wu84c"]
+[ext_resource type="FontFile" uid="uid://xgdbuastqrqp" path="res://assets/Space Stuff 2/Enemy/UI/Font/alien_3_font copy.otf" id="2_bqqt6"]
+[ext_resource type="Texture2D" uid="uid://co7r3yebsii4e" path="res://assets/Space Stuff 2/Player Sprites/pixil-frame-0-77.png" id="3_bqqt6"]
+[ext_resource type="Script" uid="uid://cd63l53f7jl5x" path="res://scenes/button.gd" id="5_8ln24"]
+[ext_resource type="AudioStream" uid="uid://b0mgeo0p0awxy" path="res://assets/ButtonClick.wav" id="6_rtw2f"]
+
+[sub_resource type="Environment" id="Environment_ekxnf"]
+background_mode = 3
+glow_enabled = true
+glow_strength = 1.31
+glow_bloom = 0.06
+glow_blend_mode = 0
+
+[node name="Main Menu" type="Node2D"]
+script = ExtResource("1_wu84c")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -154.0
+offset_top = -118.0
+offset_right = 1551.0
+offset_bottom = 862.0
+mouse_filter = 1
+color = Color(0, 0.0603003, 0.0189584, 1)
+
+[node name="Pixil-frame-0-509" type="Sprite2D" parent="."]
+position = Vector2(665, 280)
+scale = Vector2(4, 4)
+texture = ExtResource("1_ekxnf")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ekxnf")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0, 0, 0, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(627, 254)
+scale = Vector2(13.06, 10.935)
+energy = 2.0
+texture = ExtResource("3_bqqt6")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+process_mode = 3
+offset_left = 472.0
+offset_top = 513.0
+offset_right = 639.0
+offset_bottom = 565.0
+scale = Vector2(2, 2)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.530058, 1.35969e-06, 3.36915e-07, 1)
+theme_override_fonts/font = ExtResource("2_bqqt6")
+theme_override_font_sizes/font_size = 32
+text = "Start game"
+flat = true
+script = ExtResource("5_8ln24")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_rtw2f")
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

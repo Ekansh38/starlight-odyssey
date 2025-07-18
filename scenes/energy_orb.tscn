@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dace0ikrs5afp"]
+[gd_scene load_steps=7 format=3 uid="uid://dace0ikrs5afp"]
 
 [ext_resource type="Script" uid="uid://c3pmh8vm2yc5e" path="res://scripts/energy_orb.gd" id="1_2ywp0"]
 [ext_resource type="Texture2D" uid="uid://rtg261pm22tx" path="res://assets/energyorb.webp" id="1_a2nng"]
+[ext_resource type="Texture2D" uid="uid://c20cc61pj1nae" path="res://assets/light.png" id="3_hx6en"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a2nng"]
 radius = 166.108
@@ -41,5 +42,11 @@ color_ramp = SubResource("Gradient_a2nng")
 hue_variation_min = -1.0
 hue_variation_max = 1.0
 hue_variation_curve = SubResource("Curve_a2nng")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.197167, 0.91, 0, 1)
+energy = 0.8
+texture = ExtResource("3_hx6en")
+texture_scale = 0.8
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

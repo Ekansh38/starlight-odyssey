@@ -3,18 +3,25 @@ extends Area2D
 var player_in_range := false
 var player : Node2D = null
 
+@export var shop_path: NodePath
+var shop
+
 func _ready() -> void:
-	# nothing to do here for the prompt
+	if shop_path:
+		shop = get_node(shop_path)
+	else:
+		push_error("Shop path not assigned!")
+
 	connect("body_entered", Callable(self, "_on_body_entered"))
 	connect("body_exited",  Callable(self, "_on_body_exited"))
-	$"../Shop".visible = false
+	shop.visible = false
 
 
 func _process(delta: float) -> void:
 	if player_in_range and Input.is_action_just_pressed("land"):
 		print("Shop opened!")
 		get_tree().paused = true
-		$"../Shop".transin()
+		shop.transin()
 		# clear the prompt on the actual player instance
 		player.change_controll_label("")
 

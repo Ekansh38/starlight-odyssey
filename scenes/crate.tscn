@@ -1,27 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://fqwiliyihkrs"]
+[gd_scene load_steps=8 format=3 uid="uid://fqwiliyihkrs"]
 
 [ext_resource type="Script" uid="uid://d0dtmfjffos8x" path="res://scenes/crate.gd" id="1_dwt0d"]
 [ext_resource type="Texture2D" uid="uid://c3gwx23ylegsw" path="res://assets/Space Stuff 2/Planets and Astroids/Crate.png" id="2_dwt0d"]
+[ext_resource type="Texture2D" uid="uid://b35w3jb6uq65b" path="res://assets/Space Stuff 2/Player Sprites/pixil-frame-0-77.png" id="3_kn6iu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dwt0d"]
 size = Vector2(496.667, 245.833)
-
-[sub_resource type="Animation" id="Animation_dwt0d"]
-resource_name = "normal"
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 2]
-}
 
 [sub_resource type="Animation" id="Animation_kn6iu"]
 length = 0.001
@@ -36,6 +20,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_dwt0d"]
+resource_name = "normal"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.186788, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_74u5o"]
@@ -62,5 +63,12 @@ libraries = {
 &"": SubResource("AnimationLibrary_74u5o")
 }
 autoplay = "normal"
+speed_scale = 1.5
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(3, -1.99999)
+scale = Vector2(7.64, 6.7)
+color = Color(0, 0.662989, 0.643485, 1)
+texture = ExtResource("3_kn6iu")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

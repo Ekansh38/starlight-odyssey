@@ -7,27 +7,66 @@ signal update_compass()
 var bullet_speed = 3000
 var _game_over_triggered := false
 
-var shop_items = {
+var repairs = {
 	0: {
 		"Name": "Basic Repair",
 		"Des": "Restores 10 Damage",
-		"Cost": 5
+		"Cost": 5,
+		"Icon": preload("res://assets/Basic-Repair.png")
 
 
 	},
 	1: {	
 		"Name": "Premium Repair",
 		"Des": "Restores 25 Damage",
-		"Cost": 12
+		"Cost": 12,
+		"Icon": preload("res://assets/Premium-Repair.png")
+
 
 
 	},
 	2: {
 		"Name": "Ship Overhaul",
 		"Des": "Restores 50 Damage",
-		"Cost": 20
+		"Cost": 20,
+		"Icon": preload("res://assets/Ship-Overhaul.png")
+
 	},
 }
+
+
+
+var food_items = {
+	0: {
+		"Name": "Snack",
+		"Des": "+1 Food",
+		"Cost": 5,
+		"Icon": preload("res://assets/snack.png")
+
+
+	},
+	1: {	
+		"Name": "Meal",
+		"Des": "+3 Food",
+		"Cost": 12,
+		"Icon": preload("res://assets/meal.png")
+
+
+
+	},
+	2: {
+		"Name": "Bundle",
+		"Des": "+2 Max Food",
+		"Cost": 25,
+		"Icon": preload("res://assets/bundle.png")
+
+	},
+}
+
+
+
+
+
 
 var money = 200:
 	get:
@@ -92,5 +131,12 @@ var ship_damage: float = 100.0:
 	get:
 		return ship_damage
 	set(value):
-		ship_damage = value
+		if value >= 100:
+			ship_damage = 100
+		else:
+			ship_damage = value
 		update_stats.emit()
+		
+		if not _game_over_triggered and ship_damage <= 0.0:
+			_game_over_triggered = true
+			get_tree().change_scene_to_file("res://scenes/game_over.tscn")

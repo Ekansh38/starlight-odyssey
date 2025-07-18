@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://8keytrhfjiji"]
+[gd_scene load_steps=23 format=3 uid="uid://8keytrhfjiji"]
 
 [ext_resource type="Script" uid="uid://b8jr2iwrepltv" path="res://scripts/space.gd" id="1_85sbg"]
 [ext_resource type="Shader" uid="uid://ckjc1clqaw02l" path="res://scripts/space.gdshader" id="1_gk1qj"]
@@ -13,12 +13,13 @@
 [ext_resource type="Script" uid="uid://ch736j1ut80mj" path="res://scripts/crates.gd" id="8_skhc4"]
 [ext_resource type="PackedScene" uid="uid://b11bx1b6xyayj" path="res://scenes/planet.tscn" id="10_a65qk"]
 [ext_resource type="PackedScene" uid="uid://b6nh3r67ju7l1" path="res://scenes/food_planet.tscn" id="10_lc4uf"]
-[ext_resource type="Texture2D" uid="uid://dxjjpm8ukq1st" path="res://assets/crosshair066.png" id="12_rlquo"]
-[ext_resource type="PackedScene" uid="uid://iak44inrirb1" path="res://scenes/enemy.tscn" id="13_7a7lp"]
+[ext_resource type="Texture2D" uid="uid://bcw7gaq41cw7h" path="res://assets/crosshair066.png" id="12_rlquo"]
+[ext_resource type="PackedScene" uid="uid://iak44inrirb1" path="res://assets/Space Stuff 2/Player Sprites/enemy.tscn" id="13_7a7lp"]
 [ext_resource type="PackedScene" uid="uid://jyrnek7bvq0t" path="res://scenes/enemy_bullet.tscn" id="14_7wx0h"]
 [ext_resource type="PackedScene" uid="uid://danwcvytrencc" path="res://scenes/world_border.tscn" id="16_tc3qt"]
 [ext_resource type="PackedScene" uid="uid://dljrjoubwe5k6" path="res://scenes/asteroid_zone.tscn" id="18_cu7je"]
 [ext_resource type="PackedScene" uid="uid://b5j58wqnfldb3" path="res://scenes/compass.tscn" id="19_ygrl5"]
+[ext_resource type="Texture2D" uid="uid://dnwsxwpsmllnr" path="res://assets/pixil-frame-0-520.png" id="20_sixpt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8uh7m"]
 shader = ExtResource("1_gk1qj")
@@ -30,6 +31,19 @@ shader_parameter/smallStarSlow = 8.0
 shader_parameter/smallStarAmount = 0.002
 shader_parameter/mediumStarAmount = 0.01
 shader_parameter/bigStarAmount = 0.02
+
+[sub_resource type="Environment" id="Environment_sixpt"]
+background_mode = 3
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 1.73
+glow_strength = 0.66
+glow_bloom = 0.09
+glow_blend_mode = 0
+glow_map_strength = 0.38
+adjustment_enabled = true
+adjustment_brightness = 1.86
+adjustment_saturation = 1.1
 
 [node name="Space" type="Node2D"]
 script = ExtResource("1_85sbg")
@@ -75,25 +89,17 @@ scale = Vector2(5, 5)
 [node name="FoodPlanet" parent="." instance=ExtResource("10_lc4uf")]
 position = Vector2(43741, 452910)
 scale = Vector2(5, 5)
+target_scene = null
 
 [node name="FoodPlanet2" parent="." instance=ExtResource("10_lc4uf")]
 position = Vector2(72220, 452999)
 scale = Vector2(5, 5)
+target_scene = null
 
 [node name="FoodPlanet3" parent="." instance=ExtResource("10_lc4uf")]
 position = Vector2(38370, 437422)
 scale = Vector2(5, 5)
-
-[node name="Ship" parent="." instance=ExtResource("2_dv837")]
-position = Vector2(67719, 460502)
-crate_scene = ExtResource("3_a65qk")
-
-[node name="Camera2D" type="Camera2D" parent="Ship"]
-zoom = Vector2(0.3, 0.3)
-position_smoothing_enabled = true
-rotation_smoothing_speed = 1.0
-script = ExtResource("4_dv837")
-metadata/_edit_lock_ = true
+target_scene = null
 
 [node name="Crates" type="Node2D" parent="."]
 script = ExtResource("8_skhc4")
@@ -130,12 +136,21 @@ position = Vector2(70000, 698000)
 scale = Vector2(800, 20)
 
 [node name="AsteroidZone" parent="." instance=ExtResource("18_cu7je")]
-position = Vector2(74639, 467069)
-scale = Vector2(1, 2)
+position = Vector2(74511, 486909)
+scale = Vector2(1, 4)
 spawner_path = NodePath("../AsteroidSpawner")
-zone_spawn_interval = 0.3
-zone_max_asteroids = 70
-metadata/_edit_lock_ = true
+zone_spawn_interval = 0.2
+zone_dist_max = 3500.0
+zone_max_asteroids = 50
+zone_cleanup_margin = 1.1
+
+[node name="AsteroidZone3" parent="." instance=ExtResource("18_cu7je")]
+position = Vector2(75023, 409981)
+scale = Vector2(1, 1.5)
+spawner_path = NodePath("../AsteroidSpawner")
+zone_spawn_interval = 0.15
+zone_dist_max = 6000.0
+zone_max_asteroids = 130
 
 [node name="AsteroidZone2" parent="." instance=ExtResource("18_cu7je")]
 position = Vector2(73844, 436154)
@@ -149,10 +164,32 @@ zone_cleanup_margin = 0.0
 metadata/_edit_lock_ = true
 
 [node name="EarthMarker" type="Marker2D" parent="."]
-position = Vector2(38487, 437255)
+position = Vector2(121047, 384007)
 
 [node name="Compass" parent="." instance=ExtResource("19_ygrl5")]
 ship_path = NodePath("../Ship")
 target_marker_path = NodePath("../EarthMarker")
+
+[node name="Planet2" type="Sprite2D" parent="."]
+position = Vector2(121072, 384029)
+scale = Vector2(10, 10)
+texture = ExtResource("20_sixpt")
+
+[node name="Ship" parent="." instance=ExtResource("2_dv837")]
+position = Vector2(65031, 488406)
+crate_scene = ExtResource("3_a65qk")
+
+[node name="Camera2D" type="Camera2D" parent="Ship"]
+zoom = Vector2(0.3, 0.3)
+position_smoothing_enabled = true
+rotation_smoothing_speed = 1.0
+script = ExtResource("4_dv837")
+metadata/_edit_lock_ = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.125911, 0.125911, 0.125911, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_sixpt")
 
 [connection signal="shoot" from="Ship" to="." method="_on_ship_shoot"]

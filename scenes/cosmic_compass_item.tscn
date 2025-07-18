@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://ca5tfy7swdpna"]
+
+[ext_resource type="Script" uid="uid://o1y0spdm4lbd" path="res://scripts/cosmic_compass_item.gd" id="1_rl5cn"]
+[ext_resource type="Texture2D" uid="uid://c77u51770afs2" path="res://assets/pixil-frame-0-519.png" id="2_ccs2h"]
+[ext_resource type="Texture2D" uid="uid://c20cc61pj1nae" path="res://assets/light.png" id="3_5ft42"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ehkli"]
+radius = 88.3629
+
+[node name="CosmicCompassItem" type="Area2D"]
+script = ExtResource("1_rl5cn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.5, 1.5)
+scale = Vector2(6, 6)
+texture = ExtResource("2_ccs2h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ehkli")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 0, 0, 1)
+energy = 0.7
+texture = ExtResource("3_5ft42")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ccr20ehg8758n"]
 
-[ext_resource type="Texture2D" uid="uid://d07iti3ojgi4l" path="res://assets/bullet.png" id="1_mkf8s"]
 [ext_resource type="Script" uid="uid://42lmpx0uk17" path="res://scripts/bullet.gd" id="1_y25gk"]
+[ext_resource type="Texture2D" uid="uid://b35w3jb6uq65b" path="res://assets/Space Stuff 2/Player Sprites/pixil-frame-0-77.png" id="2_y25gk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mkf8s"]
 radius = 13.0
@@ -11,14 +11,25 @@ height = 134.0
 script = ExtResource("1_y25gk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1, 0)
-scale = Vector2(0.25, 0.5)
-texture = ExtResource("1_mkf8s")
+modulate = Color(0, 0.783333, 1, 1)
+scale = Vector2(1.935, 0.3)
+texture = ExtResource("2_y25gk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_mkf8s")
 metadata/_edit_lock_ = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(3.74, 0.95)
+texture = ExtResource("2_y25gk")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(-6.99999, -1.99997)
+scale = Vector2(7.8, 8.3475)
+color = Color(0, 0.99, 0.8415, 1)
+energy = 0.7
+texture = ExtResource("2_y25gk")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bp6a6n25sbnxw"
-path="res://.godot/imported/Screenshot 2025-07-13 at 5.12.46 PM.png-294a30ffe9507a27c2da77a335ccaf54.ctex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://scripts/Screenshot 2025-07-13 at 5.12.46 PM.png"
-dest_files=["res://.godot/imported/Screenshot 2025-07-13 at 5.12.46 PM.png-294a30ffe9507a27c2da77a335ccaf54.ctex"]
 
 [params]
 

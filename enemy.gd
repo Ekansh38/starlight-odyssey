@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var speed: float = 300.0
-@export var shoot_cooldown: float = 2
+@export var shoot_cooldown: float = 1.2
 @export var bullet_scene: PackedScene
 @export var player_path: NodePath
 
@@ -105,7 +105,7 @@ func _on_shoot_timer_timeout() -> void:
 		shoot_at_player()
 		
 func take_damage():
-	health -= 25
+	health -= 20
 	if health <= 0:
 		death()
 	$HealthBarContainer/HealthBar.value = health

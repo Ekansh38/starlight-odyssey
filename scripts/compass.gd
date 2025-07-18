@@ -26,5 +26,7 @@ func _process(delta):
 func update_compass():
 	if Globals.has_cosmic_compass == false:
 		$Control/CosmicCompass.visible = false
+		$Control/Compass.visible = false
 	else:
 		$Control/CosmicCompass.visible = true
+		$Control/Compass.visible = true

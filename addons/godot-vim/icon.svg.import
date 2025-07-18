@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://t5a1pplota15"
-path="res://.godot/imported/icon.svg-5744b51718b6a64145ec5798797f7631.ctex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://addons/godot-vim/icon.svg"
-dest_files=["res://.godot/imported/icon.svg-5744b51718b6a64145ec5798797f7631.ctex"]
 
 [params]
 

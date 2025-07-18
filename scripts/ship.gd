@@ -72,16 +72,40 @@ func _physics_process(delta: float) -> void:
 	$Damage1.visible = false
 	$Damage2.visible = false
 	$Damage3.visible = false
+	
+	$DamageParticle1.visible = false
+	$DamageParticle2.visible = false
+	$DamageParticle3.visible = false
+	$FireLight.visible = false
+	$FireLight2.visible = false
+	$FireLight3.visible = false
 
+	
+	
 	if Globals.ship_damage > 75:
 		$Sprite2D.visible = true
 	elif Globals.ship_damage > 50:
 		$Damage1.visible = true
+		$DamageParticle1.visible = true
+		$FireLight.visible = true
+
+
 	elif Globals.ship_damage > 25:
 		$Damage2.visible = true
+		$DamageParticle1.visible = true
+		$DamageParticle2.visible = true
+		$FireLight.visible = true
+		$FireLight2.visible = true
+
 	else:
 		$Damage3.visible = true
-	
+		$DamageParticle1.visible = true
+		$DamageParticle2.visible = true
+		$DamageParticle3.visible = true
+		$FireLight.visible = true
+		$FireLight2.visible = true
+		$FireLight3.visible = true
+
 	
 	# Shooting logic
 	
@@ -91,7 +115,6 @@ func _physics_process(delta: float) -> void:
 		var markers = $BulletSpawnPositions.get_children()
 		var random_marker = markers[randi() % markers.size()]
 		var ship_pos = random_marker.global_position
-		
 		shoot.emit(mouse_pos, ship_pos)
 		
 	
@@ -121,7 +144,6 @@ func _physics_process(delta: float) -> void:
 	$Left.visible = false
 	$Right.visible = false
 	$"../UI".speed_lines_visablity(false)
-
 	$Both.visible = false
 	$PowerLight.visible = false
 	$PowerLight.energy = 1
@@ -272,6 +294,8 @@ func take_damage(type):
 	
 func alert_low_energy() -> void:
 	var tree = get_tree()
+	if tree == null:
+		return
 	var ui   = $"../UI"
 	if not is_instance_valid(ui):
 		return
@@ -309,7 +333,7 @@ func _process(delta):
 	if Input.is_action_pressed("scan") and ui.zoom_bar_value() < 100:
 		ui.zoom_bar_update()
 
-	if ui.zoom_bar_value() >= 100 and can_scan:
+	if ui.zoom_bar_value() >= 100 and can_scan and Globals.player_energy > scan_energy_cost:
 		# commit the scan
 		Globals.player_energy -= scan_energy_cost
 		can_scan = false
@@ -411,7 +435,6 @@ func clear_zoom_override():
 func _start_scan() -> void:
 	$"../UI".change_info("ZOOMING OUT")
 	is_scanning = true
-	Globals.player_energy -= scan_energy_cost
 	override_zoom(scan_zoom)
 	$Woosh.play()
 

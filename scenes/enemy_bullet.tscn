@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://jyrnek7bvq0t"]
 
 [ext_resource type="Script" uid="uid://dnrshh0fd6igk" path="res://scripts/enemy_bullet.gd" id="1_qx7rs"]
-[ext_resource type="Texture2D" uid="uid://d07iti3ojgi4l" path="res://assets/bullet.png" id="2_38r62"]
+[ext_resource type="Texture2D" uid="uid://b35w3jb6uq65b" path="res://assets/Space Stuff 2/Player Sprites/pixil-frame-0-77.png" id="2_qx7rs"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mkf8s"]
 radius = 43.3333
@@ -11,15 +11,22 @@ height = 176.667
 script = ExtResource("1_qx7rs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1, 0)
-scale = Vector2(0.2, 0.4)
-texture = ExtResource("2_38r62")
+modulate = Color(1, 0, 0, 1)
+position = Vector2(-1.5, 0.5)
+scale = Vector2(1.23, 0.41)
+texture = ExtResource("2_qx7rs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 scale = Vector2(0.3, 0.6)
 shape = SubResource("CapsuleShape2D_mkf8s")
 metadata/_edit_lock_ = true
+
+[node name="PointLight2D" type="PointLight2D" parent="CollisionShape2D"]
+position = Vector2(-1.90735e-06, -1.90735e-06)
+scale = Vector2(1.57657, 2.60017)
+color = Color(1, 0, 0, 1)
+texture = ExtResource("2_qx7rs")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://b086uqul0vcjs"]
 
 [ext_resource type="Script" uid="uid://ckbgll8dw1owc" path="res://scripts/player.gd" id="1_ty8qi"]
-[ext_resource type="Texture2D" uid="uid://j7ienm3q7k51" path="res://assets/Space Stuff 2/Player Sprites/Player RPG overworld sprite.png" id="2_g2els"]
+[ext_resource type="Texture2D" uid="uid://b75so81q7m38u" path="res://assets/Space Stuff 2/Player Sprites/Player RPG overworld sprite.png" id="2_g2els"]
 [ext_resource type="Script" uid="uid://d3uyx6dqoek1t" path="res://scripts/label_holder.gd" id="3_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://qa0plaqh16w0" path="res://scenes/hunger_controller.tscn" id="4_dqkch"]
 
@@ -25,7 +25,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_tuyoq"]
 resource_name = "walk_down"
-length = 0.6
+length = 0.8
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -34,15 +34,15 @@ tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2]
+"values": [0, 1, 2, 1]
 }
 
 [sub_resource type="Animation" id="Animation_fjrip"]
 resource_name = "walk_left"
-length = 0.6
+length = 0.8
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -51,15 +51,15 @@ tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [3, 4, 5]
+"values": [3, 4, 5, 4]
 }
 
 [sub_resource type="Animation" id="Animation_smehm"]
 resource_name = "walk_right"
-length = 0.6
+length = 0.8
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -68,15 +68,15 @@ tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [6, 7, 8]
+"values": [6, 7, 8, 7]
 }
 
 [sub_resource type="Animation" id="Animation_dqkch"]
 resource_name = "walk_up"
-length = 0.6
+length = 0.8
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -85,10 +85,10 @@ tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [9, 10, 11]
+"values": [9, 10, 11, 10]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tuyoq"]

@@ -1,10 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://b2cpljbh1tc6g"]
+[gd_scene load_steps=17 format=3 uid="uid://b2cpljbh1tc6g"]
 
 [ext_resource type="Script" uid="uid://h5j5kka6t0w0" path="res://scripts/ui.gd" id="1_fyqef"]
-[ext_resource type="Texture2D" uid="uid://q13aeqc32bie" path="res://assets/food.png" id="2_gdt2y"]
-[ext_resource type="Texture2D" uid="uid://cyl4oalcnwkud" path="res://assets/ammo.png" id="3_wm3ai"]
-[ext_resource type="Texture2D" uid="uid://va18ay8gjbfc" path="res://assets/money.png" id="4_8dubc"]
+[ext_resource type="Texture2D" uid="uid://63vp8ysoaini" path="res://assets/Space Stuff 2/Enemy/UI/Energy UI.png" id="3_cgfq5"]
+[ext_resource type="FontFile" uid="uid://xgdbuastqrqp" path="res://assets/Space Stuff 2/Enemy/UI/Font/alien_3_font copy.otf" id="4_7dvkv"]
+[ext_resource type="Texture2D" uid="uid://mcnk6up557f" path="res://assets/Space Stuff 2/Enemy/UI/Ship Status UI.png" id="5_vdcm2"]
 [ext_resource type="Shader" uid="uid://c73f7v8fusefa" path="res://scenes/speedlines.gdshader" id="5_wm3ai"]
+[ext_resource type="Texture2D" uid="uid://bi4rq380kth70" path="res://assets/Space Stuff 2/Enemy/UI/Bonus UI.png" id="7_6rmj2"]
+[ext_resource type="Texture2D" uid="uid://dkur2bxudtbyh" path="res://assets/Space Stuff 2/Player Sprites/pixil-frame-0-512.png" id="7_cgfq5"]
+[ext_resource type="Texture2D" uid="uid://cow8l4752trt6" path="res://assets/Space Stuff 2/Player Sprites/pixil-frame-0-511.png" id="8_7dvkv"]
+[ext_resource type="Texture2D" uid="uid://bgjr1lvwt5vo7" path="res://assets/Space Stuff 2/Player Sprites/pixil-frame-0-510.png" id="9_vdcm2"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_wm3ai"]
 noise_type = 5
@@ -24,6 +28,28 @@ shader_parameter/hole_smoothness = 0.591
 shader_parameter/hole_radius = 0.3
 shader_parameter/transparency = 0.6
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vsj0x"]
+bg_color = Color(0.439281, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.0692702, 0.0422397, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qsv74"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1mc3"]
+bg_color = Color(0.419969, 1.86507e-07, 1.20327e-07, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cof4p"]
+bg_color = Color(1, 0, 0, 1)
+
 [node name="UI" type="CanvasLayer" groups=["UI"]]
 script = ExtResource("1_fyqef")
 
@@ -42,20 +68,34 @@ anchor_left = 0.3
 anchor_top = 0.89
 anchor_right = 0.7
 anchor_bottom = 0.989
+offset_top = -73.8
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 39.92
 theme_override_constants/separation = 10
 
+[node name="EnergyUi" type="Sprite2D" parent="VBoxContainer"]
+modulate = Color(1, 1, 1, 0.776471)
+position = Vector2(270, 68)
+scale = Vector2(1.33556, 1.51333)
+texture = ExtResource("3_cgfq5")
+
 [node name="Label" type="Label" parent="VBoxContainer"]
+modulate = Color(1, 0, 0, 1)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_7dvkv")
 theme_override_font_sizes/font_size = 20
-text = "Bio-Energy"
+text = "Life Energy
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Energy" type="ProgressBar" parent="VBoxContainer"]
-modulate = Color(6.93083e-06, 0.708273, 0, 1)
+modulate = Color(0.822495, 0.830029, 0.817033, 1)
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_7dvkv")
+theme_override_styles/background = SubResource("StyleBoxFlat_vsj0x")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qsv74")
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
 anchors_preset = -1
@@ -63,12 +103,22 @@ anchor_left = 0.75
 anchor_top = 0.89
 anchor_right = 0.95
 anchor_bottom = 0.914
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 8.0
+offset_top = -35.8
+offset_right = -58.0
+offset_bottom = 11.92
 theme_override_constants/separation = 10
+
+[node name="ShipStatusUi" type="Sprite2D" parent="VBoxContainer2"]
+modulate = Color(1, 1, 1, 0.87451)
+position = Vector2(100, 45)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_vdcm2")
 
 [node name="Label" type="Label" parent="VBoxContainer2"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_7dvkv")
 theme_override_font_sizes/font_size = 20
 text = "Structural Integraty"
 horizontal_alignment = 1
@@ -77,6 +127,8 @@ vertical_alignment = 1
 [node name="ShipDamage" type="ProgressBar" parent="VBoxContainer2"]
 modulate = Color(0.982653, 0.00102032, 1.34766e-06, 1)
 layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_h1mc3")
+theme_override_styles/fill = SubResource("StyleBoxFlat_cof4p")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchors_preset = -1
@@ -88,13 +140,20 @@ offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/separation = 25
 
+[node name="BonusUi" type="Sprite2D" parent="HBoxContainer"]
+modulate = Color(1, 1, 1, 0.772549)
+position = Vector2(30, 29)
+texture = ExtResource("7_6rmj2")
+
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("2_gdt2y")
+texture = ExtResource("7_cgfq5")
 expand_mode = 2
 
 [node name="Amount" type="Label" parent="HBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_7dvkv")
 theme_override_font_sizes/font_size = 50
 text = "0/3"
 
@@ -108,13 +167,20 @@ offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/separation = 25
 
+[node name="BonusUi2" type="Sprite2D" parent="Ammo"]
+modulate = Color(1, 1, 1, 0.772549)
+position = Vector2(28.6, 29)
+texture = ExtResource("7_6rmj2")
+
 [node name="TextureRect" type="TextureRect" parent="Ammo"]
 layout_mode = 2
-texture = ExtResource("3_wm3ai")
+texture = ExtResource("8_7dvkv")
 expand_mode = 2
 
 [node name="Ammo" type="Label" parent="Ammo"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_7dvkv")
 theme_override_font_sizes/font_size = 50
 text = "0"
 
@@ -128,13 +194,20 @@ offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/separation = 25
 
+[node name="BonusUi3" type="Sprite2D" parent="Money"]
+modulate = Color(1, 1, 1, 0.772549)
+position = Vector2(28, 29)
+texture = ExtResource("7_6rmj2")
+
 [node name="TextureRect" type="TextureRect" parent="Money"]
 layout_mode = 2
-texture = ExtResource("4_8dubc")
+texture = ExtResource("9_vdcm2")
 expand_mode = 2
 
 [node name="Money" type="Label" parent="Money"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_7dvkv")
 theme_override_font_sizes/font_size = 50
 text = "0"
 
@@ -154,10 +227,10 @@ theme_override_font_sizes/font_size = 50
 
 [node name="InfoLabel2" type="Label" parent="."]
 anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.75
-anchor_right = 0.5
-anchor_bottom = 0.75
+anchor_left = 0.4
+anchor_top = 0.5
+anchor_right = 0.6
+anchor_bottom = 0.6
 offset_left = -20.0
 offset_top = -11.5
 offset_right = 20.0
@@ -166,8 +239,10 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 0.435294)
-theme_override_font_sizes/font_size = 30
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.435294)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("4_7dvkv")
+theme_override_font_sizes/font_size = 40
 
 [node name="SelfCanniblizeBar" type="ProgressBar" parent="."]
 visible = false
@@ -224,5 +299,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
+metadata/_edit_lock_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

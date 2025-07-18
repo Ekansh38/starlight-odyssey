@@ -6,15 +6,22 @@ extends CharacterBody2D
 
 @export var walk_energy_per_second := 1.0
 
+func set_controls_enabled(enable: bool) -> void: 
+	controls_enabled = enable
+
 var vel: Vector2 = Vector2.ZERO
 var acc: Vector2 = Vector2.ZERO
 var input_dir: Vector2 = Vector2.ZERO
 var last_dir: String = "down"
+var controls_enabled: bool = true 
 
 @onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D        = $PlayerSprite
 
 func _physics_process(delta: float) -> void:
+	if not controls_enabled:
+		velocity = Vector2.ZERO      # stay still while frozen
+		return
 	input_dir = Vector2(
 		Input.get_action_strength("right") - Input.get_action_strength("left"),
 		Input.get_action_strength("down")  - Input.get_action_strength("up")

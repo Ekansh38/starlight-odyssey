@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cota45y1k14gi"]
+
+[ext_resource type="PackedScene" uid="uid://crahrlgwgfepd" path="res://scenes/shop.tscn" id="1_o6o0p"]
+[ext_resource type="Script" uid="uid://c44q5snf7a357" path="res://scenes/food_shop.gd" id="2_bmqsq"]
+
+[node name="FoodShop" instance=ExtResource("1_o6o0p")]
+script = ExtResource("2_bmqsq")
+
+[node name="Icon" parent="Control" index="6"]
+scale = Vector2(0.3, 0.3)

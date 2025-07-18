@@ -1,77 +1,32 @@
-[gd_scene load_steps=26 format=3 uid="uid://bnxmf8waol6sn"]
+[gd_scene load_steps=30 format=3 uid="uid://bnxmf8waol6sn"]
 
 [ext_resource type="Script" uid="uid://ch6w73q33dyfw" path="res://scripts/ship.gd" id="1_4cq66"]
-[ext_resource type="Texture2D" uid="uid://bqter8oyhocc6" path="res://assets/Player Sprites/Normal Ship.png" id="2_bseor"]
-[ext_resource type="AudioStream" uid="uid://b1lfusmlwwa3n" path="res://assets/explosion (1).wav" id="3_4tobq"]
-[ext_resource type="Texture2D" uid="uid://d3vqx6er02vs1" path="res://assets/Player Sprites/Left On.png" id="3_tlr80"]
-[ext_resource type="Texture2D" uid="uid://dod7eipdfdbwb" path="res://assets/Player Sprites/Damaged ship 01.png" id="3_vbj2c"]
-[ext_resource type="Texture2D" uid="uid://dew2bukm1wg27" path="res://assets/Player Sprites/Right On.png" id="4_bseor"]
-[ext_resource type="Texture2D" uid="uid://d0t4u3po0xaiq" path="res://assets/Player Sprites/Damaged ship 02.png" id="4_dschd"]
-[ext_resource type="AudioStream" uid="uid://chdxiqd472vm3" path="res://assets/crunch.wav" id="4_tfsc7"]
-[ext_resource type="Texture2D" uid="uid://jdlupmiomv4n" path="res://assets/Player Sprites/Damaged ship 03.png" id="5_83dbu"]
-[ext_resource type="AudioStream" uid="uid://cmmxypdyl3hdq" path="res://assets/boost.wav" id="5_gudjc"]
-[ext_resource type="Texture2D" uid="uid://b6pais52i03mw" path="res://assets/Player Sprites/Both On.png" id="5_tlr80"]
-[ext_resource type="AudioStream" uid="uid://b8ihiwy7m7223" path="res://assets/eating.wav" id="6_7j21i"]
-[ext_resource type="AudioStream" uid="uid://dm3joq03ki0xw" path="res://assets/Out Of Ammo   No Ammo SOUND Effect.mp3" id="7_3m36u"]
+[ext_resource type="Texture2D" uid="uid://dce27bg1v22ms" path="res://assets/Player Sprites/Normal Ship.png" id="2_bseor"]
+[ext_resource type="AudioStream" uid="uid://cq0clurffltcp" path="res://assets/explosion (1).wav" id="3_4tobq"]
+[ext_resource type="Texture2D" uid="uid://d2ccys1sqtotn" path="res://assets/Player Sprites/Left On.png" id="3_tlr80"]
+[ext_resource type="Texture2D" uid="uid://dsavvayga4hq7" path="res://assets/Player Sprites/Damaged ship 01.png" id="3_vbj2c"]
+[ext_resource type="Texture2D" uid="uid://cfb35ms0icpm7" path="res://assets/Player Sprites/Right On.png" id="4_bseor"]
+[ext_resource type="Texture2D" uid="uid://beojk2jnpfjau" path="res://assets/Player Sprites/Damaged ship 02.png" id="4_dschd"]
+[ext_resource type="AudioStream" uid="uid://bytb16bo7x7cq" path="res://assets/crunch.wav" id="4_tfsc7"]
+[ext_resource type="Texture2D" uid="uid://baxum3a5xt7qe" path="res://assets/Player Sprites/Damaged ship 03.png" id="5_83dbu"]
+[ext_resource type="AudioStream" uid="uid://b7yi4rbqxj46j" path="res://assets/boost.wav" id="5_gudjc"]
+[ext_resource type="Texture2D" uid="uid://nyq1mlw0e3p5" path="res://assets/Player Sprites/Both On.png" id="5_tlr80"]
+[ext_resource type="AudioStream" uid="uid://cfuv7uwm8tjwd" path="res://assets/eating.wav" id="6_7j21i"]
+[ext_resource type="AudioStream" uid="uid://c620jbc4op8o2" path="res://assets/Out Of Ammo   No Ammo SOUND Effect.mp3" id="7_3m36u"]
 [ext_resource type="Script" uid="uid://b8k1urgk4rma7" path="res://scenes/label_holder.gd" id="8_8qiel"]
-[ext_resource type="Texture2D" uid="uid://c20cc61pj1nae" path="res://assets/light.png" id="12_03y04"]
-[ext_resource type="Texture2D" uid="uid://ta0a45xluiht" path="res://assets/kenney_smoke-particles/PNG/Explosion/explosion00.png" id="13_48mkp"]
-[ext_resource type="Texture2D" uid="uid://dcroqv5v6vyfg" path="res://assets/kenney_smoke-particles/PNG/Flash/flash01.png" id="14_tbq4g"]
-[ext_resource type="AudioStream" uid="uid://dyrahqs1kfhwi" path="res://assets/woosh.wav" id="18_dschd"]
+[ext_resource type="Texture2D" uid="uid://ds3bpyhv0dnsx" path="res://assets/light.png" id="12_03y04"]
+[ext_resource type="Texture2D" uid="uid://b25yo0vlxbb0c" path="res://assets/kenney_smoke-particles/PNG/Explosion/explosion00.png" id="13_48mkp"]
+[ext_resource type="Texture2D" uid="uid://dspirnem1f7gq" path="res://assets/kenney_smoke-particles/PNG/Flash/flash01.png" id="14_tbq4g"]
+[ext_resource type="FontFile" uid="uid://xgdbuastqrqp" path="res://assets/Space Stuff 2/Enemy/UI/Font/alien_3_font copy.otf" id="15_swuwe"]
+[ext_resource type="AudioStream" uid="uid://bas327my7h5pi" path="res://assets/woosh.wav" id="18_dschd"]
+[ext_resource type="Texture2D" uid="uid://co7r3yebsii4e" path="res://assets/Space Stuff 2/Player Sprites/pixil-frame-0-77.png" id="19_83dbu"]
+[ext_resource type="Texture2D" uid="uid://b8hcebarj2mf1" path="res://assets/kenney_smoke-particles/PNG/Explosion/explosion03.png" id="20_xifwb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tlr80"]
 size = Vector2(160, 265)
 
 [sub_resource type="Animation" id="Animation_03y04"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Damage1:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 1,
-"values": []
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Damage2:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Damage3:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
 
 [sub_resource type="Animation" id="Animation_tlr80"]
 resource_name = "boost"
@@ -196,6 +151,10 @@ colors = PackedColorArray(1, 0.24524, 0.187846, 1, 0.866667, 0.807843, 0, 1, 1, 
 offsets = PackedFloat32Array(0, 0.826667, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
+[sub_resource type="Gradient" id="Gradient_swuwe"]
+offsets = PackedFloat32Array(0, 0.754448, 1)
+colors = PackedColorArray(0.937255, 0.423529, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0)
+
 [node name="Ship" type="CharacterBody2D" groups=["Ship"]]
 script = ExtResource("1_4cq66")
 
@@ -308,6 +267,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 10
 theme_override_constants/shadow_offset_y = 20
 theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("15_swuwe")
 theme_override_font_sizes/font_size = 120
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -331,13 +291,36 @@ libraries = {
 
 [node name="PowerLight" type="PointLight2D" parent="."]
 position = Vector2(0, 7)
-color = Color(1, 0, 0, 1)
+color = Color(1, 0.194376, 0.144153, 1)
 texture = ExtResource("12_03y04")
 texture_scale = 0.25
-metadata/_edit_lock_ = true
+
+[node name="FireLight" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(-126, 0)
+texture = ExtResource("12_03y04")
+texture_scale = 0.5
+
+[node name="FireLight2" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(59, 110)
+texture = ExtResource("12_03y04")
+texture_scale = 0.5
+
+[node name="FireLight3" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(-49, 54)
+texture = ExtResource("12_03y04")
+texture_scale = 0.5
+
+[node name="FireLight4" type="PointLight2D" parent="."]
+position = Vector2(-7, 90)
+energy = 0.3
+texture = ExtResource("12_03y04")
 
 [node name="OverallLight" type="PointLight2D" parent="."]
-position = Vector2(-1, -50)
+position = Vector2(-3, -102)
+color = Color(1, 0.814479, 0.495728, 1)
 energy = 0.3
 texture = ExtResource("12_03y04")
 metadata/_edit_lock_ = true
@@ -411,5 +394,75 @@ metadata/_edit_lock_ = true
 [node name="Woosh" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("18_dschd")
 volume_db = -18.94
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-129, 213)
+scale = Vector2(5.025, 6.185)
+color = Color(0.928691, 0.00969697, 0.00860019, 1)
+energy = 0.4
+texture = ExtResource("19_83dbu")
+texture_scale = 1.5
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(127, 214)
+scale = Vector2(5.025, 6.185)
+color = Color(0.999703, 0.518304, 0.452866, 1)
+energy = 0.4
+texture = ExtResource("19_83dbu")
+texture_scale = 1.5
+metadata/_edit_lock_ = true
+
+[node name="DamageParticle1" type="CPUParticles2D" parent="."]
+visible = false
+position = Vector2(-126, 16)
+amount = 30
+texture = ExtResource("20_xifwb")
+lifetime = 0.2
+emission_shape = 1
+emission_sphere_radius = 16.48
+direction = Vector2(-1, 0)
+spread = 80.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 100.0
+scale_amount_min = 0.03
+scale_amount_max = 0.05
+color_ramp = SubResource("Gradient_swuwe")
+
+[node name="DamageParticle2" type="CPUParticles2D" parent="."]
+visible = false
+position = Vector2(51, 109)
+amount = 40
+texture = ExtResource("20_xifwb")
+lifetime = 0.2
+emission_shape = 1
+emission_sphere_radius = 30.0
+direction = Vector2(-1, 0)
+spread = 80.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 120.0
+scale_amount_min = 0.04
+scale_amount_max = 0.06
+color_ramp = SubResource("Gradient_swuwe")
+
+[node name="DamageParticle3" type="CPUParticles2D" parent="."]
+visible = false
+position = Vector2(-56, 73)
+amount = 40
+texture = ExtResource("20_xifwb")
+lifetime = 0.2
+emission_shape = 1
+emission_sphere_radius = 30.0
+direction = Vector2(-1, 0)
+spread = 80.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 120.0
+scale_amount_min = 0.04
+scale_amount_max = 0.06
+color_ramp = SubResource("Gradient_swuwe")
 
 [connection signal="timeout" from="SelfCannibalizationTimer" to="." method="_on_self_cannibalization_timer_timeout"]
