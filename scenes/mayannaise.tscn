@@ -1,13 +1,13 @@
 [gd_scene load_steps=12 format=3 uid="uid://b7j5fkx2psmeb"]
 
-[ext_resource type="PackedScene" uid="uid://tyn2neh5gamd" path="res://scenes/darius.tscn" id="1_wbgcd"]
-[ext_resource type="Script" uid="uid://by16g2lf8uo3x" path="res://scripts/maya.gd" id="2_kmmao"]
-[ext_resource type="Texture2D" uid="uid://dr2ofp0o7n4f" path="res://assets/Space Stuff 2/Charecter creator/Base body 02.png" id="2_to2n1"]
-[ext_resource type="Texture2D" uid="uid://ctmuu0r8l0xi5" path="res://assets/Space Stuff 2/Charecter creator/Head 02.png" id="3_4b8io"]
-[ext_resource type="Texture2D" uid="uid://bq3p6a0ymrkj2" path="res://assets/Space Stuff 2/Charecter creator/Eye 04.png" id="4_kmmao"]
-[ext_resource type="Texture2D" uid="uid://fl1n1m16bxoq" path="res://assets/Space Stuff 2/Charecter creator/Mouth 03.png" id="5_of87b"]
-[ext_resource type="Texture2D" uid="uid://nq8d2inbonpi" path="res://assets/Space Stuff 2/Charecter creator/Shirt 02.png" id="6_3j48r"]
-[ext_resource type="Texture2D" uid="uid://gb1uenenb36h" path="res://assets/Space Stuff 2/Charecter creator/Head 04.png" id="7_4b8io"]
+[ext_resource type="PackedScene" uid="uid://tyn2neh5gamd" path="res://scenes/druvek.tscn" id="1_x7gul"]
+[ext_resource type="Script" uid="uid://by16g2lf8uo3x" path="res://scripts/maya.gd" id="2_u2aqr"]
+[ext_resource type="Texture2D" uid="uid://dr2ofp0o7n4f" path="res://assets/Space Stuff 2/Charecter creator/Base body 02.png" id="3_4qkx4"]
+[ext_resource type="Texture2D" uid="uid://ctmuu0r8l0xi5" path="res://assets/Space Stuff 2/Charecter creator/Head 02.png" id="4_k4yw0"]
+[ext_resource type="Texture2D" uid="uid://bq3p6a0ymrkj2" path="res://assets/Space Stuff 2/Charecter creator/Eye 04.png" id="5_hmvpj"]
+[ext_resource type="Texture2D" uid="uid://fl1n1m16bxoq" path="res://assets/Space Stuff 2/Charecter creator/Mouth 03.png" id="6_oy0va"]
+[ext_resource type="Texture2D" uid="uid://nq8d2inbonpi" path="res://assets/Space Stuff 2/Charecter creator/Shirt 02.png" id="7_yjnty"]
+[ext_resource type="Texture2D" uid="uid://gb1uenenb36h" path="res://assets/Space Stuff 2/Charecter creator/Head 04.png" id="8_2a70k"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4pm6r"]
 blend_mode = 3
@@ -18,24 +18,26 @@ blend_mode = 4
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kmmao"]
 blend_mode = 3
 
-[node name="Maya" instance=ExtResource("1_wbgcd")]
-script = ExtResource("2_kmmao")
+[node name="Mayannaise" instance=ExtResource("1_x7gul")]
+script = ExtResource("2_u2aqr")
+move_speed = 100.0
+stop_distance = 4.0
 
 [node name="Sprite2D" parent="Sprite" index="0"]
-texture = ExtResource("2_to2n1")
+texture = ExtResource("3_4qkx4")
 
 [node name="Sprite2D3" parent="Sprite" index="1"]
-texture = ExtResource("3_4b8io")
+texture = ExtResource("4_k4yw0")
 
 [node name="Sprite2D2" parent="Sprite" index="2"]
-texture = ExtResource("4_kmmao")
+texture = ExtResource("5_hmvpj")
 
 [node name="Sprite2D4" parent="Sprite" index="3"]
-texture = ExtResource("5_of87b")
+texture = ExtResource("6_oy0va")
 
 [node name="Sprite2D5" parent="Sprite" index="4"]
 visible = false
-texture = ExtResource("6_3j48r")
+texture = ExtResource("7_yjnty")
 
 [node name="TShirt" parent="Sprite" index="5"]
 offset_left = -5.0
@@ -177,7 +179,25 @@ modulate = Color(0.854423, 0.655312, 0, 1)
 position = Vector2(-0.666667, -14.5)
 rotation = 3.14159
 scale = Vector2(0.85, 0.5)
-texture = ExtResource("7_4b8io")
+texture = ExtResource("8_2a70k")
+
+[node name="Head07" type="Sprite2D" parent="Sprite" index="29"]
+modulate = Color(0.854423, 0.655312, 0, 1)
+position = Vector2(-3.16667, -13.6667)
+rotation = 2.87979
+scale = Vector2(0.85, 0.5)
+texture = ExtResource("8_2a70k")
+
+[node name="Head08" type="Sprite2D" parent="Sprite" index="30"]
+modulate = Color(0.854423, 0.655312, 0, 1)
+position = Vector2(2.83333, -13.6667)
+rotation = -2.87979
+scale = Vector2(0.85, 0.5)
+texture = ExtResource("8_2a70k")
+
+[node name="CollisionShape2D" parent="." index="1"]
+visible = true
+position = Vector2(-2, -7)
 
 [node name="TextBoxMarker" parent="." index="3"]
-position = Vector2(-1, -66)
+position = Vector2(0, -17)

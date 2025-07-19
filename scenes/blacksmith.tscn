@@ -1,12 +1,12 @@
 [gd_scene load_steps=10 format=3 uid="uid://b4h2jog6b336i"]
 
-[ext_resource type="Texture2D" uid="uid://s6xt317b1msq" path="res://assets/Space Stuff 2/Charecter creator/Base body 03.png" id="1_hwsnw"]
+[ext_resource type="Texture2D" uid="uid://duth0ad1m54ud" path="res://assets/Space Stuff 2/Charecter creator/Base body 03.png" id="1_hwsnw"]
 [ext_resource type="Script" uid="uid://dbv0dq6dlv67c" path="res://scripts/blacksmith.gd" id="1_xntkf"]
-[ext_resource type="Texture2D" uid="uid://cy8b2tmml72j8" path="res://assets/Space Stuff 2/Charecter creator/Head 04.png" id="2_4nxq5"]
+[ext_resource type="Texture2D" uid="uid://gb1uenenb36h" path="res://assets/Space Stuff 2/Charecter creator/Head 04.png" id="2_4nxq5"]
 [ext_resource type="PackedScene" uid="uid://crahrlgwgfepd" path="res://scenes/shop.tscn" id="3_ho0ex"]
-[ext_resource type="Texture2D" uid="uid://btf8ux562uvif" path="res://assets/Space Stuff 2/Charecter creator/Eye 01.png" id="3_puaei"]
-[ext_resource type="Texture2D" uid="uid://bammr2kpux2gr" path="res://assets/Space Stuff 2/Charecter creator/Nose 01.png" id="4_pbekb"]
-[ext_resource type="Texture2D" uid="uid://dp0fiqala737c" path="res://assets/Space Stuff 2/Charecter creator/Shirt 02.png" id="5_7mq7b"]
+[ext_resource type="Texture2D" uid="uid://dirfgnu1wi5op" path="res://assets/Space Stuff 2/Charecter creator/Eye 01.png" id="3_puaei"]
+[ext_resource type="Texture2D" uid="uid://bldkjs14l2j7h" path="res://assets/Space Stuff 2/Charecter creator/Nose 01.png" id="4_pbekb"]
+[ext_resource type="Texture2D" uid="uid://nq8d2inbonpi" path="res://assets/Space Stuff 2/Charecter creator/Shirt 02.png" id="5_7mq7b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_efgmt"]
 size = Vector2(175, 286)

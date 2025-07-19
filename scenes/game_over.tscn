@@ -1,40 +1,123 @@
-[gd_scene format=3 uid="uid://sp0mi8n0xhhp"]
+[gd_scene load_steps=7 format=3 uid="uid://sp0mi8n0xhhp"]
+
+[ext_resource type="Script" uid="uid://bxg1nu3dwbak" path="res://scripts/game_over.gd" id="1_wqhvx"]
+[ext_resource type="Texture2D" uid="uid://83fbttkhtcnd" path="res://assets/Space stuff extras/cutscenes/Death screen run out of energy.png" id="1_xeevv"]
+[ext_resource type="Shader" uid="uid://7trj6jymemls" path="res://scenes/game_over.gdshader" id="3_7m3ot"]
+[ext_resource type="FontFile" uid="uid://xgdbuastqrqp" path="res://assets/Space Stuff 2/Enemy/UI/Font/alien_3_font copy.otf" id="3_tbwuq"]
+[ext_resource type="Script" uid="uid://cd63l53f7jl5x" path="res://scenes/button.gd" id="4_racf3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v3hpu"]
+shader = ExtResource("3_7m3ot")
+shader_parameter/bg_color = Color(0.305882, 0, 0, 1)
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/bigStarSlow = 2.0
+shader_parameter/mediumStarSlow = 6.0
+shader_parameter/smallStarSlow = 8.0
+shader_parameter/smallStarAmount = 0.003
+shader_parameter/mediumStarAmount = 0.02
+shader_parameter/bigStarAmount = 0.03
+shader_parameter/modulate_color = Color(1, 1, 1, 1)
+shader_parameter/fade = 1.0
+shader_parameter/star_intensity = 1.0
 
 [node name="GameOver" type="CanvasLayer"]
+script = ExtResource("1_wqhvx")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="GameOverViaEnergy" type="Sprite2D" parent="."]
+position = Vector2(641, 360.5)
+scale = Vector2(2.3, 2.5)
+texture = ExtResource("1_xeevv")
+hframes = 20
+frame = 19
+
+[node name="SpaceBackground" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_v3hpu")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -189.0
+offset_top = -107.0
+offset_right = 531.0
+offset_bottom = 173.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 0, 0, 1)
 
 [node name="Label" type="Label" parent="."]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+offset_left = -408.0
+offset_top = -275.0
+offset_right = 408.0
+offset_bottom = -75.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 180
-text = "GAME OVER!!!"
+theme_override_fonts/font = ExtResource("3_tbwuq")
+theme_override_font_sizes/font_size = 200
+text = "GAME OVER"
 
 [node name="RedoButton" type="Button" parent="."]
+process_mode = 3
+visible = false
+offset_left = 469.0
+offset_top = 368.0
+offset_right = 636.0
+offset_bottom = 431.0
+scale = Vector2(2, 2)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.530058, 1.35969e-06, 3.36915e-07, 1)
+theme_override_font_sizes/font_size = 40
+text = "R e d o
+"
+flat = true
+script = ExtResource("4_racf3")
+metadata/_edit_use_anchors_ = true
+
+[node name="QuitButton" type="Button" parent="."]
+process_mode = 3
+visible = false
 anchors_preset = -1
-anchor_left = 0.45
-anchor_top = 0.8
-anchor_right = 0.55
-anchor_bottom = 0.9
-offset_left = -24.0
-offset_top = -31.0
-offset_right = 24.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 30
-text = "Redo"
+anchor_left = -0.0648438
+anchor_right = -0.0648438
+offset_left = 551.0
+offset_top = 538.0
+offset_right = 718.0
+offset_bottom = 590.0
+scale = Vector2(2, 2)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.530058, 1.35969e-06, 3.36915e-07, 1)
+theme_override_fonts/font = ExtResource("3_tbwuq")
+theme_override_font_sizes/font_size = 32
+text = "Quit
+"
+flat = true
+script = ExtResource("4_racf3")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="RedoButton" to="." method="_on_redo_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

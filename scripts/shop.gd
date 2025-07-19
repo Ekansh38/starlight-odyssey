@@ -16,6 +16,10 @@ func transout():
 func _ready() -> void:
 	switch_item(0)
 
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("exit"):
+		transout()
+		get_tree().paused = false
 
 func switch_item(select):
 	for i in range(item_list.size()):
@@ -42,8 +46,11 @@ func _on_next_pressed() -> void:
 
 func _on_buy_pressed() -> void:
 	var selected_item = item_list[curr_item]
-	if selected_item["Cost"] <= Globals.money:
-		Globals.money -= selected_item["Cost"]
+	if selected_item["Cost"] > Globals.money:
+		return
+	if Globals.ship_damage >= 100:
+		return
+
 	
 	if selected_item["Name"] == "Basic Repair":
 		Globals.ship_damage += 10
@@ -51,3 +58,6 @@ func _on_buy_pressed() -> void:
 		Globals.ship_damage += 25
 	elif selected_item["Name"] == "Ship Overhaul":
 		Globals.ship_damage += 50
+		
+	if selected_item["Cost"] <= Globals.money:
+		Globals.money -= selected_item["Cost"]

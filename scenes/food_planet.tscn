@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b6nh3r67ju7l1"]
 
 [ext_resource type="PackedScene" uid="uid://b11bx1b6xyayj" path="res://scenes/planet.tscn" id="1_s8o8l"]
-[ext_resource type="Texture2D" uid="uid://d0m74q2jd1wov" path="res://assets/Space Stuff 2/Planets and Astroids/Food Planet.png" id="2_ob1dx"]
+[ext_resource type="Texture2D" uid="uid://bom7x671x2mok" path="res://assets/Space Stuff 2/Planets and Astroids/Food Planet.png" id="2_ob1dx"]
 
 [node name="FoodPlanet" instance=ExtResource("1_s8o8l")]
 
@@ -9,7 +9,7 @@
 texture = ExtResource("2_ob1dx")
 
 [node name="PointLight2D" parent="." index="2"]
-energy = 0.6
+energy = 0.3
 
 [node name="PointLight2D2" parent="." index="3"]
-energy = 0.2
+energy = 0.1

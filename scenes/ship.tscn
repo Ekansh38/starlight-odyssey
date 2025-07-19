@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bnxmf8waol6sn"]
+[gd_scene load_steps=31 format=3 uid="uid://bnxmf8waol6sn"]
 
 [ext_resource type="Script" uid="uid://ch6w73q33dyfw" path="res://scripts/ship.gd" id="1_4cq66"]
 [ext_resource type="Texture2D" uid="uid://dce27bg1v22ms" path="res://assets/Player Sprites/Normal Ship.png" id="2_bseor"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://b25yo0vlxbb0c" path="res://assets/kenney_smoke-particles/PNG/Explosion/explosion00.png" id="13_48mkp"]
 [ext_resource type="Texture2D" uid="uid://dspirnem1f7gq" path="res://assets/kenney_smoke-particles/PNG/Flash/flash01.png" id="14_tbq4g"]
 [ext_resource type="FontFile" uid="uid://xgdbuastqrqp" path="res://assets/Space Stuff 2/Enemy/UI/Font/alien_3_font copy.otf" id="15_swuwe"]
+[ext_resource type="Material" uid="uid://brothuovmo2ni" path="res://scenes/boost.tres" id="18_6vtx4"]
 [ext_resource type="AudioStream" uid="uid://bas327my7h5pi" path="res://assets/woosh.wav" id="18_dschd"]
 [ext_resource type="Texture2D" uid="uid://co7r3yebsii4e" path="res://assets/Space Stuff 2/Player Sprites/pixil-frame-0-77.png" id="19_83dbu"]
 [ext_resource type="Texture2D" uid="uid://b8hcebarj2mf1" path="res://assets/kenney_smoke-particles/PNG/Explosion/explosion03.png" id="20_xifwb"]
@@ -291,37 +292,40 @@ libraries = {
 
 [node name="PowerLight" type="PointLight2D" parent="."]
 position = Vector2(0, 7)
-color = Color(1, 0.194376, 0.144153, 1)
+color = Color(0.947405, 8.49508e-06, 2.88785e-06, 1)
 texture = ExtResource("12_03y04")
 texture_scale = 0.25
 
 [node name="FireLight" type="PointLight2D" parent="."]
 visible = false
 position = Vector2(-126, 0)
+energy = 0.5
 texture = ExtResource("12_03y04")
 texture_scale = 0.5
 
 [node name="FireLight2" type="PointLight2D" parent="."]
 visible = false
 position = Vector2(59, 110)
+energy = 0.5
 texture = ExtResource("12_03y04")
 texture_scale = 0.5
 
 [node name="FireLight3" type="PointLight2D" parent="."]
 visible = false
 position = Vector2(-49, 54)
+energy = 0.5
 texture = ExtResource("12_03y04")
 texture_scale = 0.5
 
 [node name="FireLight4" type="PointLight2D" parent="."]
 position = Vector2(-7, 90)
-energy = 0.3
+energy = 0.5
 texture = ExtResource("12_03y04")
 
 [node name="OverallLight" type="PointLight2D" parent="."]
 position = Vector2(-3, -102)
 color = Color(1, 0.814479, 0.495728, 1)
-energy = 0.3
+energy = 0.1
 texture = ExtResource("12_03y04")
 metadata/_edit_lock_ = true
 
@@ -362,6 +366,7 @@ color_ramp = SubResource("Gradient_48mkp")
 metadata/_edit_lock_ = true
 
 [node name="LeftParticleBoost" type="CPUParticles2D" parent="."]
+material = ExtResource("18_6vtx4")
 position = Vector2(-128, 218)
 emitting = false
 amount = 80
@@ -377,6 +382,7 @@ color_ramp = SubResource("Gradient_tbq4g")
 metadata/_edit_lock_ = true
 
 [node name="RightParticleBoost" type="CPUParticles2D" parent="."]
+material = ExtResource("18_6vtx4")
 position = Vector2(126, 218)
 emitting = false
 amount = 80
@@ -408,7 +414,7 @@ metadata/_edit_lock_ = true
 [node name="PointLight2D2" type="PointLight2D" parent="."]
 position = Vector2(127, 214)
 scale = Vector2(5.025, 6.185)
-color = Color(0.999703, 0.518304, 0.452866, 1)
+color = Color(0.904234, 0.00862436, 0.00781499, 1)
 energy = 0.4
 texture = ExtResource("19_83dbu")
 texture_scale = 1.5

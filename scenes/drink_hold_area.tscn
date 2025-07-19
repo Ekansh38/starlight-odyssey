@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://6ar0re58qu6s"]
+
+[ext_resource type="Script" uid="uid://d4ak43trueigp" path="res://scripts/drink_hold_area.gd" id="1_or3a1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ltk3q"]
+size = Vector2(93.25, 186.25)
+
+[node name="DrinkHoldArea" type="Area2D"]
+script = ExtResource("1_or3a1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ltk3q")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

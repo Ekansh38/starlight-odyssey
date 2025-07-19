@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://b5j58wqnfldb3"]
 
 [ext_resource type="Script" uid="uid://cluhsjj2xanyv" path="res://scripts/compass.gd" id="1_8a3he"]
-[ext_resource type="Texture2D" uid="uid://dacc87a8c6os7" path="res://assets/pixil-frame-0-517.png" id="2_8a3he"]
-[ext_resource type="Texture2D" uid="uid://byxp580fy071j" path="res://assets/pixil-frame-0-518.png" id="3_mut2o"]
+[ext_resource type="Texture2D" uid="uid://d3uhufae4x60p" path="res://assets/pixil-frame-0-517.png" id="2_8a3he"]
+[ext_resource type="Texture2D" uid="uid://f5fxvw1uekmw" path="res://assets/pixil-frame-0-518.png" id="3_mut2o"]
 
 [node name="Compass" type="CanvasLayer"]
 script = ExtResource("1_8a3he")

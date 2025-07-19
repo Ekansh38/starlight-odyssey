@@ -13,7 +13,7 @@
 [ext_resource type="Script" uid="uid://ch736j1ut80mj" path="res://scripts/crates.gd" id="8_skhc4"]
 [ext_resource type="PackedScene" uid="uid://b11bx1b6xyayj" path="res://scenes/planet.tscn" id="10_a65qk"]
 [ext_resource type="PackedScene" uid="uid://b6nh3r67ju7l1" path="res://scenes/food_planet.tscn" id="10_lc4uf"]
-[ext_resource type="PackedScene" uid="uid://6wv4o224ga42" path="res://scenes/on_work_planet.tscn" id="10_ry3xx"]
+[ext_resource type="PackedScene" uid="uid://b50uvibrbj0f6" path="res://scenes/on_food_planet.tscn" id="12_bj8pf"]
 [ext_resource type="Texture2D" uid="uid://bcw7gaq41cw7h" path="res://assets/crosshair066.png" id="12_rlquo"]
 [ext_resource type="PackedScene" uid="uid://iak44inrirb1" path="res://assets/Space Stuff 2/Player Sprites/enemy.tscn" id="13_7a7lp"]
 [ext_resource type="PackedScene" uid="uid://jyrnek7bvq0t" path="res://scenes/enemy_bullet.tscn" id="14_7wx0h"]
@@ -37,7 +37,7 @@ shader_parameter/bigStarAmount = 0.02
 background_mode = 3
 glow_enabled = true
 glow_normalized = true
-glow_intensity = 1.73
+glow_intensity = 1.2
 glow_strength = 0.66
 glow_bloom = 0.09
 glow_blend_mode = 0
@@ -82,7 +82,6 @@ scale = Vector2(5, 5)
 [node name="Planet4" parent="." instance=ExtResource("10_a65qk")]
 position = Vector2(74133, 474795)
 scale = Vector2(5, 5)
-target_scene = ExtResource("10_ry3xx")
 
 [node name="Planet5" parent="." instance=ExtResource("10_a65qk")]
 position = Vector2(15486, 449371)
@@ -96,7 +95,7 @@ target_scene = null
 [node name="FoodPlanet2" parent="." instance=ExtResource("10_lc4uf")]
 position = Vector2(72220, 452999)
 scale = Vector2(5, 5)
-target_scene = null
+target_scene = ExtResource("12_bj8pf")
 
 [node name="FoodPlanet3" parent="." instance=ExtResource("10_lc4uf")]
 position = Vector2(38370, 437422)
@@ -178,7 +177,7 @@ scale = Vector2(10, 10)
 texture = ExtResource("20_sixpt")
 
 [node name="Ship" parent="." instance=ExtResource("2_dv837")]
-position = Vector2(65031, 488406)
+position = Vector2(73966, 478914)
 crate_scene = ExtResource("3_a65qk")
 
 [node name="Camera2D" type="Camera2D" parent="Ship"]

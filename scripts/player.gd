@@ -4,6 +4,8 @@ extends CharacterBody2D
 @export var SPEED    := 5000.0
 @export var MAX_SPEED:=  800.0
 
+var drink_held = "none"
+
 @export var walk_energy_per_second := 1.0
 
 func set_controls_enabled(enable: bool) -> void: 
@@ -17,6 +19,20 @@ var controls_enabled: bool = true
 
 @onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D        = $PlayerSprite
+
+func change_holdable(image):
+	$Holdable.texture = image
+	
+func change_holdable_frame(frame):
+	$Holdable.frame = frame
+	if frame == 4:
+		$Holdable.modulate = Color("#ca9800")
+	else:
+		$Holdable.modulate = Color(1,1,1,1)
+		
+func change_holdable_visible(stat):
+	$Holdable.visible = stat
+
 
 func _physics_process(delta: float) -> void:
 	if not controls_enabled:

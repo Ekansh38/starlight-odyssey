@@ -35,10 +35,12 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	# — EATING —
-	if Input.is_action_just_pressed(eat_action):
+	if Input.is_action_just_pressed("eat"):
 		_eat()
 
 	# — SELF-CANNIBALIZATION BAR —
+	if not ui:
+		return
 	if Input.is_action_just_pressed(cannibalize_action) and Globals.max_energy >= 20:
 		ui.can_bar_visable(true)
 	if Input.is_action_pressed(cannibalize_action) and Globals.max_energy >= 20:
@@ -59,10 +61,16 @@ func _process(delta: float) -> void:
 
 func _eat() -> void:
 	if Globals.food_amount >= 1 and Globals.player_energy < Globals.max_energy:
+		var energy_recived: int
+		if (100 - Globals.player_energy) > Globals.energy_per_food:
+			energy_recived = Globals.energy_per_food -1
+		else:
+			energy_recived = 100 - Globals.player_energy
+		ui.change_pickup_indicator(str("+", int(energy_recived +1) , " Energy"))
 		Globals.food_amount -= 1
 		Globals.player_energy = min(Globals.player_energy + food_per_ration, Globals.max_energy)
-		# $EatingSFX.play()
-		ui.change_info("")   # clear any “No food” text
+
+		ui.change_info("")
 	else:
 		# $OutOfFoodSFX.play()
 		if Globals.food_amount <= 0:

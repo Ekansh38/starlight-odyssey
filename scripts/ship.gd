@@ -376,13 +376,21 @@ func _process(delta):
 
 			
 	if Input.is_action_just_pressed("eat"):
+
 		eat()
 
 func eat():
 	if Globals.food_amount > 0:
+		var energy_recived: int
+		if (100 - Globals.player_energy) > Globals.energy_per_food:
+			energy_recived = Globals.energy_per_food -1
+		else:
+			energy_recived = 100 - Globals.player_energy
+		$"../UI".change_pickup_indicator(str("+", int(energy_recived +1) , " Energy"))
 		Globals.food_amount -= 1
 		Globals.player_energy += Globals.energy_per_food
 		$EatingSFX.play(	)
+
 	else:
 		$OutOfFoodSFX.play()
 		$"../UI".change_info("No food.")
@@ -455,3 +463,5 @@ func _start_scan() -> void:
 	set_physics_process(true)
 	is_scanning = false
 	can_scan = true
+func change_pickup_indicator(message):
+	$"../UI".change_pickup_indicator(message)

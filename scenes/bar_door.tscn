@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnivix5s8c7wu"]
+
+[ext_resource type="PackedScene" uid="uid://go6rcdu1plis" path="res://scenes/launch_pad.tscn" id="1_g3n7j"]
+[ext_resource type="Script" uid="uid://b6vvaf43mkdvo" path="res://scripts/bar_door.gd" id="2_2asgt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g3n7j"]
+
+[node name="BarDoor" instance=ExtResource("1_g3n7j")]
+script = ExtResource("2_2asgt")
+bar_scene_path = "uid://btixu64d7g2cn"
+is_leaving = false
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_g3n7j")

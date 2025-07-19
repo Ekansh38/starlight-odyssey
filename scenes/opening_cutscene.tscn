@@ -919,7 +919,7 @@ stream = ExtResource("94_fiajn")
 
 [node name="SkipBar" type="ProgressBar" parent="CanvasLayer"]
 modulate = Color(1, 0, 0, 1)
-offset_left = 1104.0
+offset_left = 1107.0
 offset_top = 691.0
 offset_right = 1277.0
 offset_bottom = 717.0

@@ -1,11 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://dcgovhsqgur8y"]
+[gd_scene load_steps=10 format=3 uid="uid://dcgovhsqgur8y"]
 
 [ext_resource type="Texture2D" uid="uid://dih6d3mpwovnt" path="res://assets/Space Stuff 2/Player Sprites/pixil-frame-0-509.png" id="1_ekxnf"]
 [ext_resource type="Script" uid="uid://bdfs651v4dqd3" path="res://scripts/main_menu.gd" id="1_wu84c"]
 [ext_resource type="FontFile" uid="uid://xgdbuastqrqp" path="res://assets/Space Stuff 2/Enemy/UI/Font/alien_3_font copy.otf" id="2_bqqt6"]
+[ext_resource type="Shader" uid="uid://7trj6jymemls" path="res://scenes/game_over.gdshader" id="2_oa1go"]
 [ext_resource type="Texture2D" uid="uid://co7r3yebsii4e" path="res://assets/Space Stuff 2/Player Sprites/pixil-frame-0-77.png" id="3_bqqt6"]
 [ext_resource type="Script" uid="uid://cd63l53f7jl5x" path="res://scenes/button.gd" id="5_8ln24"]
 [ext_resource type="AudioStream" uid="uid://b0mgeo0p0awxy" path="res://assets/ButtonClick.wav" id="6_rtw2f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tbmy8"]
+shader = ExtResource("2_oa1go")
+shader_parameter/bg_color = Color(0.054902, 0, 0.133333, 1)
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/bigStarSlow = 2.0
+shader_parameter/mediumStarSlow = 6.0
+shader_parameter/smallStarSlow = 8.0
+shader_parameter/smallStarAmount = 0.003
+shader_parameter/mediumStarAmount = 0.02
+shader_parameter/bigStarAmount = 0.03
+shader_parameter/modulate_color = Color(1, 1, 1, 1)
+shader_parameter/fade = 1.0
+shader_parameter/star_intensity = 1.0
 
 [sub_resource type="Environment" id="Environment_ekxnf"]
 background_mode = 3
@@ -25,6 +40,18 @@ offset_bottom = 862.0
 mouse_filter = 1
 color = Color(0, 0.0603003, 0.0189584, 1)
 
+[node name="SpaceBackground" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_tbmy8")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -189.0
+offset_top = -107.0
+offset_right = 1543.0
+offset_bottom = 887.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="Pixil-frame-0-509" type="Sprite2D" parent="."]
 position = Vector2(665, 280)
 scale = Vector2(4, 4)
@@ -34,7 +61,7 @@ texture = ExtResource("1_ekxnf")
 environment = SubResource("Environment_ekxnf")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0, 0, 0, 1)
+color = Color(0.233925, 0.233925, 0.233925, 1)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(627, 254)
@@ -69,6 +96,7 @@ theme_override_font_sizes/font_size = 32
 text = "Start game"
 flat = true
 script = ExtResource("5_8ln24")
+metadata/_edit_use_anchors_ = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_rtw2f")

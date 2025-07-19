@@ -1,0 +1,260 @@
+[gd_scene load_steps=11 format=4 uid="uid://c7l1g40lckftp"]
+
+[ext_resource type="Texture2D" uid="uid://l8iheibflqgc" path="res://assets/kenney_rpg-urban-pack/blackbackground.png" id="1_cn0nj"]
+[ext_resource type="Texture2D" uid="uid://dfbpn4sjrvw8o" path="res://assets/Space Stuff 2/Tilesets/Bar inside.png" id="2_m3uy8"]
+[ext_resource type="PackedScene" uid="uid://bq2ngq6ywh4mx" path="res://scenes/minigameplayer.tscn" id="4_grmij"]
+[ext_resource type="Texture2D" uid="uid://dh14qjavr2r1x" path="res://assets/drinks-removebg-preview.png" id="5_emny7"]
+[ext_resource type="PackedScene" uid="uid://6ar0re58qu6s" path="res://scenes/drink_hold_area.tscn" id="7_7ues7"]
+[ext_resource type="PackedScene" uid="uid://c3b1v020euuut" path="res://scenes/glass.tscn" id="7_grmij"]
+[ext_resource type="PackedScene" uid="uid://danwcvytrencc" path="res://scenes/world_border.tscn" id="7_kquyu"]
+[ext_resource type="Texture2D" uid="uid://dvigilp21mvca" path="res://assets/Cocktailboard.png" id="8_grmij"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_61xw1"]
+texture = ExtResource("2_m3uy8")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -5.97959, -16, -6.00536, 16, -16, 16)
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -5.97959, -16, -6.00536, 16, -16, 16)
+2:3/0 = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_15dwq"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_61xw1")
+
+[node name="InsideBar" type="Node2D"]
+
+[node name="Black" type="Sprite2D" parent="."]
+texture = ExtResource("1_cn0nj")
+region_enabled = true
+region_rect = Rect2(-7376.41, -7079.02, 24819.1, 17369.8)
+
+[node name="Ground" type="TileMapLayer" parent="."]
+scale = Vector2(3, 3)
+tile_map_data = PackedByteArray("AAD+////AQAAAAAAAAD+/wAAAQAAAAAAAAD+/wEAAQAAAAAAAAD+/wIAAQAAAAAAAAD//wIAAQAAAAAAAAAAAAIAAQAAAAAAAAABAAIAAQAAAAAAAAACAAIAAQAAAAAAAAACAAEAAQAAAAAAAAACAAAAAQAAAAAAAAACAP//AQAAAAAAAAACAP7/AQAAAAAAAAABAP7/AQAAAAAAAAAAAP7/AQAAAAAAAAD///7/AQAAAAAAAAD/////AQAAAAAAAAD//wAAAQAAAAAAAAD//wEAAQAAAAAAAAAAAAEAAQAAAAAAAAABAAEAAQAAAAAAAAABAAAAAQAAAAAAAAABAP//AQAAAAAAAAAAAP//AQAAAAAAAAAAAAAAAQAAAAAAAAD9////AQAAAAAAAAD9/wAAAQAAAAAAAAD9/wEAAQAAAAAAAAD9/wIAAQAAAAAAAAD9/wMAAQAAAAAAAAD+/wMAAQAAAAAAAAADAAIAAQAAAAAAAAACAAMAAQAAAAAAAAABAAMAAQAAAAAAAAAAAAMAAQAAAAAAAAD//wMAAQAAAAAAAAADAAEAAQAAAAAAAAADAAAAAQAAAAAAAAADAP//AQAAAAAAAAACAP3/AQAAAAAAAAABAP3/AQAAAAAAAAAAAP3/AQAAAAAAAAD///3/AQAAAAAAAAD8/wEAAQAAAAAAAAD8/wIAAQAAAAAAAAD8/wMAAQAAAAAAAAADAP3/AQAAAAAAAAADAP7/AQAAAAAAAAD8//r/AQAAAAAAAAD8//v/AQAAAAAAAAD8//z/AQAAAAAAAAD8//3/AQAAAAAAAAD8//7/AQAAAAAAAAD8////AQAAAAAAAAD8/wAAAQAAAAAAAAD9//r/AQAAAAAAAAD9//v/AQAAAAAAAAD9//z/AQAAAAAAAAD9//3/AQAAAAAAAAD9//7/AQAAAAAAAAD+//r/AQAAAAAAAAD+//v/AQAAAAAAAAD+//z/AQAAAAAAAAD+//3/AQAAAAAAAAD+//7/AQAAAAAAAAD///r/AQAAAAAAAAD///v/AQAAAAAAAAD///z/AQAAAAAAAAAAAPr/AQAAAAAAAAAAAPv/AQAAAAAAAAAAAPz/AQAAAAAAAAABAPr/AQAAAAAAAAABAPv/AQAAAAAAAAABAPz/AQAAAAAAAAACAPr/AQAAAAAAAAACAPv/AQAAAAAAAAACAPz/AQAAAAAAAAADAPr/AQAAAAAAAAADAPv/AQAAAAAAAAADAPz/AQAAAAAAAAAEAPr/AQAAAAAAAAAEAPv/AQAAAAAAAAAEAPz/AQAAAAAAAAAEAP3/AQAAAAAAAAAEAP7/AQAAAAAAAAAEAP//AQAAAAAAAAAEAAAAAQAAAAAAAAAEAAEAAQAAAAAAAAAEAAIAAQAAAAAAAAAFAPr/AQAAAAAAAAAFAPv/AQAAAAAAAAAFAPz/AQAAAAAAAAAFAP3/AQAAAAAAAAAFAP7/AQAAAAAAAAAFAP//AQAAAAAAAAAFAAAAAQAAAAAAAAAFAAEAAQAAAAAAAAAFAAIAAQAAAAAAAAAFAAMAAQAAAAAAAAAGAPr/AQAAAAAAAAAGAPv/AQAAAAAAAAAGAPz/AQAAAAAAAAAGAP3/AQAAAAAAAAAGAP7/AQAAAAAAAAAGAP//AQAAAAAAAAAGAAAAAQAAAAAAAAAGAAEAAQAAAAAAAAAGAAIAAQAAAAAAAAAGAAMAAQAAAAAAAAAHAPr/AQAAAAAAAAAHAPv/AQAAAAAAAAAHAPz/AQAAAAAAAAAHAP3/AQAAAAAAAAAHAP7/AQAAAAAAAAAHAP//AQAAAAAAAAAHAAAAAQAAAAAAAAAHAAEAAQAAAAAAAAAHAAIAAQAAAAAAAAAHAAMAAQAAAAAAAAAIAPr/AQAAAAAAAAAIAPv/AQAAAAAAAAAIAPz/AQAAAAAAAAAIAP3/AQAAAAAAAAAIAP7/AQAAAAAAAAAIAP//AQAAAAAAAAAIAAAAAQAAAAAAAAAIAAEAAQAAAAAAAAAIAAIAAQAAAAAAAAAIAAMAAQAAAAAAAAAJAPr/AQAAAAAAAAAJAPv/AQAAAAAAAAAJAPz/AQAAAAAAAAAJAP3/AQAAAAAAAAAJAP7/AQAAAAAAAAAJAP//AQAAAAAAAAAJAAAAAQAAAAAAAAAJAAEAAQAAAAAAAAAJAAIAAQAAAAAAAAAJAAMAAQAAAAAAAAAKAPr/AQAAAAAAAAAKAPv/AQAAAAAAAAAKAPz/AQAAAAAAAAAKAP3/AQAAAAAAAAAKAP7/AQAAAAAAAAAKAP//AQAAAAAAAAAKAAAAAQAAAAAAAAAKAAEAAQAAAAAAAAAKAAIAAQAAAAAAAAAKAAMAAQAAAAAAAAALAPr/AQAAAAAAAAALAPv/AQAAAAAAAAALAPz/AQAAAAAAAAALAP3/AQAAAAAAAAALAP7/AQAAAAAAAAALAP//AQAAAAAAAAALAAAAAQAAAAAAAAALAAEAAQAAAAAAAAALAAIAAQAAAAAAAAALAAMAAQAAAAAAAAADAAMAAQAAAAAAAAAEAAMAAQAAAAAAAAD6//r/AQAAAAAAAAD6//v/AQAAAAAAAAD6//z/AQAAAAAAAAD6//3/AQAAAAAAAAD6//7/AQAAAAAAAAD6////AQAAAAAAAAD6/wAAAQAAAAAAAAD6/wEAAQAAAAAAAAD7/wIAAQAAAAAAAAD7/wMAAQAAAAAAAAD6/wMAAQAAAAAAAAD6/wIAAQAAAAAAAAD7/wEAAQAAAAAAAAD7/wAAAQAAAAAAAAD7////AQAAAAAAAAD7//7/AQAAAAAAAAD7//3/AQAAAAAAAAD7//z/AQAAAAAAAAD7//v/AQAAAAAAAAD7//r/AQAAAAAAAAAMAPr/AQAAAAAAAAAMAPv/AQAAAAAAAAAMAPz/AQAAAAAAAAAMAP3/AQAAAAAAAAAMAP7/AQAAAAAAAAAMAP//AQAAAAAAAAAMAAAAAQAAAAAAAAAMAAEAAQAAAAAAAAAMAAIAAQAAAAAAAAAMAAMAAQAAAAAAAAANAAMAAQAAAAAAAAANAAIAAQAAAAAAAAANAAEAAQAAAAAAAAANAAAAAQAAAAAAAAANAP//AQAAAAAAAAANAP7/AQAAAAAAAAANAP3/AQAAAAAAAAANAPz/AQAAAAAAAAANAPv/AQAAAAAAAAANAPr/AQAAAAAAAAD8//n/AQAAAAAAAAD9//n/AQAAAAAAAAD+//n/AQAAAAAAAAD///n/AQAAAAAAAAAAAPn/AQAAAAAAAAABAPn/AQAAAAAAAAAFAPn/AQAAAAAAAAAGAPn/AQAAAAAAAAAHAPn/AQAAAAAAAAAIAPn/AQAAAAAAAAAJAPn/AQAAAAAAAAAKAPn/AQAAAAAAAAALAPn/AQAAAAAAAAAMAPn/AQAAAAAAAAANAPn/AQAAAAAAAAADAPn/AQAAAAAAAAAEAPn/AQAAAAAAAAACAPn/AQAAAAAAAAD7//n/AQAAAAAAAAD6//n/AQAAAAAAAAA=")
+tile_set = SubResource("TileSet_15dwq")
+
+[node name="Door" type="TileMapLayer" parent="."]
+scale = Vector2(5, 5)
+tile_map_data = PackedByteArray("AAAGAPz/AQACAAMAAAAHAPz/AQABAAMAAAA=")
+tile_set = SubResource("TileSet_15dwq")
+
+[node name="Table" type="TileMapLayer" parent="."]
+scale = Vector2(3, 3)
+tile_map_data = PackedByteArray("AAD+//7/AQACAAEAAAD9//7/AQABAAEAAAD9////AQABAAIAAAD9/wAAAQABAAMAAAD+//3/AQACAAAAAAD9//3/AQABAAAAAAD8//7/AQAAAAEAAAD8////AQAAAAIAAAD8/wAAAQAAAAMAAAD8//3/AQAAAAEAAAD///3/AQACAAAAAAAAAP3/AQACAAAAAAD///7/AQABAAEAAAAAAP7/AQACAAEAAAD7////AQAAAAIAAAD7/wAAAQAAAAMAAAD6//7/AQAAAAEAAAD6////AQAAAAIAAAD6/wAAAQAAAAMAAAD6//3/AQAAAAEAAAD8//z/AQAAAAEAAAD7//z/AQAAAAEAAAD6//z/AQAAAAEAAAAAAPz/AQACAAAAAAD9//z/AQABAAAAAAD///z/AQABAAAAAAD+//z/AQABAAAAAAD7//3/AQAAAAEAAAD7//7/AQAAAAEAAAABAP3/AQACAAAAAAABAP7/AQACAAEAAAACAP3/AQACAAAAAAACAP7/AQACAAEAAAADAP3/AQACAAAAAAADAP7/AQABAAEAAAAEAP3/AQACAAAAAAAEAP7/AQACAAEAAAAEAPz/AQACAAAAAAAGAPr/AQADAAAAAAAGAPv/AQADAAEAAAAHAPr/AQAEAAAAAAAHAPv/AQAEAAEAAAAIAPr/AQAFAAAAAAAIAPv/AQAFAAEAAAAMAAIAAQAAAAIAAAAMAAMAAQAAAAMAAAANAAIAAQABAAIAAAANAAMAAQABAAMAAAALAAIAAQAAAAIAAAAKAAIAAQAAAAIAAAALAAMAAQAAAAMAAAAKAAMAAQAAAAMAAAAJAAIAAQAAAAIAAAAJAAMAAQAAAAMAAAAIAAIAAQAAAAIAAAAIAAMAAQAAAAMAAAA=")
+tile_set = SubResource("TileSet_15dwq")
+
+[node name="Cocktailboard" type="Sprite2D" parent="."]
+position = Vector2(-147, -675)
+scale = Vector2(16, 6.5)
+texture = ExtResource("8_grmij")
+
+[node name="Glass" parent="." instance=ExtResource("7_grmij")]
+position = Vector2(431, -361)
+
+[node name="Labels" type="Node" parent="."]
+
+[node name="RecipesTitle" type="Label" parent="Labels"]
+offset_left = -205.0
+offset_top = -754.0
+offset_right = -131.0
+offset_bottom = -726.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Recipes"
+
+[node name="Recipes" type="Label" parent="Labels"]
+offset_left = -470.0
+offset_top = -719.0
+offset_right = 150.0
+offset_bottom = -629.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Plum Wine  -  2 parts Wine & 1 part Plum Extract
+Cosmopolitan  -  1 part Vodka, 1 part Plum Extract & 1 part Tonic
+Magical & Milky (M&M) - 2 parts Baileys & 1 part Whiskey
+Plum Mocktail - 2 parts Tonic & 1 part Plum Extract"
+
+[node name="Ysort2" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Player" parent="Ysort2" instance=ExtResource("4_grmij")]
+position = Vector2(239, -419)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(383, -260)
+zoom = Vector2(0.7, 0.7)
+
+[node name="WorldBorder" parent="." instance=ExtResource("7_kquyu")]
+position = Vector2(-672, -50)
+scale = Vector2(1, 8)
+
+[node name="WorldBorder3" parent="." instance=ExtResource("7_kquyu")]
+position = Vector2(584, -100)
+scale = Vector2(1, 8)
+
+[node name="WorldBorder2" parent="." instance=ExtResource("7_kquyu")]
+position = Vector2(392, -676)
+rotation = 1.5708
+scale = Vector2(1, 10)
+metadata/_edit_lock_ = true
+
+[node name="WorldBorder4" parent="." instance=ExtResource("7_kquyu")]
+position = Vector2(334, 195)
+rotation = 1.5708
+scale = Vector2(1, 10)
+
+[node name="Bottle1" type="Sprite2D" parent="."]
+position = Vector2(-247.5, -362)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_emny7")
+hframes = 4
+vframes = 2
+
+[node name="Bottle2" type="Sprite2D" parent="."]
+modulate = Color(0.791995, 0.595829, 0, 1)
+position = Vector2(-150.5, -361)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_emny7")
+hframes = 4
+vframes = 2
+frame = 4
+
+[node name="Bottle3" type="Sprite2D" parent="."]
+position = Vector2(-52, -361)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_emny7")
+hframes = 4
+vframes = 2
+frame = 2
+
+[node name="Bottle6" type="Sprite2D" parent="."]
+position = Vector2(-475, -338)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_emny7")
+hframes = 4
+vframes = 2
+frame = 2
+
+[node name="Bottle4" type="Sprite2D" parent="."]
+position = Vector2(42.5, -360)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_emny7")
+hframes = 4
+vframes = 2
+frame = 3
+
+[node name="Bottle5" type="Sprite2D" parent="."]
+position = Vector2(-366, -343)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_emny7")
+hframes = 4
+vframes = 2
+frame = 3
+
+[node name="Wine" type="Label" parent="."]
+offset_left = -266.0
+offset_top = -323.0
+offset_right = -226.0
+offset_bottom = -300.0
+text = "Wine"
+
+[node name="Baileys" type="Label" parent="."]
+offset_left = -174.0
+offset_top = -325.0
+offset_right = -119.0
+offset_bottom = -302.0
+text = "Baileys"
+
+[node name="Whiskey" type="Label" parent="."]
+offset_left = -81.0
+offset_top = -327.0
+offset_right = -16.0
+offset_bottom = -304.0
+text = "Whiskey"
+
+[node name="Vodka" type="Label" parent="."]
+offset_left = 22.5
+offset_top = -326.0
+offset_right = 87.5
+offset_bottom = -303.0
+text = "Vodka"
+
+[node name="Tonic" type="Label" parent="."]
+offset_left = -386.0
+offset_top = -310.0
+offset_right = -321.0
+offset_bottom = -287.0
+text = "Tonic"
+
+[node name="Plum" type="Label" parent="."]
+offset_left = -522.0
+offset_top = -301.0
+offset_right = -423.0
+offset_bottom = -278.0
+text = "Plum Extract"
+
+[node name="DrinkHoldArea" parent="." instance=ExtResource("7_7ues7")]
+position = Vector2(49, -381)
+drink_image = ExtResource("5_emny7")
+drink_held = "vodka"
+metadata/_edit_lock_ = true
+
+[node name="DrinkHoldArea2" parent="." instance=ExtResource("7_7ues7")]
+position = Vector2(-52, -384)
+drink_image = ExtResource("5_emny7")
+frame = 2
+drink_held = "whiskey"
+metadata/_edit_lock_ = true
+
+[node name="DrinkHoldArea3" parent="." instance=ExtResource("7_7ues7")]
+position = Vector2(-149, -382)
+drink_image = ExtResource("5_emny7")
+frame = 4
+drink_held = "baileys"
+metadata/_edit_lock_ = true
+
+[node name="DrinkHoldArea4" parent="." instance=ExtResource("7_7ues7")]
+position = Vector2(-244, -383)
+drink_image = ExtResource("5_emny7")
+frame = 0
+
+[node name="DrinkHoldArea5" parent="." instance=ExtResource("7_7ues7")]
+position = Vector2(-363, -373)
+drink_image = ExtResource("5_emny7")
+drink_held = "tonic"
+
+[node name="DrinkHoldArea6" parent="." instance=ExtResource("7_7ues7")]
+position = Vector2(-479, -372)
+drink_image = ExtResource("5_emny7")
+frame = 2
+drink_held = "plum"

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b11bx1b6xyayj"]
 
 [ext_resource type="Script" uid="uid://df83fmrvjl41v" path="res://scripts/planet.gd" id="1_h8ms6"]
-[ext_resource type="PackedScene" uid="uid://dtge4nkpon4dc" path="res://scenes/on_planet.tscn" id="2_0k1rn"]
+[ext_resource type="PackedScene" uid="uid://6wv4o224ga42" path="res://scenes/on_work_planet.tscn" id="2_0k1rn"]
 [ext_resource type="Texture2D" uid="uid://c7aqkunmng5e6" path="res://assets/Planets and Astroids/Work Planet.png" id="2_h8ms6"]
 [ext_resource type="Texture2D" uid="uid://co7r3yebsii4e" path="res://assets/Space Stuff 2/Player Sprites/pixil-frame-0-77.png" id="3_ggt7d"]
 
@@ -23,14 +23,14 @@ texture = ExtResource("2_h8ms6")
 position = Vector2(-49, 32)
 scale = Vector2(6.996, 7.42)
 color = Color(1, 1, 0, 1)
-energy = 0.8
+energy = 0.5
 texture = ExtResource("3_ggt7d")
 texture_scale = 2.5
 
 [node name="PointLight2D2" type="PointLight2D" parent="."]
 position = Vector2(200, -314)
 scale = Vector2(5.206, 5.03)
-energy = 0.3
+energy = 0.2
 texture = ExtResource("3_ggt7d")
 texture_scale = 2.5
 

@@ -1,0 +1,115 @@
+[gd_scene load_steps=5 format=3 uid="uid://4s3tgkxbwh0"]
+
+[ext_resource type="Script" uid="uid://bc82gxbdngxuu" path="res://scripts/pause_menu.gd" id="1_kukqi"]
+[ext_resource type="FontFile" uid="uid://xgdbuastqrqp" path="res://assets/Space Stuff 2/Enemy/UI/Font/alien_3_font copy.otf" id="1_myx47"]
+[ext_resource type="Script" uid="uid://cd63l53f7jl5x" path="res://scenes/button.gd" id="2_kukqi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_myx47"]
+content_margin_left = 10.0
+content_margin_top = 15.0
+content_margin_right = 7.0
+content_margin_bottom = 2.0
+bg_color = Color(0, 0, 0, 1)
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_kukqi")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+process_mode = 3
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.654902)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+process_mode = 3
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.5
+offset_top = -20.5
+offset_right = 78.5
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="Continue" type="Button" parent="VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.530058, 1.35969e-06, 3.36915e-07, 1)
+theme_override_fonts/font = ExtResource("1_myx47")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_myx47")
+text = "Continue"
+script = ExtResource("2_kukqi")
+metadata/_edit_use_anchors_ = true
+
+[node name="Options" type="Button" parent="VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.530058, 1.35969e-06, 3.36915e-07, 1)
+theme_override_fonts/font = ExtResource("1_myx47")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_myx47")
+text = "Options"
+script = ExtResource("2_kukqi")
+metadata/_edit_use_anchors_ = true
+
+[node name="PerformanceMode" type="Button" parent="VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.530058, 1.35969e-06, 3.36915e-07, 1)
+theme_override_fonts/font = ExtResource("1_myx47")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_myx47")
+text = "Performance
+"
+script = ExtResource("2_kukqi")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="VBoxContainer/PerformanceMode" to="." method="_on_performance_mode_pressed"]

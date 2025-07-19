@@ -11,6 +11,12 @@ func _physics_process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Ship"):	
+		var energy_recived: int
+		if (100 - Globals.player_energy) > Globals.energy_per_food:
+			energy_recived = Globals.energy_per_food -1
+		else:
+			energy_recived = 100 - Globals.player_energy
+		body.change_pickup_indicator(str("+", int(energy_recived +1) , " Energy"))
 		Globals.player_energy += Globals.energy_per_food
 		if Globals.player_energy > Globals.max_energy:
 			Globals.player_energy = Globals.max_energy

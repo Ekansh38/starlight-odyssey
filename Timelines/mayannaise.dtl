@@ -1,0 +1,42 @@
+Mayannaise: Hey. You look new.
+
+- Yeah, just got here.
+	Mayannaise: I'm Mayannaise. Bartender most days. Need a quick rundown?
+	- What's this place?
+		Mayannaise: The local bar! All sorts of fun gossip happens here everyday.
+	- Where do I get food?
+		Mayannaise: Only paste here, delivered once a month if your a resident, nothing much to buy. Real food on those FOOD planets with stone rings around. I am sure they could sell you some.
+	- How do I earn credits?
+		Mayannaise: Deliver food, some hire quiet hands for hit jobs, just ask around!
+		Mayannaise: In fact I have been meaning to go to a friends party tonight.
+		Mayannaise: I can pay if you cover my shift. Want it?
+		- Yes.
+			Mayannaise: Try your best!
+			[signal arg="bar_job_start"]
+		- Not now.
+			Mayannaise: No worries! Comeback if you change your mind.
+	
+	- Bye.
+		Mayannaise: See you.
+
+- What's this place?
+	Mayannaise: The local bar! All sorts of fun gossip happens here everyday.
+
+- Where do I get food?
+	Mayannaise: Only paste here, delivered once a month if your a resident, nothing much to buy. Real food on those FOOD planets with stone rings around. I am sure they could sell you some.
+
+- How do I earn credits?
+	Mayannaise: Deliver food, some hire quiet hands for hit jobs, just ask around!
+	Mayannaise: In fact I have been meaning to go to a friends party tonight.
+	Mayannaise: I can pay if you cover my shift. Want it?
+	- Yes.
+		Mayannaise: Do your best!
+		[signal arg="bar_job_start"]
+	- Not now.
+		Mayannaise: No worries! Comeback if you change your mind.
+
+- Just looking.
+	Mayannaise: Look all you like.
+
+- Bye.
+	Mayannaise: Stay in one piece.
