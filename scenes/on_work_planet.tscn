@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://6wv4o224ga42"]
+[gd_scene load_steps=5 format=3 uid="uid://6wv4o224ga42"]
 
 [ext_resource type="PackedScene" uid="uid://dtge4nkpon4dc" path="res://scenes/on_planet.tscn" id="1_fhb67"]
 [ext_resource type="PackedScene" uid="uid://tyn2neh5gamd" path="res://scenes/darius.tscn" id="2_67huo"]
 [ext_resource type="Texture2D" uid="uid://co7r3yebsii4e" path="res://assets/Space Stuff 2/Player Sprites/pixil-frame-0-77.png" id="2_gvkwi"]
+[ext_resource type="PackedScene" uid="uid://b7j5fkx2psmeb" path="res://scenes/maya.tscn" id="4_hog5x"]
 
 [node name="OnWorkPlanet" instance=ExtResource("1_fhb67")]
 
@@ -36,3 +37,7 @@ position = Vector2(-1795, 2191)
 
 [node name="Darius" parent="Ysort" index="1" instance=ExtResource("2_67huo")]
 position = Vector2(96, 2571)
+ui_path = NodePath("../../UI")
+
+[node name="Maya" parent="Ysort" index="2" instance=ExtResource("4_hog5x")]
+position = Vector2(-171, 1896)

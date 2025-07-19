@@ -463,7 +463,7 @@ animations = [{
 [sub_resource type="Environment" id="Environment_3x3b3"]
 background_mode = 3
 glow_enabled = true
-glow_intensity = 0.6
+glow_intensity = 0.4
 glow_strength = 1.02
 glow_bloom = 0.21
 glow_blend_mode = 0

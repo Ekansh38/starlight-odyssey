@@ -1,0 +1,183 @@
+[gd_scene load_steps=12 format=3 uid="uid://b7j5fkx2psmeb"]
+
+[ext_resource type="PackedScene" uid="uid://tyn2neh5gamd" path="res://scenes/darius.tscn" id="1_wbgcd"]
+[ext_resource type="Script" uid="uid://by16g2lf8uo3x" path="res://scripts/maya.gd" id="2_kmmao"]
+[ext_resource type="Texture2D" uid="uid://dr2ofp0o7n4f" path="res://assets/Space Stuff 2/Charecter creator/Base body 02.png" id="2_to2n1"]
+[ext_resource type="Texture2D" uid="uid://ctmuu0r8l0xi5" path="res://assets/Space Stuff 2/Charecter creator/Head 02.png" id="3_4b8io"]
+[ext_resource type="Texture2D" uid="uid://bq3p6a0ymrkj2" path="res://assets/Space Stuff 2/Charecter creator/Eye 04.png" id="4_kmmao"]
+[ext_resource type="Texture2D" uid="uid://fl1n1m16bxoq" path="res://assets/Space Stuff 2/Charecter creator/Mouth 03.png" id="5_of87b"]
+[ext_resource type="Texture2D" uid="uid://nq8d2inbonpi" path="res://assets/Space Stuff 2/Charecter creator/Shirt 02.png" id="6_3j48r"]
+[ext_resource type="Texture2D" uid="uid://gb1uenenb36h" path="res://assets/Space Stuff 2/Charecter creator/Head 04.png" id="7_4b8io"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4pm6r"]
+blend_mode = 3
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4b8io"]
+blend_mode = 4
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kmmao"]
+blend_mode = 3
+
+[node name="Maya" instance=ExtResource("1_wbgcd")]
+script = ExtResource("2_kmmao")
+
+[node name="Sprite2D" parent="Sprite" index="0"]
+texture = ExtResource("2_to2n1")
+
+[node name="Sprite2D3" parent="Sprite" index="1"]
+texture = ExtResource("3_4b8io")
+
+[node name="Sprite2D2" parent="Sprite" index="2"]
+texture = ExtResource("4_kmmao")
+
+[node name="Sprite2D4" parent="Sprite" index="3"]
+texture = ExtResource("5_of87b")
+
+[node name="Sprite2D5" parent="Sprite" index="4"]
+visible = false
+texture = ExtResource("6_3j48r")
+
+[node name="TShirt" parent="Sprite" index="5"]
+offset_left = -5.0
+offset_top = -9.0
+offset_right = 4.0
+offset_bottom = 0.0
+color = Color(0.327512, 0.429547, 0.615627, 0.215686)
+
+[node name="TShirt2" type="ColorRect" parent="Sprite" index="6"]
+material = SubResource("CanvasItemMaterial_4pm6r")
+offset_left = -9.0
+offset_top = 4.0
+offset_right = -5.0
+offset_bottom = 7.0
+color = Color(0.327512, 0.429547, 0.615627, 0.215686)
+
+[node name="TShirt3" type="ColorRect" parent="Sprite" index="7"]
+material = SubResource("CanvasItemMaterial_4pm6r")
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 8.0
+offset_bottom = 7.0
+color = Color(0.327512, 0.429547, 0.615627, 0.215686)
+
+[node name="TShirt4" type="ColorRect" parent="Sprite" index="8"]
+material = SubResource("CanvasItemMaterial_4pm6r")
+offset_left = 4.0
+offset_top = 7.0
+offset_right = 6.0
+offset_bottom = 9.0
+color = Color(0.327512, 0.429547, 0.615627, 0.215686)
+
+[node name="TShirt5" type="ColorRect" parent="Sprite" index="9"]
+material = SubResource("CanvasItemMaterial_4pm6r")
+offset_left = -6.83333
+offset_top = 7.16667
+offset_right = -4.83333
+offset_bottom = 9.16667
+color = Color(0.327512, 0.429547, 0.615627, 0.215686)
+
+[node name="TShirt6" type="ColorRect" parent="Sprite" index="10"]
+material = SubResource("CanvasItemMaterial_4pm6r")
+offset_left = -7.0
+offset_top = 1.0
+offset_right = 6.0
+offset_bottom = 4.0
+color = Color(0.327512, 0.429547, 0.615627, 0.215686)
+
+[node name="TShirt8" type="ColorRect" parent="Sprite" index="11"]
+material = SubResource("CanvasItemMaterial_4pm6r")
+offset_left = -4.0
+offset_top = 4.0
+offset_right = 3.0
+offset_bottom = 9.0
+color = Color(0.802398, 0, 0.221218, 0.215686)
+
+[node name="TShirt9" type="ColorRect" parent="Sprite" index="12"]
+material = SubResource("CanvasItemMaterial_4b8io")
+offset_left = -5.0
+offset_top = -6.0
+offset_right = -1.0
+offset_bottom = -5.0
+color = Color(1, 1, 1, 0.215686)
+
+[node name="TShirt10" type="ColorRect" parent="Sprite" index="13"]
+material = SubResource("CanvasItemMaterial_4b8io")
+offset_left = 1.0
+offset_top = -6.0
+offset_right = 4.0
+offset_bottom = -5.0
+color = Color(1, 1, 1, 0.215686)
+
+[node name="TShirt11" type="ColorRect" parent="Sprite" index="14"]
+material = SubResource("CanvasItemMaterial_kmmao")
+offset_left = 2.0
+offset_top = -6.0
+offset_right = 3.0
+offset_bottom = -5.0
+color = Color(0, 0, 0, 1)
+
+[node name="TShirt12" type="ColorRect" parent="Sprite" index="15"]
+material = SubResource("CanvasItemMaterial_kmmao")
+offset_left = -3.33333
+offset_top = -6.0
+offset_right = -2.33333
+offset_bottom = -5.0
+color = Color(0, 0, 0, 1)
+
+[node name="TShirt7" type="ColorRect" parent="Sprite" index="16"]
+material = SubResource("CanvasItemMaterial_4pm6r")
+offset_left = -2.0
+offset_top = -0.166667
+offset_right = 1.0
+offset_bottom = 1.83333
+color = Color(0.327512, 0.429547, 0.615627, 0.215686)
+
+[node name="Pants1" parent="Sprite" index="17"]
+offset_top = 9.0
+offset_bottom = 16.0
+
+[node name="Pants2" type="ColorRect" parent="Sprite" index="18"]
+material = SubResource("CanvasItemMaterial_4pm6r")
+offset_left = 2.0
+offset_top = 9.0
+offset_right = 4.0
+offset_bottom = 16.0
+color = Color(0, 0.721569, 0.215686, 0.215686)
+
+[node name="Pants" parent="Sprite" index="19"]
+offset_left = 4.0
+offset_top = 14.0
+offset_right = 6.0
+offset_bottom = 16.0
+
+[node name="Leg" parent="Sprite" index="20"]
+offset_left = -7.0
+offset_top = 14.0
+offset_right = -4.0
+offset_bottom = 15.0
+color = Color(0.20317, 0.121299, 0.0855806, 1)
+
+[node name="Leg2" parent="Sprite" index="21"]
+visible = false
+
+[node name="Face" parent="Sprite" index="24"]
+visible = false
+
+[node name="Face2" parent="Sprite" index="25"]
+visible = false
+
+[node name="Face3" parent="Sprite" index="26"]
+visible = false
+
+[node name="Face4" parent="Sprite" index="27"]
+visible = false
+
+[node name="Head06" parent="Sprite" index="28"]
+modulate = Color(0.854423, 0.655312, 0, 1)
+position = Vector2(-0.666667, -14.5)
+rotation = 3.14159
+scale = Vector2(0.85, 0.5)
+texture = ExtResource("7_4b8io")
+
+[node name="TextBoxMarker" parent="." index="3"]
+position = Vector2(-1, -66)

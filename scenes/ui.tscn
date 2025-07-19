@@ -35,9 +35,13 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(1, 0.0692702, 0.0422397, 1)
+expand_margin_top = 9.0
+expand_margin_bottom = 3.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qsv74"]
 bg_color = Color(1, 0, 0, 1)
+expand_margin_top = 9.0
+expand_margin_bottom = 3.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1mc3"]
 bg_color = Color(0.419969, 1.86507e-07, 1.20327e-07, 1)
@@ -46,9 +50,13 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(1, 0, 0, 1)
+expand_margin_top = 9.0
+expand_margin_bottom = 3.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cof4p"]
 bg_color = Color(1, 0, 0, 1)
+expand_margin_top = 9.0
+expand_margin_bottom = 3.0
 
 [node name="UI" type="CanvasLayer" groups=["UI"]]
 script = ExtResource("1_fyqef")
@@ -92,16 +100,17 @@ vertical_alignment = 1
 [node name="Energy" type="ProgressBar" parent="VBoxContainer"]
 modulate = Color(0.822495, 0.830029, 0.817033, 1)
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("4_7dvkv")
+theme_override_font_sizes/font_size = 20
 theme_override_styles/background = SubResource("StyleBoxFlat_vsj0x")
 theme_override_styles/fill = SubResource("StyleBoxFlat_qsv74")
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
 anchors_preset = -1
-anchor_left = 0.75
+anchor_left = 0.775
 anchor_top = 0.89
-anchor_right = 0.95
+anchor_right = 0.975
 anchor_bottom = 0.914
 offset_left = 8.0
 offset_top = -35.8
@@ -125,8 +134,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ShipDamage" type="ProgressBar" parent="VBoxContainer2"]
-modulate = Color(0.982653, 0.00102032, 1.34766e-06, 1)
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_7dvkv")
+theme_override_font_sizes/font_size = 20
 theme_override_styles/background = SubResource("StyleBoxFlat_h1mc3")
 theme_override_styles/fill = SubResource("StyleBoxFlat_cof4p")
 
@@ -210,6 +221,33 @@ theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_7dvkv")
 theme_override_font_sizes/font_size = 50
 text = "0"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 39.0
+offset_top = 89.0
+offset_right = 87.0
+offset_bottom = 119.0
+theme_override_fonts/font = ExtResource("4_7dvkv")
+theme_override_font_sizes/font_size = 30
+text = "Food"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 290.0
+offset_top = 88.0
+offset_right = 358.0
+offset_bottom = 118.0
+theme_override_fonts/font = ExtResource("4_7dvkv")
+theme_override_font_sizes/font_size = 30
+text = "Ammo"
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 509.0
+offset_top = 91.0
+offset_right = 578.0
+offset_bottom = 121.0
+theme_override_fonts/font = ExtResource("4_7dvkv")
+theme_override_font_sizes/font_size = 30
+text = "Money"
 
 [node name="InfoLabel" type="Label" parent="."]
 anchors_preset = -1

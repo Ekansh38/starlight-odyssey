@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://2kj2y8jq2lbt"]
+
+[ext_resource type="Shader" uid="uid://ckjc1clqaw02l" path="res://scripts/space.gdshader" id="1_c13y7"]
+[ext_resource type="PackedScene" uid="uid://bnxmf8waol6sn" path="res://scenes/ship.tscn" id="2_4kmhl"]
+[ext_resource type="PackedScene" uid="uid://fqwiliyihkrs" path="res://scenes/crate.tscn" id="3_cq4me"]
+[ext_resource type="Script" uid="uid://m86nywm3fg2d" path="res://scripts/camera_2d.gd" id="4_6yjpi"]
+[ext_resource type="PackedScene" uid="uid://b2cpljbh1tc6g" path="res://scenes/ui.tscn" id="5_cq4me"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ho6b"]
+shader = ExtResource("1_c13y7")
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/bigStarSlow = 2.0
+shader_parameter/mediumStarSlow = 6.0
+shader_parameter/smallStarSlow = 8.0
+shader_parameter/smallStarAmount = 0.002
+shader_parameter/mediumStarAmount = 0.01
+shader_parameter/bigStarAmount = 0.02
+
+[node name="Tutorial" type="Node2D"]
+
+[node name="SpaceBackground" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_8ho6b")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 100000.0
+offset_bottom = 80000.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+offset_left = 50196.0
+offset_top = 43370.0
+offset_right = 51258.0
+offset_bottom = 43507.0
+theme_override_font_sizes/font_size = 100
+text = "Press W to go forward"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 50179.0
+offset_top = 41786.0
+offset_right = 51241.0
+offset_bottom = 41923.0
+theme_override_font_sizes/font_size = 100
+text = "Press A and D to turn"
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 50160.0
+offset_top = 40106.0
+offset_right = 51222.0
+offset_bottom = 40243.0
+theme_override_font_sizes/font_size = 100
+text = "Press Space to BOOOOST!!"
+
+[node name="Ship" parent="." instance=ExtResource("2_4kmhl")]
+position = Vector2(50688, 43897)
+crate_scene = ExtResource("3_cq4me")
+
+[node name="Camera2D" type="Camera2D" parent="Ship"]
+zoom = Vector2(0.3, 0.3)
+position_smoothing_enabled = true
+rotation_smoothing_speed = 1.0
+script = ExtResource("4_6yjpi")
+metadata/_edit_lock_ = true
+
+[node name="UI" parent="." instance=ExtResource("5_cq4me")]
+visible = false
