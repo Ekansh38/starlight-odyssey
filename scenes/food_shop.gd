@@ -3,6 +3,9 @@ extends Shop
 	
 
 func _ready():
+	$".".visible = false
+	$".".transout()
+
 	item_list = Globals.food_items
 	switch_item(0)
 

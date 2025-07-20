@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://tyn2neh5gamd"]
+[gd_scene load_steps=13 format=3 uid="uid://tyn2neh5gamd"]
 
 [ext_resource type="Script" uid="uid://gppc1a7sd1gj" path="res://scripts/npc.gd" id="1_v6vsq"]
 [ext_resource type="Texture2D" uid="uid://c26h5cwhhc5or" path="res://assets/Space Stuff 2/Charecter creator/Base body 01.png" id="2_ynd5i"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bk60q12auy3w5" path="res://assets/Space Stuff 2/Charecter creator/Mouth 04.png" id="5_4hl5a"]
 [ext_resource type="Texture2D" uid="uid://cs123eayec65s" path="res://assets/Space Stuff 2/Charecter creator/Shirt 01.png" id="6_dwn7e"]
 [ext_resource type="Texture2D" uid="uid://cu0f4qjtda4ru" path="res://assets/Space Stuff 2/Charecter creator/Head 06.png" id="7_36caq"]
+[ext_resource type="Texture2D" uid="uid://c4mb5uy3d6nij" path="res://assets/kenney_smoke-particles/PNG/White puff/whitePuff01.png" id="8_ynd5i"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4pm6r"]
 blend_mode = 3
@@ -15,9 +16,13 @@ blend_mode = 3
 size = Vector2(90, 96)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c0afp"]
-radius = 141.032
+radius = 230.009
 
-[node name="Druvek" type="CharacterBody2D"]
+[sub_resource type="Gradient" id="Gradient_jeq3y"]
+offsets = PackedFloat32Array(0, 0.65311, 0.995215)
+colors = PackedColorArray(1, 0, 0, 1, 0.618933, 1.73271e-06, 3.85046e-07, 1, 1, 0.203922, 0, 0)
+
+[node name="Druvek" type="CharacterBody2D" groups=["NPC"]]
 script = ExtResource("1_v6vsq")
 
 [node name="Sprite" type="Node2D" parent="."]
@@ -145,6 +150,22 @@ shape = SubResource("CircleShape2D_c0afp")
 
 [node name="TextBoxMarker" type="Marker2D" parent="."]
 position = Vector2(-2, -58)
+
+[node name="DamageParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 20
+texture = ExtResource("8_ynd5i")
+lifetime = 0.8
+one_shot = true
+explosiveness = 0.7
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+scale_amount_min = 0.05
+scale_amount_max = 0.1
+color_ramp = SubResource("Gradient_jeq3y")
 
 [connection signal="body_entered" from="InteractArea" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="InteractArea" to="." method="_on_body_exited"]

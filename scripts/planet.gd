@@ -1,10 +1,11 @@
 extends Area2D
+class_name Planet
 
 var ship_in_area: Node2D = null
 @onready var cam := get_node("../Ship/Camera2D")
 @onready var tween := get_tree().create_tween()
 
-@export var target_scene: PackedScene
+var target_scene: PackedScene = preload("res://scenes/on_work_planet.tscn")
 
 func _process(delta: float) -> void:
 	if ship_in_area and Input.is_action_pressed("land"):

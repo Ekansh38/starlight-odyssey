@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dtge4nkpon4dc"]
+[gd_scene load_steps=10 format=3 uid="uid://dtge4nkpon4dc"]
 
 [ext_resource type="Texture2D" uid="uid://l8iheibflqgc" path="res://assets/kenney_rpg-urban-pack/blackbackground.png" id="1_74jen"]
 [ext_resource type="Script" uid="uid://2bk2n6ekfaoa" path="res://scripts/on_planet.gd" id="1_r30j1"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" uid="uid://m86nywm3fg2d" path="res://scripts/camera_2d.gd" id="4_yalgt"]
 [ext_resource type="PackedScene" uid="uid://b4h2jog6b336i" path="res://scenes/blacksmith.tscn" id="6_c4k62"]
 [ext_resource type="Texture2D" uid="uid://cs2n4m24vqjt7" path="res://assets/Space Stuff 2/Tilesets/Work City outside.png" id="7_74jen"]
-[ext_resource type="PackedScene" uid="uid://ca5tfy7swdpna" path="res://scenes/cosmic_compass_item.tscn" id="8_vnlak"]
 
 [node name="OnPlanet" type="Node2D"]
 script = ExtResource("1_r30j1")
@@ -71,10 +70,6 @@ scale = Vector2(6, 5)
 
 [node name="Blacksmith" parent="." instance=ExtResource("6_c4k62")]
 position = Vector2(-594, 2876)
-
-[node name="CosmicCompassItem" parent="." instance=ExtResource("8_vnlak")]
-position = Vector2(-2149, 703)
-scale = Vector2(0.5, 0.5)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0, 0, 0, 1)

@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7gh5fskga2bi"]
+
+[ext_resource type="PackedScene" uid="uid://crahrlgwgfepd" path="res://scenes/shop.tscn" id="1_pctt4"]
+[ext_resource type="Script" uid="uid://bjuxd5kysietn" path="res://scenes/gun_shop.gd" id="2_id5fg"]
+
+[node name="GunShop" instance=ExtResource("1_pctt4")]
+script = ExtResource("2_id5fg")

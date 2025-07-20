@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://bm4shv2j2bao8"]
+
+[ext_resource type="PackedScene" uid="uid://tyn2neh5gamd" path="res://scenes/druvek.tscn" id="1_eo0to"]
+[ext_resource type="Script" uid="uid://cw3r787o14ss8" path="res://scenes/compass_seller.gd" id="2_gch3e"]
+[ext_resource type="Texture2D" uid="uid://gb1uenenb36h" path="res://assets/Space Stuff 2/Charecter creator/Head 04.png" id="2_ige2s"]
+[ext_resource type="Texture2D" uid="uid://nq8d2inbonpi" path="res://assets/Space Stuff 2/Charecter creator/Shirt 02.png" id="3_ige2s"]
+[ext_resource type="PackedScene" uid="uid://duusa0esj5lwf" path="res://scenes/compass_shop.tscn" id="5_texom"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4pm6r"]
+blend_mode = 3
+
+[node name="CompassSeller" instance=ExtResource("1_eo0to")]
+script = ExtResource("2_gch3e")
+
+[node name="Sprite2D3" parent="Sprite" index="1"]
+texture = ExtResource("2_ige2s")
+
+[node name="Sprite2D5" parent="Sprite" index="4"]
+texture = ExtResource("3_ige2s")
+
+[node name="TShirt" parent="Sprite" index="5"]
+offset_left = -4.0
+offset_right = -3.0
+offset_bottom = 9.0
+color = Color(0.31802, 0.31802, 0.31802, 0.215686)
+
+[node name="TShirt2" type="ColorRect" parent="Sprite" index="6"]
+material = SubResource("CanvasItemMaterial_4pm6r")
+offset_left = 2.0
+offset_top = 0.166667
+offset_right = 3.0
+offset_bottom = 8.16667
+color = Color(0.31802, 0.31802, 0.31802, 0.215686)
+
+[node name="Pants1" parent="Sprite" index="7"]
+visible = false
+
+[node name="Pants" parent="Sprite" index="8"]
+visible = false
+
+[node name="Leg" parent="Sprite" index="9"]
+visible = false
+
+[node name="Leg2" parent="Sprite" index="10"]
+visible = false
+
+[node name="Leg4" parent="Sprite" index="11"]
+visible = false
+
+[node name="Leg3" parent="Sprite" index="12"]
+visible = false
+
+[node name="Face" parent="Sprite" index="13"]
+visible = false
+
+[node name="Face2" parent="Sprite" index="14"]
+visible = false
+
+[node name="Face3" parent="Sprite" index="15"]
+visible = false
+
+[node name="Face4" parent="Sprite" index="16"]
+visible = false
+
+[node name="Head06" parent="Sprite" index="17"]
+modulate = Color(0.52, 0.52, 0.52, 1)
+
+[node name="CompassShop" parent="." index="5" instance=ExtResource("5_texom")]
+process_priority = 10

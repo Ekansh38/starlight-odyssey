@@ -11,5 +11,6 @@ func _on_ship_shoot(mouse_pos: Vector2, ship_pos: Vector2) -> void:
 	$Bullets.add_child(bullet)
 
 func _ready():
+	$AudioStreamPlayer.play()
 	var cursor = preload("res://assets/crosshair066.png")
 	Input.set_custom_mouse_cursor(cursor, Input.CURSOR_ARROW, Vector2(0.1, 0.1))

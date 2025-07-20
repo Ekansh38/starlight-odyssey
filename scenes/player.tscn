@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://b086uqul0vcjs"]
+[gd_scene load_steps=13 format=3 uid="uid://b086uqul0vcjs"]
 
 [ext_resource type="Script" uid="uid://ckbgll8dw1owc" path="res://scripts/player.gd" id="1_ty8qi"]
 [ext_resource type="Texture2D" uid="uid://b75so81q7m38u" path="res://assets/Space Stuff 2/Player Sprites/Player RPG overworld sprite.png" id="2_g2els"]
+[ext_resource type="Texture2D" uid="uid://d3urmf41rumit" path="res://assets/Space stuff extras/Player/Gun.png" id="2_qlg0r"]
 [ext_resource type="Script" uid="uid://d3uyx6dqoek1t" path="res://scripts/label_holder.gd" id="3_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://qa0plaqh16w0" path="res://scenes/hunger_controller.tscn" id="4_dqkch"]
 
@@ -102,6 +103,16 @@ _data = {
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_ty8qi")
+
+[node name="Gun" type="Sprite2D" parent="."]
+position = Vector2(61, 33)
+scale = Vector2(3, 3)
+texture = ExtResource("2_qlg0r")
+offset = Vector2(0.5, -8)
+hframes = 5
+
+[node name="Muzzle" type="Marker2D" parent="Gun"]
+position = Vector2(0, -21)
 
 [node name="Holdable" type="Sprite2D" parent="."]
 position = Vector2(58, 19)

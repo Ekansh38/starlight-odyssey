@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b2cpljbh1tc6g"]
+[gd_scene load_steps=19 format=3 uid="uid://b2cpljbh1tc6g"]
 
 [ext_resource type="Script" uid="uid://h5j5kka6t0w0" path="res://scripts/ui.gd" id="1_fyqef"]
 [ext_resource type="Texture2D" uid="uid://63vp8ysoaini" path="res://assets/Space Stuff 2/Enemy/UI/Energy UI.png" id="3_cgfq5"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://dkur2bxudtbyh" path="res://assets/Space Stuff 2/Player Sprites/pixil-frame-0-512.png" id="7_cgfq5"]
 [ext_resource type="Texture2D" uid="uid://cow8l4752trt6" path="res://assets/Space Stuff 2/Player Sprites/pixil-frame-0-511.png" id="8_7dvkv"]
 [ext_resource type="Texture2D" uid="uid://bgjr1lvwt5vo7" path="res://assets/Space Stuff 2/Player Sprites/pixil-frame-0-510.png" id="9_vdcm2"]
+[ext_resource type="Texture2D" uid="uid://idlvtiys5lkf" path="res://assets/wibblemugshot.png" id="10_7dvkv"]
+[ext_resource type="Texture2D" uid="uid://bwb108gtkmdqy" path="res://assets/photoframe.jpg" id="10_vdcm2"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_wm3ai"]
 noise_type = 5
@@ -35,13 +37,9 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(1, 0.0692702, 0.0422397, 1)
-expand_margin_top = 9.0
-expand_margin_bottom = 3.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qsv74"]
 bg_color = Color(1, 0, 0, 1)
-expand_margin_top = 9.0
-expand_margin_bottom = 3.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1mc3"]
 bg_color = Color(0.419969, 1.86507e-07, 1.20327e-07, 1)
@@ -50,13 +48,9 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(1, 0, 0, 1)
-expand_margin_top = 9.0
-expand_margin_bottom = 3.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cof4p"]
 bg_color = Color(1, 0, 0, 1)
-expand_margin_top = 9.0
-expand_margin_bottom = 3.0
 
 [node name="UI" type="CanvasLayer" groups=["UI"]]
 script = ExtResource("1_fyqef")
@@ -101,7 +95,6 @@ vertical_alignment = 1
 modulate = Color(0.822495, 0.830029, 0.817033, 1)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("4_7dvkv")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/background = SubResource("StyleBoxFlat_vsj0x")
 theme_override_styles/fill = SubResource("StyleBoxFlat_qsv74")
@@ -136,7 +129,6 @@ vertical_alignment = 1
 [node name="ShipDamage" type="ProgressBar" parent="VBoxContainer2"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("4_7dvkv")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/background = SubResource("StyleBoxFlat_h1mc3")
 theme_override_styles/fill = SubResource("StyleBoxFlat_cof4p")
@@ -342,15 +334,15 @@ metadata/_edit_lock_ = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="FPSLabel" type="Label" parent="."]
+visible = false
 anchors_preset = -1
 anchor_right = 0.293
 anchor_bottom = 0.098
-offset_left = 1139.0
-offset_top = 26.0
-offset_right = 886.96
-offset_bottom = 24.44
+offset_left = 1029.0
+offset_top = 19.0
+offset_right = 776.96
+offset_bottom = 17.44
 theme_override_font_sizes/font_size = 50
-text = "60"
 
 [node name="PickupIndicator" type="Label" parent="."]
 offset_left = 698.0
@@ -360,3 +352,40 @@ offset_bottom = 101.0
 theme_override_font_sizes/font_size = 30
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HitmanPhotoFrame" type="TextureRect" parent="."]
+offset_left = 180.0
+offset_top = 491.0
+offset_right = 826.0
+offset_bottom = 1510.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("10_vdcm2")
+
+[node name="HitmanPhoto" type="TextureRect" parent="."]
+offset_left = 154.0
+offset_top = 469.0
+offset_right = 620.0
+offset_bottom = 1004.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("10_7dvkv")
+
+[node name="HitmanLabel" type="Label" parent="."]
+offset_left = 193.0
+offset_top = 664.0
+offset_right = 293.0
+offset_bottom = 693.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Wibble"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HitmanTimerLabel" type="Label" parent="."]
+offset_left = 29.0
+offset_top = 628.0
+offset_right = 128.0
+offset_bottom = 697.0
+theme_override_font_sizes/font_size = 50
+text = "1:00"
+
+[node name="HitmanTimer" type="Timer" parent="."]

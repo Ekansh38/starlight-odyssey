@@ -1,0 +1,359 @@
+[gd_scene load_steps=17 format=3 uid="uid://dc52x3x55xil8"]
+
+[ext_resource type="Script" uid="uid://d05ups18n3jfa" path="res://scenes/ui_for_minigame.gd" id="1_x6so4"]
+[ext_resource type="Shader" uid="uid://c73f7v8fusefa" path="res://scenes/speedlines.gdshader" id="2_gvkpe"]
+[ext_resource type="Texture2D" uid="uid://63vp8ysoaini" path="res://assets/Space Stuff 2/Enemy/UI/Energy UI.png" id="3_yylb4"]
+[ext_resource type="FontFile" uid="uid://xgdbuastqrqp" path="res://assets/Space Stuff 2/Enemy/UI/Font/alien_3_font copy.otf" id="4_7uysu"]
+[ext_resource type="Texture2D" uid="uid://mcnk6up557f" path="res://assets/Space Stuff 2/Enemy/UI/Ship Status UI.png" id="5_wqy80"]
+[ext_resource type="Texture2D" uid="uid://bi4rq380kth70" path="res://assets/Space Stuff 2/Enemy/UI/Bonus UI.png" id="6_5jm5l"]
+[ext_resource type="Texture2D" uid="uid://dkur2bxudtbyh" path="res://assets/Space Stuff 2/Player Sprites/pixil-frame-0-512.png" id="7_t8j5s"]
+[ext_resource type="Texture2D" uid="uid://cow8l4752trt6" path="res://assets/Space Stuff 2/Player Sprites/pixil-frame-0-511.png" id="8_7dne6"]
+[ext_resource type="Texture2D" uid="uid://bgjr1lvwt5vo7" path="res://assets/Space Stuff 2/Player Sprites/pixil-frame-0-510.png" id="9_p2wo2"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wm3ai"]
+noise_type = 5
+frequency = 0.2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8dubc"]
+noise = SubResource("FastNoiseLite_wm3ai")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8dubc"]
+shader = ExtResource("2_gvkpe")
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/noise = SubResource("NoiseTexture2D_8dubc")
+shader_parameter/sample_radius = 0.24
+shader_parameter/line_color = Color(0.905505, 0, 0, 1)
+shader_parameter/center_radius = 0.42
+shader_parameter/hole_smoothness = 0.587
+shader_parameter/hole_radius = 0.304
+shader_parameter/transparency = 0.94
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vsj0x"]
+bg_color = Color(0.439281, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.0692702, 0.0422397, 1)
+expand_margin_top = 9.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qsv74"]
+bg_color = Color(1, 0, 0, 1)
+expand_margin_top = 9.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1mc3"]
+bg_color = Color(0.419969, 1.86507e-07, 1.20327e-07, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0, 0, 1)
+expand_margin_top = 9.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cof4p"]
+bg_color = Color(1, 0, 0, 1)
+expand_margin_top = 9.0
+expand_margin_bottom = 3.0
+
+[node name="UI" type="CanvasLayer" groups=["UI"]]
+script = ExtResource("1_x6so4")
+
+[node name="SpeedLines" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_8dubc")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+visible = false
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.89
+anchor_right = 0.7
+anchor_bottom = 0.989
+offset_top = -73.8
+offset_right = 40.0
+offset_bottom = 39.92
+theme_override_constants/separation = 25
+
+[node name="EnergyUi" type="Sprite2D" parent="VBoxContainer"]
+modulate = Color(1, 1, 1, 0.776471)
+position = Vector2(270, 68)
+scale = Vector2(1.33556, 1.51333)
+texture = ExtResource("3_yylb4")
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_7uysu")
+theme_override_font_sizes/font_size = 20
+text = "Life Energy
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Energy" type="ProgressBar" parent="VBoxContainer"]
+modulate = Color(0.822495, 0.830029, 0.817033, 1)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_7uysu")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/background = SubResource("StyleBoxFlat_vsj0x")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qsv74")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+visible = false
+anchors_preset = -1
+anchor_left = 0.775
+anchor_top = 0.89
+anchor_right = 0.975
+anchor_bottom = 0.914
+offset_left = 8.0
+offset_top = -35.8
+offset_right = -58.0
+offset_bottom = 11.92
+theme_override_constants/separation = 10
+
+[node name="ShipStatusUi" type="Sprite2D" parent="VBoxContainer2"]
+modulate = Color(1, 1, 1, 0.87451)
+position = Vector2(100, 45)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_wqy80")
+
+[node name="Label" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_7uysu")
+theme_override_font_sizes/font_size = 20
+text = "Structural Integraty"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShipDamage" type="ProgressBar" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_7uysu")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/background = SubResource("StyleBoxFlat_h1mc3")
+theme_override_styles/fill = SubResource("StyleBoxFlat_cof4p")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+visible = false
+anchors_preset = -1
+anchor_left = 0.025
+anchor_top = 0.025
+anchor_right = 0.2
+anchor_bottom = 0.05
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 25
+
+[node name="BonusUi" type="Sprite2D" parent="HBoxContainer"]
+modulate = Color(1, 1, 1, 0.772549)
+position = Vector2(30, 29)
+texture = ExtResource("6_5jm5l")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("7_t8j5s")
+expand_mode = 2
+
+[node name="Amount" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_7uysu")
+theme_override_font_sizes/font_size = 50
+text = "0/3"
+
+[node name="Ammo" type="HBoxContainer" parent="."]
+visible = false
+anchors_preset = -1
+anchor_left = 0.23
+anchor_top = 0.025
+anchor_right = 0.3
+anchor_bottom = 0.05
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 25
+
+[node name="BonusUi2" type="Sprite2D" parent="Ammo"]
+modulate = Color(1, 1, 1, 0.772549)
+position = Vector2(28.6, 29)
+texture = ExtResource("6_5jm5l")
+
+[node name="TextureRect" type="TextureRect" parent="Ammo"]
+layout_mode = 2
+texture = ExtResource("8_7dne6")
+expand_mode = 2
+
+[node name="Ammo" type="Label" parent="Ammo"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_7uysu")
+theme_override_font_sizes/font_size = 50
+text = "0"
+
+[node name="Money" type="HBoxContainer" parent="."]
+visible = false
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.025
+anchor_right = 0.4
+anchor_bottom = 0.05
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 25
+
+[node name="BonusUi3" type="Sprite2D" parent="Money"]
+modulate = Color(1, 1, 1, 0.772549)
+position = Vector2(28, 29)
+texture = ExtResource("6_5jm5l")
+
+[node name="TextureRect" type="TextureRect" parent="Money"]
+layout_mode = 2
+texture = ExtResource("9_p2wo2")
+expand_mode = 2
+
+[node name="Money" type="Label" parent="Money"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_7uysu")
+theme_override_font_sizes/font_size = 50
+text = "0"
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 39.0
+offset_top = 89.0
+offset_right = 87.0
+offset_bottom = 119.0
+theme_override_fonts/font = ExtResource("4_7uysu")
+theme_override_font_sizes/font_size = 30
+text = "Food"
+
+[node name="Label2" type="Label" parent="."]
+visible = false
+offset_left = 290.0
+offset_top = 88.0
+offset_right = 358.0
+offset_bottom = 118.0
+theme_override_fonts/font = ExtResource("4_7uysu")
+theme_override_font_sizes/font_size = 30
+text = "Ammo"
+
+[node name="Label3" type="Label" parent="."]
+visible = false
+offset_left = 509.0
+offset_top = 91.0
+offset_right = 578.0
+offset_bottom = 121.0
+theme_override_fonts/font = ExtResource("4_7uysu")
+theme_override_font_sizes/font_size = 30
+text = "Money"
+
+[node name="InfoLabel" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.65
+anchor_right = 0.5
+anchor_bottom = 0.65
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+
+[node name="InfoLabel2" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.5
+anchor_right = 0.6
+anchor_bottom = 0.6
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.435294)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_7uysu")
+theme_override_font_sizes/font_size = 40
+
+[node name="SelfCanniblizeBar" type="ProgressBar" parent="."]
+visible = false
+modulate = Color(1, 0, 0, 1)
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.65
+anchor_right = 0.6
+anchor_bottom = 0.65
+offset_left = -2.0
+offset_top = -13.5
+offset_right = 2.0
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+show_percentage = false
+
+[node name="LandingBar" type="ProgressBar" parent="."]
+visible = false
+modulate = Color(0, 1, 0, 1)
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.65
+anchor_right = 0.6
+anchor_bottom = 0.65
+offset_left = -2.0
+offset_top = -13.5
+offset_right = 2.0
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+show_percentage = false
+
+[node name="ZoomOutBar" type="ProgressBar" parent="."]
+visible = false
+modulate = Color(0, 1, 0, 1)
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.65
+anchor_right = 0.6
+anchor_bottom = 0.65
+offset_left = -2.0
+offset_top = -13.5
+offset_right = 2.0
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+show_percentage = false
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+metadata/_edit_lock_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PickupIndicator" type="Label" parent="."]
+offset_left = 698.0
+offset_top = 17.0
+offset_right = 976.0
+offset_bottom = 101.0
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1

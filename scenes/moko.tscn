@@ -1,0 +1,211 @@
+[gd_scene load_steps=8 format=3 uid="uid://3mii826l1iy0"]
+
+[ext_resource type="PackedScene" uid="uid://tyn2neh5gamd" path="res://scenes/druvek.tscn" id="1_dghqy"]
+[ext_resource type="Texture2D" uid="uid://dr2ofp0o7n4f" path="res://assets/Space Stuff 2/Charecter creator/Base body 02.png" id="2_0vah3"]
+[ext_resource type="Script" uid="uid://d32nkbwki3uhw" path="res://scenes/moko.gd" id="2_ibmp2"]
+[ext_resource type="Texture2D" uid="uid://d7nl8r15gcma" path="res://assets/Space Stuff 2/Charecter creator/Eye 05.png" id="3_ibmp2"]
+[ext_resource type="Texture2D" uid="uid://ctmuu0r8l0xi5" path="res://assets/Space Stuff 2/Charecter creator/Head 02.png" id="4_y5tef"]
+[ext_resource type="Texture2D" uid="uid://cu0f4qjtda4ru" path="res://assets/Space Stuff 2/Charecter creator/Head 06.png" id="5_ujeep"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4pm6r"]
+blend_mode = 3
+
+[node name="Moko" instance=ExtResource("1_dghqy")]
+script = ExtResource("2_ibmp2")
+
+[node name="Sprite2D" parent="Sprite" index="0"]
+texture = ExtResource("2_0vah3")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D3" parent="Sprite" index="1"]
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D2" parent="Sprite" index="2"]
+texture = ExtResource("3_ibmp2")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D4" parent="Sprite" index="3"]
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D5" parent="Sprite" index="4"]
+visible = false
+position = Vector2(-2, 5.66667)
+scale = Vector2(0.3, 0.21)
+texture = ExtResource("4_y5tef")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Sprite" index="5"]
+visible = false
+position = Vector2(1.5, 5.5)
+scale = Vector2(0.3, 0.21)
+texture = ExtResource("4_y5tef")
+
+[node name="TShirt" parent="Sprite" index="6"]
+offset_left = -3.0
+offset_top = 5.0
+offset_right = 2.0
+offset_bottom = 9.0
+
+[node name="TShirt2" type="ColorRect" parent="Sprite" index="7"]
+material = SubResource("CanvasItemMaterial_4pm6r")
+offset_left = -4.0
+offset_top = 9.0
+offset_right = -2.0
+offset_bottom = 10.0
+color = Color(0, 0, 1, 0.215686)
+
+[node name="TShirt4" type="ColorRect" parent="Sprite" index="8"]
+material = SubResource("CanvasItemMaterial_4pm6r")
+offset_left = -4.0
+offset_top = 8.0
+offset_right = -3.0
+offset_bottom = 9.0
+color = Color(0, 0, 1, 0.215686)
+
+[node name="TShirt3" type="ColorRect" parent="Sprite" index="9"]
+material = SubResource("CanvasItemMaterial_4pm6r")
+offset_left = 2.0
+offset_top = 8.0
+offset_right = 3.0
+offset_bottom = 10.0
+color = Color(0, 0, 1, 0.215686)
+
+[node name="TShirt5" type="ColorRect" parent="Sprite" index="10"]
+material = SubResource("CanvasItemMaterial_4pm6r")
+offset_left = -4.0
+offset_top = 3.0
+offset_right = 3.0
+offset_bottom = 5.0
+color = Color(0, 0, 1, 0.215686)
+
+[node name="Pants1" parent="Sprite" index="11"]
+metadata/_edit_lock_ = true
+
+[node name="Pants" parent="Sprite" index="12"]
+metadata/_edit_lock_ = true
+
+[node name="Leg" parent="Sprite" index="13"]
+metadata/_edit_lock_ = true
+
+[node name="Leg2" parent="Sprite" index="14"]
+metadata/_edit_lock_ = true
+
+[node name="Leg4" parent="Sprite" index="15"]
+metadata/_edit_lock_ = true
+
+[node name="Leg3" parent="Sprite" index="16"]
+metadata/_edit_lock_ = true
+
+[node name="Face" parent="Sprite" index="17"]
+color = Color(1, 0.664456, 0.181081, 1)
+metadata/_edit_lock_ = true
+
+[node name="Face2" parent="Sprite" index="18"]
+color = Color(1, 0.664456, 0.181081, 1)
+metadata/_edit_lock_ = true
+
+[node name="Face3" parent="Sprite" index="19"]
+color = Color(1, 0.664456, 0.181081, 1)
+metadata/_edit_lock_ = true
+
+[node name="Face4" parent="Sprite" index="20"]
+color = Color(1, 0.664456, 0.181081, 1)
+metadata/_edit_lock_ = true
+
+[node name="Face5" type="ColorRect" parent="Sprite" index="21"]
+material = SubResource("CanvasItemMaterial_4pm6r")
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 7.0
+offset_bottom = 9.0
+color = Color(1, 0.664456, 0.181081, 1)
+
+[node name="Face6" type="ColorRect" parent="Sprite" index="22"]
+material = SubResource("CanvasItemMaterial_4pm6r")
+offset_left = -8.0
+offset_top = 4.0
+offset_right = -5.0
+offset_bottom = 9.0
+color = Color(1, 0.664456, 0.181081, 1)
+
+[node name="Face7" type="ColorRect" parent="Sprite" index="23"]
+material = SubResource("CanvasItemMaterial_4pm6r")
+offset_left = -9.0
+offset_top = 4.0
+offset_right = -8.0
+offset_bottom = 7.0
+color = Color(1, 0.664456, 0.181081, 1)
+
+[node name="Face8" type="ColorRect" parent="Sprite" index="24"]
+material = SubResource("CanvasItemMaterial_4pm6r")
+offset_left = 6.66667
+offset_top = 4.16667
+offset_right = 7.66667
+offset_bottom = 7.16667
+color = Color(1, 0.664456, 0.181081, 1)
+
+[node name="Face9" type="ColorRect" parent="Sprite" index="25"]
+material = SubResource("CanvasItemMaterial_4pm6r")
+offset_left = 4.0
+offset_top = 1.0
+offset_right = 6.0
+offset_bottom = 4.0
+color = Color(1, 0.664456, 0.181081, 1)
+
+[node name="Face10" type="ColorRect" parent="Sprite" index="26"]
+material = SubResource("CanvasItemMaterial_4pm6r")
+offset_left = -6.0
+offset_top = 1.0
+offset_right = 4.0
+offset_bottom = 3.0
+color = Color(1, 0.664456, 0.181081, 1)
+
+[node name="Face11" type="ColorRect" parent="Sprite" index="27"]
+material = SubResource("CanvasItemMaterial_4pm6r")
+offset_left = -7.0
+offset_top = 2.0
+offset_right = -6.0
+offset_bottom = 4.0
+color = Color(1, 0.664456, 0.181081, 1)
+
+[node name="Face12" type="ColorRect" parent="Sprite" index="28"]
+material = SubResource("CanvasItemMaterial_4pm6r")
+offset_left = -6.0
+offset_top = 3.0
+offset_right = -5.0
+offset_bottom = 4.0
+color = Color(1, 0.664456, 0.181081, 1)
+
+[node name="Head06" parent="Sprite" index="29"]
+position = Vector2(-5, -18.5)
+rotation = -2.20086
+
+[node name="Head07" type="Sprite2D" parent="Sprite" index="30"]
+modulate = Color(0.146364, 0.102277, 0, 1)
+position = Vector2(-0.166667, -19.5)
+rotation = -1.68773
+scale = Vector2(0.90625, 0.875)
+texture = ExtResource("5_ujeep")
+
+[node name="Head08" type="Sprite2D" parent="Sprite" index="31"]
+modulate = Color(0.146364, 0.102277, 0, 1)
+position = Vector2(5.33333, -19.5)
+rotation = -1.45386
+scale = Vector2(0.90625, 0.875)
+texture = ExtResource("5_ujeep")
+
+[node name="Head09" type="Sprite2D" parent="Sprite" index="32"]
+modulate = Color(0.146364, 0.102277, 0, 1)
+position = Vector2(13.3333, -12.5)
+rotation = -0.659734
+scale = Vector2(0.90625, 0.875)
+texture = ExtResource("5_ujeep")
+
+[node name="Head10" type="Sprite2D" parent="Sprite" index="33"]
+modulate = Color(0.146364, 0.102277, 0, 1)
+position = Vector2(10, -20.1667)
+rotation = -1.56452
+scale = Vector2(0.90625, 0.875)
+texture = ExtResource("5_ujeep")
+
+[node name="InteractArea" parent="." index="2"]
+metadata/_edit_lock_ = true

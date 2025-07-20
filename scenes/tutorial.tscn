@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://2kj2y8jq2lbt"]
+[gd_scene load_steps=11 format=3 uid="uid://2kj2y8jq2lbt"]
 
 [ext_resource type="Shader" uid="uid://ckjc1clqaw02l" path="res://scripts/space.gdshader" id="1_c13y7"]
 [ext_resource type="PackedScene" uid="uid://bnxmf8waol6sn" path="res://scenes/ship.tscn" id="2_4kmhl"]
 [ext_resource type="PackedScene" uid="uid://fqwiliyihkrs" path="res://scenes/crate.tscn" id="3_cq4me"]
 [ext_resource type="Script" uid="uid://m86nywm3fg2d" path="res://scripts/camera_2d.gd" id="4_6yjpi"]
 [ext_resource type="PackedScene" uid="uid://b2cpljbh1tc6g" path="res://scenes/ui.tscn" id="5_cq4me"]
+[ext_resource type="PackedScene" uid="uid://danwcvytrencc" path="res://scenes/world_border.tscn" id="6_6yjpi"]
+[ext_resource type="Script" uid="uid://etuuhchfugg0" path="res://scenes/asteroid_activation_zone.gd" id="7_gbqnl"]
+[ext_resource type="Script" uid="uid://cqo1ihl4tdotw" path="res://scenes/finish_zone.gd" id="8_ckvwl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8ho6b"]
 shader = ExtResource("1_c13y7")
@@ -17,6 +20,9 @@ shader_parameter/smallStarAmount = 0.002
 shader_parameter/mediumStarAmount = 0.01
 shader_parameter/bigStarAmount = 0.02
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6yjpi"]
+size = Vector2(4827.5, 2551)
+
 [node name="Tutorial" type="Node2D"]
 
 [node name="SpaceBackground" type="ColorRect" parent="."]
@@ -24,8 +30,22 @@ material = SubResource("ShaderMaterial_8ho6b")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 100000.0
-offset_bottom = 80000.0
+offset_left = -890.0
+offset_top = -3000.0
+offset_right = 99110.0
+offset_bottom = 77000.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SpaceBackground2" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_8ho6b")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -890.0
+offset_top = -3000.0
+offset_right = 99110.0
+offset_bottom = 77000.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -53,6 +73,87 @@ offset_bottom = 40243.0
 theme_override_font_sizes/font_size = 100
 text = "Press Space to BOOOOST!!"
 
+[node name="Label4" type="Label" parent="."]
+offset_left = 49793.0
+offset_top = 36844.0
+offset_right = 51764.0
+offset_bottom = 37117.0
+theme_override_font_sizes/font_size = 100
+text = "Moving uses energy, in space or on land"
+
+[node name="Label5" type="Label" parent="."]
+offset_left = 49751.0
+offset_top = 35122.0
+offset_right = 51831.0
+offset_bottom = 35395.0
+theme_override_font_sizes/font_size = 100
+text = "You need to COSUME food to gain energy!"
+
+[node name="Label6" type="Label" parent="."]
+offset_left = 49729.0
+offset_top = 33492.0
+offset_right = 51809.0
+offset_bottom = 33765.0
+theme_override_font_sizes/font_size = 100
+text = "You need to dodge the asteroids,
+ If you hit one, your ship takes damage"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="."]
+offset_left = 49694.0
+offset_top = 31211.0
+offset_right = 51871.0
+offset_bottom = 31768.0
+theme_override_font_sizes/font_size = 100
+text = "If your ship gets too damaged you can:
+
+- buy a repair when you land on a planet.
+- Or kill enemy ships and pickup metal scraps"
+vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="."]
+offset_left = 48826.0
+offset_top = 27714.0
+offset_right = 52574.0
+offset_bottom = 28271.0
+theme_override_font_sizes/font_size = 100
+text = "Eh, your probably smart enough I think you can figure out the rest by yourself. 
+HAVE FUN!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label9" type="Label" parent="."]
+offset_left = 48748.0
+offset_top = 30122.0
+offset_right = 52549.0
+offset_bottom = 30679.0
+theme_override_font_sizes/font_size = 100
+text = "'F' to eat food. "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label10" type="Label" parent="."]
+offset_left = 48760.0
+offset_top = 29436.0
+offset_right = 52561.0
+offset_bottom = 29993.0
+theme_override_font_sizes/font_size = 100
+text = "'G' to self-canibalize. This will give you max energy
+ but your max energy will go down. So you will become forever WEAKER."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label11" type="Label" parent="."]
+offset_left = 48754.0
+offset_top = 28578.0
+offset_right = 52555.0
+offset_bottom = 29135.0
+theme_override_font_sizes/font_size = 100
+text = "[TAB] to Zoom Out. This will use energy but can help you to find planets."
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Ship" parent="." instance=ExtResource("2_4kmhl")]
 position = Vector2(50688, 43897)
 crate_scene = ExtResource("3_cq4me")
@@ -65,4 +166,42 @@ script = ExtResource("4_6yjpi")
 metadata/_edit_lock_ = true
 
 [node name="UI" parent="." instance=ExtResource("5_cq4me")]
-visible = false
+
+[node name="WorldBorder" parent="." instance=ExtResource("6_6yjpi")]
+position = Vector2(47878, 43321)
+scale = Vector2(5, 500)
+
+[node name="WorldBorder2" parent="." instance=ExtResource("6_6yjpi")]
+position = Vector2(53437, 43354)
+scale = Vector2(5, 500)
+
+[node name="WorldBorder3" parent="." instance=ExtResource("6_6yjpi")]
+position = Vector2(50615, 24844)
+rotation = 1.5708
+scale = Vector2(5, 30)
+
+[node name="WorldBorder4" parent="." instance=ExtResource("6_6yjpi")]
+position = Vector2(50868, 48029)
+rotation = 1.5708
+scale = Vector2(5, 30)
+
+[node name="AsteroidActivationZone" type="Area2D" parent="."]
+script = ExtResource("7_gbqnl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AsteroidActivationZone"]
+position = Vector2(50641, 33291.5)
+shape = SubResource("RectangleShape2D_6yjpi")
+metadata/_edit_lock_ = true
+
+[node name="FinishZone" type="Area2D" parent="."]
+script = ExtResource("8_ckvwl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FinishZone"]
+position = Vector2(50611, 24847)
+shape = SubResource("RectangleShape2D_6yjpi")
+
+[node name="AsteroidPos" type="Marker2D" parent="."]
+position = Vector2(50713, 29516)
+
+[connection signal="body_entered" from="AsteroidActivationZone" to="AsteroidActivationZone" method="_on_body_entered"]
+[connection signal="body_entered" from="FinishZone" to="FinishZone" method="_on_body_entered"]

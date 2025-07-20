@@ -12,6 +12,7 @@ func transin():
 func transout():
 	$Anim.play("TransOut")
 
+
 	
 func _ready() -> void:
 	switch_item(0)
@@ -48,6 +49,18 @@ func _on_buy_pressed() -> void:
 	var selected_item = item_list[curr_item]
 	if selected_item["Cost"] > Globals.money:
 		return
+	
+	if selected_item["Name"] == "Better Thrusters":
+		if Globals.thruster_power == 3.5:
+			return
+		print("BAOUGH")
+		Globals.thruster_power = 4
+		Globals.boost_energy_use = 1.0
+		if selected_item["Cost"] <= Globals.money:
+			Globals.money -= selected_item["Cost"]
+
+
+		
 	if Globals.ship_damage >= 100:
 		return
 
@@ -58,6 +71,7 @@ func _on_buy_pressed() -> void:
 		Globals.ship_damage += 25
 	elif selected_item["Name"] == "Ship Overhaul":
 		Globals.ship_damage += 50
+
 		
 	if selected_item["Cost"] <= Globals.money:
 		Globals.money -= selected_item["Cost"]

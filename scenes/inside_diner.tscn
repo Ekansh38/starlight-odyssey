@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=4 uid="uid://bq7u2mpxyfho2"]
+[gd_scene load_steps=13 format=4 uid="uid://bq7u2mpxyfho2"]
 
 [ext_resource type="Texture2D" uid="uid://l8iheibflqgc" path="res://assets/kenney_rpg-urban-pack/blackbackground.png" id="1_g3jbm"]
 [ext_resource type="Texture2D" uid="uid://dfbpn4sjrvw8o" path="res://assets/Space Stuff 2/Tilesets/Bar inside.png" id="2_b84ji"]
 [ext_resource type="Texture2D" uid="uid://b8eqo0kx7hj25" path="res://assets/Space stuff extras/Tilesets/Diner inside.png" id="2_mowq2"]
 [ext_resource type="PackedScene" uid="uid://b2cpljbh1tc6g" path="res://scenes/ui.tscn" id="3_mowq2"]
+[ext_resource type="PackedScene" uid="uid://irjotoyw8p1k" path="res://scenes/pimloo.tscn" id="5_g3jbm"]
 [ext_resource type="PackedScene" uid="uid://b086uqul0vcjs" path="res://scenes/player.tscn" id="5_tedg4"]
 [ext_resource type="PackedScene" uid="uid://qa0plaqh16w0" path="res://scenes/hunger_controller.tscn" id="6_603gg"]
 [ext_resource type="PackedScene" uid="uid://danwcvytrencc" path="res://scenes/world_border.tscn" id="7_e0kid"]
@@ -113,6 +114,9 @@ tile_set = SubResource("TileSet_15dwq")
 
 [node name="Ysort" type="Node2D" parent="."]
 y_sort_enabled = true
+
+[node name="Pimloo" parent="." instance=ExtResource("5_g3jbm")]
+position = Vector2(178, -400)
 
 [node name="Table" type="TileMapLayer" parent="."]
 scale = Vector2(3, 3)

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://duusa0esj5lwf"]
+
+[ext_resource type="PackedScene" uid="uid://crahrlgwgfepd" path="res://scenes/shop.tscn" id="1_d8fvw"]
+[ext_resource type="Script" uid="uid://cytbdlxa7djqb" path="res://scenes/compass_shop.gd" id="2_c4h2e"]
+
+[node name="CompassShop" instance=ExtResource("1_d8fvw")]
+layer = 100
+script = ExtResource("2_c4h2e")
+
+[node name="Panel" parent="." index="0"]
+modulate = Color(0.394273, 6.40741e-07, 2.88785e-07, 1)
+
+[node name="Icon" parent="Control" index="6"]
+scale = Vector2(5, 5)

@@ -5,8 +5,46 @@ extends CharacterBody2D
 @export var MAX_SPEED:=  800.0
 
 var drink_held = "none"
-
+@export var can_use_gun = true
+@export var fire_cooldown := 0.18   # seconds between shots
+var _fire_cd_left := 0.0
+signal shoot(direction: Vector2, origin: Vector2)
 @export var walk_energy_per_second := 1.0
+
+func _ready():
+	$Gun.visible = false
+
+func _point_gun_at_mouse() -> void:
+	var gun = $Gun
+	var mouse_pos = get_global_mouse_position()
+	var to_mouse = mouse_pos - gun.global_position
+	gun.rotation = to_mouse.angle() + deg_to_rad(90)
+
+func _process(delta: float) -> void:
+	if Globals.player_has_gun and can_use_gun:
+		$Gun.visible = true
+		_point_gun_at_mouse()
+
+		if _fire_cd_left > 0.0:
+			_fire_cd_left -= delta
+
+		if Input.is_action_just_pressed("shoot") and _fire_cd_left <= 0.0 and Input.is_action_pressed("boost"):
+			_fire_cd_left = fire_cooldown
+			_fire_gun()
+	else:
+		$Gun.visible = false
+func _fire_gun() -> void:
+	var muzzle := $Gun.get_node_or_null("Muzzle")
+	var origin: Vector2 = muzzle.global_position if muzzle else $Gun.global_position
+
+	var dir := (get_global_mouse_position() - origin)
+	if dir.length() == 0:
+		dir = Vector2.UP
+	else:
+		dir = dir.normalized()
+
+	emit_signal("shoot", dir, origin)		
+
 
 func set_controls_enabled(enable: bool) -> void: 
 	controls_enabled = enable

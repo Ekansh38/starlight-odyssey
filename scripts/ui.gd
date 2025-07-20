@@ -32,8 +32,10 @@ func _process(delta):
 		_frames = 0
 
 func _ready() -> void:
-	Globals.connect("update_stats", update_stats)
+	hitman_photo_visible(false)
 
+	Globals.connect("update_stats", update_stats)
+	$HitmanTimerLabel.text = ""
 	update_stats()
 	if not pickup_label:
 		push_error("PickupIndicator label not found.")
@@ -57,7 +59,16 @@ func update_stats():
 	$Ammo/Ammo.text = str(Globals.player_ammo)
 
 func change_info(message):
+	print("CALLED")
+
 	$InfoLabel.text = message
+	if message == "ASSASINATION SUCSESSFUL!":
+		await get_tree().create_timer(1.5).timeout
+		$InfoLabel.text = ""
+	elif message == "Launch into space to use.":
+		await get_tree().create_timer(4).timeout
+		$InfoLabel.text = ""
+
 
 func change_minor_info(message):
 	$InfoLabel2.text = message
@@ -188,3 +199,79 @@ func _clear_immediately() -> void:
 func _kill_tween(tw: Tween) -> void:
 	if tw and tw.is_valid():
 		tw.kill()
+		
+func hitman_photo_visible(the_bool):
+	$HitmanPhotoFrame.visible = the_bool
+	$HitmanPhoto.visible = the_bool
+	$HitmanLabel.visible = the_bool
+	
+const HITMAN_DURATION := 60          # total seconds (1 minute)
+const WARNING_THRESHOLD := 10        # when to turn red / shake
+
+@onready var hitman_timer: Timer = $HitmanTimer
+@onready var hitman_label: Label = $HitmanTimerLabel
+
+var hitman_seconds_left: int = 0
+var hitman_active: bool = false
+
+func start_hitman_timer():
+	if hitman_active:
+		return                      # already running
+	hitman_seconds_left = HITMAN_DURATION
+	hitman_active = true
+	_update_hitman_label()
+
+	# Configure the internal 1-second ticking timer
+	hitman_timer.wait_time = 1.0
+	hitman_timer.one_shot = false
+	if not hitman_timer.timeout.is_connected(_on_hitman_tick):
+		hitman_timer.timeout.connect(_on_hitman_tick)
+	hitman_timer.start()
+
+func cancel_hitman_timer():
+	if not hitman_active:
+		return
+	hitman_active = false
+	hitman_timer.stop()
+	hitman_label.text = ""  # or keep the last shown time
+
+func _on_hitman_tick():
+	if not hitman_active:
+		return
+
+	hitman_seconds_left -= 1
+	if hitman_seconds_left <= 0:
+		hitman_seconds_left = 0
+		_update_hitman_label()
+		hitman_timer.stop()
+		hitman_active = false
+		_on_hitman_timer_finished()
+	else:
+		_update_hitman_label()
+
+func _update_hitman_label():
+	var m := hitman_seconds_left / 60
+	var s := hitman_seconds_left % 60
+	hitman_label.text = "%02d:%02d" % [m, s]
+
+	if hitman_seconds_left <= WARNING_THRESHOLD and hitman_seconds_left > 0:
+		hitman_label.modulate = Color(1, 0.2, 0.2)
+		_shake_label()
+	else:
+		hitman_label.modulate = Color(1, 1, 1)
+
+func _shake_label():
+	# Simple small horizontal shake
+	var base_pos := hitman_label.position
+	var tw := hitman_label.create_tween()
+	tw.tween_property(hitman_label, "position:x", base_pos.x + 4, 0.05).set_trans(Tween.TRANS_SINE)
+	tw.tween_property(hitman_label, "position:x", base_pos.x - 4, 0.05).set_trans(Tween.TRANS_SINE)
+	tw.tween_property(hitman_label, "position:x", base_pos.x,       0.05).set_trans(Tween.TRANS_SINE)
+
+func _on_hitman_timer_finished():
+	if Globals.is_in_hitman_game:
+		change_info("ASSASINATION FAILED")
+		$HitmanTimerLabel.text = ""
+		hitman_photo_visible(false)
+		await get_tree().create_timer(2).timeout
+		change_info("")

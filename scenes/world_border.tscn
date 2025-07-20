@@ -1,9 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://danwcvytrencc"]
+[gd_scene load_steps=3 format=3 uid="uid://danwcvytrencc"]
+
+[ext_resource type="Script" uid="uid://di4e5xjbjob67" path="res://scenes/world_border.gd" id="1_gs6km"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_36rkt"]
 
 [node name="WorldBorder" type="StaticBody2D"]
+script = ExtResource("1_gs6km")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+color = Color(0.266575, 0.266575, 0.266575, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 scale = Vector2(10, 10)
 shape = SubResource("RectangleShape2D_36rkt")
+metadata/_edit_lock_ = true

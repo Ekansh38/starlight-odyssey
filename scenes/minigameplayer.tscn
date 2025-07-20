@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bq2ngq6ywh4mx"]
+[gd_scene load_steps=12 format=3 uid="uid://bq2ngq6ywh4mx"]
 
-[ext_resource type="Script" uid="uid://ckbgll8dw1owc" path="res://scripts/player.gd" id="1_sqmqd"]
+[ext_resource type="Script" uid="uid://b41yqv5beko1r" path="res://scenes/minigameplayer.gd" id="1_sqmqd"]
 [ext_resource type="Texture2D" uid="uid://b75so81q7m38u" path="res://assets/Space Stuff 2/Player Sprites/Player RPG overworld sprite.png" id="2_7bldt"]
 [ext_resource type="Script" uid="uid://d3uyx6dqoek1t" path="res://scripts/label_holder.gd" id="3_jr7xj"]
+[ext_resource type="Texture2D" uid="uid://d3urmf41rumit" path="res://assets/Space stuff extras/Player/Gun.png" id="4_sqmqd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ty8qi"]
 size = Vector2(63, 68)
@@ -101,6 +102,14 @@ _data = {
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_sqmqd")
+
+[node name="Gun" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(61, 33)
+scale = Vector2(3, 3)
+texture = ExtResource("4_sqmqd")
+offset = Vector2(0.5, -8)
+hframes = 5
 
 [node name="Holdable" type="Sprite2D" parent="."]
 position = Vector2(58, 19)

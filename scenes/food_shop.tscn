@@ -5,6 +5,3 @@
 
 [node name="FoodShop" instance=ExtResource("1_o6o0p")]
 script = ExtResource("2_bmqsq")
-
-[node name="Icon" parent="Control" index="6"]
-scale = Vector2(0.3, 0.3)

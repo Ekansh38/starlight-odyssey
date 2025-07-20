@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 		$CanvasLayer/SkipBar.value = 0
 	
 	if $CanvasLayer/SkipBar.value >= 100:
-		get_tree().change_scene_to_file("res://scenes/space.tscn")
+		get_tree().change_scene_to_file("res://scenes/tutorial.tscn")
 
 
 		

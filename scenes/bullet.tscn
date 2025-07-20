@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ccr20ehg8758n"]
 
 [ext_resource type="Script" uid="uid://42lmpx0uk17" path="res://scripts/bullet.gd" id="1_y25gk"]
-[ext_resource type="Texture2D" uid="uid://b35w3jb6uq65b" path="res://assets/Space Stuff 2/Player Sprites/pixil-frame-0-77.png" id="2_y25gk"]
+[ext_resource type="Texture2D" uid="uid://co7r3yebsii4e" path="res://assets/Space Stuff 2/Player Sprites/pixil-frame-0-77.png" id="2_y25gk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mkf8s"]
 radius = 13.0

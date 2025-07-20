@@ -1,6 +1,6 @@
 extends Area2D
 
-@onready var bartender := $"../Ysort/Mayannaise"
+@onready var bartender := $"../Ysort".get_child(0)
 @onready var work_point := $"../MayaWorkPoint"
 @onready var greet_point := $"../MayaWalkPoint"
 

@@ -1,0 +1,200 @@
+[gd_scene load_steps=7 format=3 uid="uid://be3tndk0ahno"]
+
+[ext_resource type="PackedScene" uid="uid://tyn2neh5gamd" path="res://scenes/druvek.tscn" id="1_t4dcr"]
+[ext_resource type="Texture2D" uid="uid://dirfgnu1wi5op" path="res://assets/Space Stuff 2/Charecter creator/Eye 01.png" id="2_0prxq"]
+[ext_resource type="Script" uid="uid://c0e40271yvgiy" path="res://scenes/wibble.gd" id="2_cken8"]
+[ext_resource type="Texture2D" uid="uid://bs5e5a4w3yy8g" path="res://assets/Space Stuff 2/Charecter creator/Mouth 01.png" id="3_0prxq"]
+[ext_resource type="Texture2D" uid="uid://nq8d2inbonpi" path="res://assets/Space Stuff 2/Charecter creator/Shirt 02.png" id="4_es87t"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4pm6r"]
+blend_mode = 3
+
+[node name="Wibble" instance=ExtResource("1_t4dcr")]
+script = ExtResource("2_cken8")
+
+[node name="Sprite2D2" parent="Sprite" index="2"]
+texture = ExtResource("2_0prxq")
+
+[node name="Sprite2D4" parent="Sprite" index="3"]
+texture = ExtResource("3_0prxq")
+
+[node name="Sprite2D5" parent="Sprite" index="4"]
+texture = ExtResource("4_es87t")
+
+[node name="TShirt" parent="Sprite" index="5"]
+visible = false
+
+[node name="Pants1" parent="Sprite" index="6"]
+visible = false
+
+[node name="Pants" parent="Sprite" index="7"]
+visible = false
+
+[node name="Leg" parent="Sprite" index="8"]
+visible = false
+
+[node name="Leg2" parent="Sprite" index="9"]
+visible = false
+
+[node name="Leg4" parent="Sprite" index="10"]
+visible = false
+
+[node name="Leg3" parent="Sprite" index="11"]
+visible = false
+
+[node name="Face" parent="Sprite" index="12"]
+visible = false
+
+[node name="Face2" parent="Sprite" index="13"]
+color = Color(0.468725, 0.811187, 0.840144, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Face5" type="ColorRect" parent="Sprite" index="14"]
+material = SubResource("CanvasItemMaterial_4pm6r")
+offset_left = 3.0
+offset_top = -11.0
+offset_right = 4.0
+offset_bottom = -2.0
+color = Color(0.468725, 0.811187, 0.840144, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Face6" type="ColorRect" parent="Sprite" index="15"]
+material = SubResource("CanvasItemMaterial_4pm6r")
+offset_left = -5.0
+offset_top = -10.8333
+offset_right = -4.0
+offset_bottom = -1.83333
+color = Color(0.468725, 0.811187, 0.840144, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Face7" type="ColorRect" parent="Sprite" index="16"]
+material = SubResource("CanvasItemMaterial_4pm6r")
+offset_left = -4.0
+offset_top = -11.0
+offset_right = 3.0
+offset_bottom = -7.0
+color = Color(0.468725, 0.811187, 0.840144, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Face8" type="ColorRect" parent="Sprite" index="17"]
+material = SubResource("CanvasItemMaterial_4pm6r")
+offset_left = 4.0
+offset_top = 1.0
+offset_right = 6.0
+offset_bottom = 9.0
+color = Color(0.468725, 0.811187, 0.840144, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Face9" type="ColorRect" parent="Sprite" index="18"]
+material = SubResource("CanvasItemMaterial_4pm6r")
+offset_left = -7.0
+offset_top = 1.0
+offset_right = -5.0
+offset_bottom = 9.0
+color = Color(0.468725, 0.811187, 0.840144, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Face10" type="ColorRect" parent="Sprite" index="19"]
+material = SubResource("CanvasItemMaterial_4pm6r")
+offset_left = -2.0
+offset_top = 1.0
+offset_right = 1.0
+offset_bottom = 10.0
+color = Color(0.468725, 0.811187, 0.840144, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Face11" type="ColorRect" parent="Sprite" index="20"]
+material = SubResource("CanvasItemMaterial_4pm6r")
+offset_left = -5.0
+offset_top = 9.0
+offset_right = -2.0
+offset_bottom = 10.0
+color = Color(0.468725, 0.811187, 0.840144, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Face12" type="ColorRect" parent="Sprite" index="21"]
+material = SubResource("CanvasItemMaterial_4pm6r")
+offset_left = 0.833333
+offset_top = 9.0
+offset_right = 3.83333
+offset_bottom = 10.0
+color = Color(0.468725, 0.811187, 0.840144, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Face13" type="ColorRect" parent="Sprite" index="22"]
+material = SubResource("CanvasItemMaterial_4pm6r")
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 3.0
+offset_bottom = 8.0
+color = Color(0.902829, 0.673141, 0.73412, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Face15" type="ColorRect" parent="Sprite" index="23"]
+material = SubResource("CanvasItemMaterial_4pm6r")
+offset_left = 1.0
+offset_top = 10.0
+offset_right = 3.0
+offset_bottom = 16.0
+color = Color(0.902829, 0.673141, 0.73412, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Face18" type="ColorRect" parent="Sprite" index="24"]
+material = SubResource("CanvasItemMaterial_4pm6r")
+offset_left = -4.16667
+offset_top = 9.83333
+offset_right = -2.16667
+offset_bottom = 15.8333
+color = Color(0.902829, 0.673141, 0.73412, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Face16" type="ColorRect" parent="Sprite" index="25"]
+material = SubResource("CanvasItemMaterial_4pm6r")
+offset_left = 3.0
+offset_top = 14.0
+offset_right = 6.0
+offset_bottom = 16.0
+color = Color(0.902829, 0.673141, 0.73412, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Face17" type="ColorRect" parent="Sprite" index="26"]
+material = SubResource("CanvasItemMaterial_4pm6r")
+offset_left = -6.83333
+offset_top = 13.8333
+offset_right = -3.83333
+offset_bottom = 15.8333
+color = Color(0.902829, 0.673141, 0.73412, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Face19" type="ColorRect" parent="Sprite" index="27"]
+material = SubResource("CanvasItemMaterial_4pm6r")
+offset_left = -2.0
+offset_top = 10.0
+offset_right = -1.0
+offset_bottom = 11.0
+color = Color(0.902829, 0.673141, 0.73412, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Face14" type="ColorRect" parent="Sprite" index="28"]
+material = SubResource("CanvasItemMaterial_4pm6r")
+offset_left = -4.0
+offset_top = 0.833333
+offset_right = -3.0
+offset_bottom = 7.83333
+color = Color(0.902829, 0.673141, 0.73412, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Face3" parent="Sprite" index="29"]
+visible = false
+
+[node name="Face4" parent="Sprite" index="30"]
+visible = false
+
+[node name="Head06" parent="Sprite" index="31"]
+modulate = Color(0.101643, 0.0673475, 6.01634e-09, 1)
+scale = Vector2(1.243, 1.2)
+
+[node name="DamageParticles" parent="." index="4"]
+amount = 60
+emission_shape = 1
+emission_sphere_radius = 8.97

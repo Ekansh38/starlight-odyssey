@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://dortf3hvj3dv0" path="res://enemy.gd" id="1_md0e3"]
 [ext_resource type="PackedScene" uid="uid://ccr20ehg8758n" path="res://scenes/bullet.tscn" id="2_4ra3w"]
-[ext_resource type="Texture2D" uid="uid://c8c7lb6ilcme0" path="res://assets/Space Stuff 2/Enemy/Enemy Ship Sprites.png" id="3_4ra3w"]
+[ext_resource type="Texture2D" uid="uid://cvy1cg8vdmcyw" path="res://assets/Space Stuff 2/Enemy/Enemy Ship Sprites.png" id="3_4ra3w"]
 [ext_resource type="Shader" uid="uid://dif2qa2gdlm1q" path="res://scripts/enemy.gdshader" id="3_c4w8v"]
 [ext_resource type="Script" uid="uid://c17nhnqrujd8c" path="res://scripts/health_bar_container.gd" id="4_5uy6h"]
-[ext_resource type="Texture2D" uid="uid://b35w3jb6uq65b" path="res://assets/Space Stuff 2/Player Sprites/pixil-frame-0-77.png" id="6_krt4s"]
+[ext_resource type="Texture2D" uid="uid://co7r3yebsii4e" path="res://assets/Space Stuff 2/Player Sprites/pixil-frame-0-77.png" id="6_krt4s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c4w8v"]
 shader = ExtResource("3_c4w8v")

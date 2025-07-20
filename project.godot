@@ -24,15 +24,25 @@ PauseMenu="*res://scenes/pause_menu.tscn"
 [dialogic]
 
 directories/dch_directory={
+"Aporion": "res://Timelines/Aporion.dch",
+"Astriux": "res://Astriux.dch",
 "Druvek": "res://Timelines/Druvek.dch",
 "Mayannaise": "res://Timelines/Mayannaise.dch",
+"Moko": "res://Timelines/Moko.dch",
+"Nephryl": "res://Timelines/Nephryl.dch",
 "unit_test_character": "res://Tests/Resources/unit_test_character.dch"
 }
 directories/dtl_directory={
+"cocktail_order_astriux": "res://Timelines/cocktail_order_astriux.dtl",
+"cocktail_order_druvek": "res://Timelines/cocktail_order_druvek.dtl",
+"cocktail_order_nephryl": "res://Timelines/cocktail_order_nephryl.dtl",
 "druvek": "res://Timelines/druvek.dtl",
-"mayannaise": "res://Timelines/mayannaise.dtl"
+"mayannaise": "res://Timelines/mayannaise.dtl",
+"moko": "res://Timelines/moko.dtl"
 }
-variables={}
+variables={
+"has_gun": false
+}
 glossary/default_case_sensitive=true
 text/letter_speed=0.01
 choices/autofocus_first=true
@@ -55,6 +65,10 @@ window/stretch/mode="canvas_items"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/godot-vim/plugin.cfg")
+
+[global_group]
+
+NPC=""
 
 [input]
 

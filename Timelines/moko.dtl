@@ -1,0 +1,36 @@
+Moko: Hey, I need your help...
+- Okay
+	Moko: I will pay you well, just promise not to tell anyone...
+	- Why can't I tell anyone?
+		Moko: It might be, slightly illegal. BUT I WILL PAY YOU VERY WELL
+		- Okay, so what is it?
+			label The Quest
+			Moko: I need you to KILL my ex-husband, his name is Wibble, ill give you a photo.
+			- NO WAY!
+				Moko: ARRg, BYE
+			- Okay, Im in
+				Moko: And as for how you are going to kill him...
+				Moko: There is a gun dealer, he goes by the name Nephryl...
+				Moko: Also to use the gun, click while pressing SPACE.
+
+				if {has_gun} == true:
+					Moko: And, it looks like you already have a gun!
+					Moko: Here is the photo of him. FIND HIM AND KILL HIM!
+					[signal arg="hitman_job_start"]
+				else:
+					Moko: He is a pretty common drinker at the bar too. He wears a trench coat and has a read head, he usually hangs around this area, you should be able to find him...
+					Moko: Here is $20, this should be enough to buy the gun...
+					Moko: Ill pay you the rest after the job...
+					Moko: AND IF YOU RUN AWAY WITH MY MONEY AND DONT FINISH THE JOB, BAD, BAD THINGS WILL HAPPEN TO YOU!!
+					Moko: Go find him to buy a gun. Then kill Wibble!
+					Moko: Okay, here is the photo of him & the money!
+					
+					[signal arg="hitman_job_start"]
+		- Im out
+			Moko: uuurag, FINE, BYE...
+	- Go on...
+		jump The Quest
+	- I don't wanna help you!
+		Moko: uuurag, FINE, BYE...
+- Sorry, no
+	Moko: ARRg, BYE

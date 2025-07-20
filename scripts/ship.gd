@@ -6,7 +6,6 @@ extends CharacterBody2D
 @export var max_speed_value: float = 1800.0
 @export var side_ratio: float = 0.2
 @export var steer_boost: float = 1.15
-@export var boost_multiplier: float = 2.5
 @export var brake_thrust_value: float = 800.0
 @export var brake_energy_multiplier: float = 5
 
@@ -45,7 +44,7 @@ var can_self_cannibalize = true
 
 var can_collide: bool = true
 
-var boost_penalty := 1.3
+
 
 @export var thrust_drain_seconds : float = 70.0
 
@@ -233,18 +232,18 @@ func _physics_process(delta: float) -> void:
 		thrust_factor = (left_pow + right_pow) * 0.5 
 	
 	if boost and thrust_factor > 0.0:
-		thrust_factor *= boost_multiplier
+		thrust_factor *= Globals.thruster_power
 		
 	
-	var this_frame_boost_penalty := boost_penalty if boost else 1.0
-	var drain_this_frame := energy_drain_rate * thrust_factor * this_frame_boost_penalty * delta
+	var this_frame_boost_penalty = Globals.boost_energy_use if boost else 1.0
+	var drain_this_frame = energy_drain_rate * thrust_factor * this_frame_boost_penalty * delta
 
 	# Brake energy calc
 	var brake_drain := 0.0
 	if brake:
 		brake_drain = energy_drain_rate * brake_energy_multiplier * delta
 
-	var total_drain := drain_this_frame + brake_drain
+	var total_drain = drain_this_frame + brake_drain
 
 	var available_ratio := 1.0
 	if Globals.ship_damage <= 0:

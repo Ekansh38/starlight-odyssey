@@ -10,16 +10,14 @@ var performance = false
 func _ready() -> void:
 	layer = 100
 	hide_ui()
-	if OS.has_feature("web"):
-		_apply_viewport_mode()
-		performance = true
-	else:
-		_normal_mode()
+	#if OS.has_feature("web"):
+	_apply_viewport_mode()
+	performance = true
+	#else:
+		#_normal_mode()
 
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("exit"):
-		toggle_pause()
+
 
 func toggle_pause():
 	is_paused = !is_paused
@@ -63,3 +61,7 @@ func _on_performance_mode_pressed() -> void:
 	else:
 		_apply_viewport_mode()
 		performance = true
+		
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("exit"):
+		toggle_pause()

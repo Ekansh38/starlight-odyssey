@@ -12,4 +12,3 @@ func change_scene(path: PackedScene, length = "short"):
 		await $AnimationPlayer.animation_finished
 		get_tree().change_scene_to_packed(path)
 		$AnimationPlayer.play_backwards("fade_to_black_long")
-		

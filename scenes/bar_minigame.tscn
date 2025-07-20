@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://c7l1g40lckftp"]
+[gd_scene load_steps=33 format=4 uid="uid://c7l1g40lckftp"]
 
 [ext_resource type="Texture2D" uid="uid://l8iheibflqgc" path="res://assets/kenney_rpg-urban-pack/blackbackground.png" id="1_cn0nj"]
 [ext_resource type="Texture2D" uid="uid://dfbpn4sjrvw8o" path="res://assets/Space Stuff 2/Tilesets/Bar inside.png" id="2_m3uy8"]
@@ -8,6 +8,24 @@
 [ext_resource type="PackedScene" uid="uid://c3b1v020euuut" path="res://scenes/glass.tscn" id="7_grmij"]
 [ext_resource type="PackedScene" uid="uid://danwcvytrencc" path="res://scenes/world_border.tscn" id="7_kquyu"]
 [ext_resource type="Texture2D" uid="uid://dvigilp21mvca" path="res://assets/Cocktailboard.png" id="8_grmij"]
+[ext_resource type="Texture2D" uid="uid://dr2ofp0o7n4f" path="res://assets/Space Stuff 2/Charecter creator/Base body 02.png" id="9_5jxv6"]
+[ext_resource type="Texture2D" uid="uid://ctmuu0r8l0xi5" path="res://assets/Space Stuff 2/Charecter creator/Head 02.png" id="10_x5c8x"]
+[ext_resource type="Texture2D" uid="uid://dirfgnu1wi5op" path="res://assets/Space Stuff 2/Charecter creator/Eye 01.png" id="11_8ccyl"]
+[ext_resource type="Texture2D" uid="uid://c26h5cwhhc5or" path="res://assets/Space Stuff 2/Charecter creator/Base body 01.png" id="11_50405"]
+[ext_resource type="Script" uid="uid://d1xoc8p1i8h83" path="res://scripts/order_manager.gd" id="12_ce6sy"]
+[ext_resource type="Texture2D" uid="uid://6fd5pwu1b5pf" path="res://assets/Space Stuff 2/Charecter creator/Eye 02.png" id="12_cydil"]
+[ext_resource type="Texture2D" uid="uid://f2eh7tew5iqh" path="res://assets/Space Stuff 2/Charecter creator/Head 03.png" id="12_gas68"]
+[ext_resource type="Texture2D" uid="uid://fl1n1m16bxoq" path="res://assets/Space Stuff 2/Charecter creator/Mouth 03.png" id="12_yswry"]
+[ext_resource type="Texture2D" uid="uid://b8bxpnaftjcyh" path="res://assets/Space stuff extras/Charecter creator/pixil-frame-0-521.png" id="13_6wn83"]
+[ext_resource type="Script" uid="uid://didmrr7qojrqk" path="res://scripts/countdown.gd" id="13_28hlx"]
+[ext_resource type="Texture2D" uid="uid://sdvsiovudwf4" path="res://assets/Space Stuff 2/Charecter creator/Eye 03.png" id="13_cydil"]
+[ext_resource type="Texture2D" uid="uid://bk60q12auy3w5" path="res://assets/Space Stuff 2/Charecter creator/Mouth 04.png" id="13_t6xna"]
+[ext_resource type="PackedScene" uid="uid://dc52x3x55xil8" path="res://scenes/ui_for_minigame.tscn" id="14_58qxh"]
+[ext_resource type="Texture2D" uid="uid://cs123eayec65s" path="res://assets/Space Stuff 2/Charecter creator/Shirt 01.png" id="14_p1omx"]
+[ext_resource type="Texture2D" uid="uid://hmyktpfxd235" path="res://assets/Space Stuff 2/Charecter creator/Mouth 02.png" id="14_t6xna"]
+[ext_resource type="Texture2D" uid="uid://nq8d2inbonpi" path="res://assets/Space Stuff 2/Charecter creator/Shirt 02.png" id="15_p1omx"]
+[ext_resource type="Texture2D" uid="uid://cu0f4qjtda4ru" path="res://assets/Space Stuff 2/Charecter creator/Head 06.png" id="16_udg7p"]
+[ext_resource type="Texture2D" uid="uid://dbgbgp43lbpe3" path="res://assets/Space Stuff 2/Charecter creator/Head 01.png" id="17_5jxv6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_61xw1"]
 texture = ExtResource("2_m3uy8")
@@ -51,14 +69,28 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_61xw1")
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_31c26"]
+blend_mode = 3
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1xxdy"]
+blend_mode = 4
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_udg7p"]
+blend_mode = 3
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_x5c8x"]
+blend_mode = 3
+
 [node name="InsideBar" type="Node2D"]
 
 [node name="Black" type="Sprite2D" parent="."]
+z_index = -4
 texture = ExtResource("1_cn0nj")
 region_enabled = true
 region_rect = Rect2(-7376.41, -7079.02, 24819.1, 17369.8)
 
 [node name="Ground" type="TileMapLayer" parent="."]
+z_index = -3
 scale = Vector2(3, 3)
 tile_map_data = PackedByteArray("AAD+////AQAAAAAAAAD+/wAAAQAAAAAAAAD+/wEAAQAAAAAAAAD+/wIAAQAAAAAAAAD//wIAAQAAAAAAAAAAAAIAAQAAAAAAAAABAAIAAQAAAAAAAAACAAIAAQAAAAAAAAACAAEAAQAAAAAAAAACAAAAAQAAAAAAAAACAP//AQAAAAAAAAACAP7/AQAAAAAAAAABAP7/AQAAAAAAAAAAAP7/AQAAAAAAAAD///7/AQAAAAAAAAD/////AQAAAAAAAAD//wAAAQAAAAAAAAD//wEAAQAAAAAAAAAAAAEAAQAAAAAAAAABAAEAAQAAAAAAAAABAAAAAQAAAAAAAAABAP//AQAAAAAAAAAAAP//AQAAAAAAAAAAAAAAAQAAAAAAAAD9////AQAAAAAAAAD9/wAAAQAAAAAAAAD9/wEAAQAAAAAAAAD9/wIAAQAAAAAAAAD9/wMAAQAAAAAAAAD+/wMAAQAAAAAAAAADAAIAAQAAAAAAAAACAAMAAQAAAAAAAAABAAMAAQAAAAAAAAAAAAMAAQAAAAAAAAD//wMAAQAAAAAAAAADAAEAAQAAAAAAAAADAAAAAQAAAAAAAAADAP//AQAAAAAAAAACAP3/AQAAAAAAAAABAP3/AQAAAAAAAAAAAP3/AQAAAAAAAAD///3/AQAAAAAAAAD8/wEAAQAAAAAAAAD8/wIAAQAAAAAAAAD8/wMAAQAAAAAAAAADAP3/AQAAAAAAAAADAP7/AQAAAAAAAAD8//r/AQAAAAAAAAD8//v/AQAAAAAAAAD8//z/AQAAAAAAAAD8//3/AQAAAAAAAAD8//7/AQAAAAAAAAD8////AQAAAAAAAAD8/wAAAQAAAAAAAAD9//r/AQAAAAAAAAD9//v/AQAAAAAAAAD9//z/AQAAAAAAAAD9//3/AQAAAAAAAAD9//7/AQAAAAAAAAD+//r/AQAAAAAAAAD+//v/AQAAAAAAAAD+//z/AQAAAAAAAAD+//3/AQAAAAAAAAD+//7/AQAAAAAAAAD///r/AQAAAAAAAAD///v/AQAAAAAAAAD///z/AQAAAAAAAAAAAPr/AQAAAAAAAAAAAPv/AQAAAAAAAAAAAPz/AQAAAAAAAAABAPr/AQAAAAAAAAABAPv/AQAAAAAAAAABAPz/AQAAAAAAAAACAPr/AQAAAAAAAAACAPv/AQAAAAAAAAACAPz/AQAAAAAAAAADAPr/AQAAAAAAAAADAPv/AQAAAAAAAAADAPz/AQAAAAAAAAAEAPr/AQAAAAAAAAAEAPv/AQAAAAAAAAAEAPz/AQAAAAAAAAAEAP3/AQAAAAAAAAAEAP7/AQAAAAAAAAAEAP//AQAAAAAAAAAEAAAAAQAAAAAAAAAEAAEAAQAAAAAAAAAEAAIAAQAAAAAAAAAFAPr/AQAAAAAAAAAFAPv/AQAAAAAAAAAFAPz/AQAAAAAAAAAFAP3/AQAAAAAAAAAFAP7/AQAAAAAAAAAFAP//AQAAAAAAAAAFAAAAAQAAAAAAAAAFAAEAAQAAAAAAAAAFAAIAAQAAAAAAAAAFAAMAAQAAAAAAAAAGAPr/AQAAAAAAAAAGAPv/AQAAAAAAAAAGAPz/AQAAAAAAAAAGAP3/AQAAAAAAAAAGAP7/AQAAAAAAAAAGAP//AQAAAAAAAAAGAAAAAQAAAAAAAAAGAAEAAQAAAAAAAAAGAAIAAQAAAAAAAAAGAAMAAQAAAAAAAAAHAPr/AQAAAAAAAAAHAPv/AQAAAAAAAAAHAPz/AQAAAAAAAAAHAP3/AQAAAAAAAAAHAP7/AQAAAAAAAAAHAP//AQAAAAAAAAAHAAAAAQAAAAAAAAAHAAEAAQAAAAAAAAAHAAIAAQAAAAAAAAAHAAMAAQAAAAAAAAAIAPr/AQAAAAAAAAAIAPv/AQAAAAAAAAAIAPz/AQAAAAAAAAAIAP3/AQAAAAAAAAAIAP7/AQAAAAAAAAAIAP//AQAAAAAAAAAIAAAAAQAAAAAAAAAIAAEAAQAAAAAAAAAIAAIAAQAAAAAAAAAIAAMAAQAAAAAAAAAJAPr/AQAAAAAAAAAJAPv/AQAAAAAAAAAJAPz/AQAAAAAAAAAJAP3/AQAAAAAAAAAJAP7/AQAAAAAAAAAJAP//AQAAAAAAAAAJAAAAAQAAAAAAAAAJAAEAAQAAAAAAAAAJAAIAAQAAAAAAAAAJAAMAAQAAAAAAAAAKAPr/AQAAAAAAAAAKAPv/AQAAAAAAAAAKAPz/AQAAAAAAAAAKAP3/AQAAAAAAAAAKAP7/AQAAAAAAAAAKAP//AQAAAAAAAAAKAAAAAQAAAAAAAAAKAAEAAQAAAAAAAAAKAAIAAQAAAAAAAAAKAAMAAQAAAAAAAAALAPr/AQAAAAAAAAALAPv/AQAAAAAAAAALAPz/AQAAAAAAAAALAP3/AQAAAAAAAAALAP7/AQAAAAAAAAALAP//AQAAAAAAAAALAAAAAQAAAAAAAAALAAEAAQAAAAAAAAALAAIAAQAAAAAAAAALAAMAAQAAAAAAAAADAAMAAQAAAAAAAAAEAAMAAQAAAAAAAAD6//r/AQAAAAAAAAD6//v/AQAAAAAAAAD6//z/AQAAAAAAAAD6//3/AQAAAAAAAAD6//7/AQAAAAAAAAD6////AQAAAAAAAAD6/wAAAQAAAAAAAAD6/wEAAQAAAAAAAAD7/wIAAQAAAAAAAAD7/wMAAQAAAAAAAAD6/wMAAQAAAAAAAAD6/wIAAQAAAAAAAAD7/wEAAQAAAAAAAAD7/wAAAQAAAAAAAAD7////AQAAAAAAAAD7//7/AQAAAAAAAAD7//3/AQAAAAAAAAD7//z/AQAAAAAAAAD7//v/AQAAAAAAAAD7//r/AQAAAAAAAAAMAPr/AQAAAAAAAAAMAPv/AQAAAAAAAAAMAPz/AQAAAAAAAAAMAP3/AQAAAAAAAAAMAP7/AQAAAAAAAAAMAP//AQAAAAAAAAAMAAAAAQAAAAAAAAAMAAEAAQAAAAAAAAAMAAIAAQAAAAAAAAAMAAMAAQAAAAAAAAANAAMAAQAAAAAAAAANAAIAAQAAAAAAAAANAAEAAQAAAAAAAAANAAAAAQAAAAAAAAANAP//AQAAAAAAAAANAP7/AQAAAAAAAAANAP3/AQAAAAAAAAANAPz/AQAAAAAAAAANAPv/AQAAAAAAAAANAPr/AQAAAAAAAAD8//n/AQAAAAAAAAD9//n/AQAAAAAAAAD+//n/AQAAAAAAAAD///n/AQAAAAAAAAAAAPn/AQAAAAAAAAABAPn/AQAAAAAAAAAFAPn/AQAAAAAAAAAGAPn/AQAAAAAAAAAHAPn/AQAAAAAAAAAIAPn/AQAAAAAAAAAJAPn/AQAAAAAAAAAKAPn/AQAAAAAAAAALAPn/AQAAAAAAAAAMAPn/AQAAAAAAAAANAPn/AQAAAAAAAAADAPn/AQAAAAAAAAAEAPn/AQAAAAAAAAACAPn/AQAAAAAAAAD7//n/AQAAAAAAAAD6//n/AQAAAAAAAAA=")
 tile_set = SubResource("TileSet_15dwq")
@@ -70,20 +102,19 @@ tile_set = SubResource("TileSet_15dwq")
 
 [node name="Table" type="TileMapLayer" parent="."]
 scale = Vector2(3, 3)
-tile_map_data = PackedByteArray("AAD+//7/AQACAAEAAAD9//7/AQABAAEAAAD9////AQABAAIAAAD9/wAAAQABAAMAAAD+//3/AQACAAAAAAD9//3/AQABAAAAAAD8//7/AQAAAAEAAAD8////AQAAAAIAAAD8/wAAAQAAAAMAAAD8//3/AQAAAAEAAAD///3/AQACAAAAAAAAAP3/AQACAAAAAAD///7/AQABAAEAAAAAAP7/AQACAAEAAAD7////AQAAAAIAAAD7/wAAAQAAAAMAAAD6//7/AQAAAAEAAAD6////AQAAAAIAAAD6/wAAAQAAAAMAAAD6//3/AQAAAAEAAAD8//z/AQAAAAEAAAD7//z/AQAAAAEAAAD6//z/AQAAAAEAAAAAAPz/AQACAAAAAAD9//z/AQABAAAAAAD///z/AQABAAAAAAD+//z/AQABAAAAAAD7//3/AQAAAAEAAAD7//7/AQAAAAEAAAABAP3/AQACAAAAAAABAP7/AQACAAEAAAACAP3/AQACAAAAAAACAP7/AQACAAEAAAADAP3/AQACAAAAAAADAP7/AQABAAEAAAAEAP3/AQACAAAAAAAEAP7/AQACAAEAAAAEAPz/AQACAAAAAAAGAPr/AQADAAAAAAAGAPv/AQADAAEAAAAHAPr/AQAEAAAAAAAHAPv/AQAEAAEAAAAIAPr/AQAFAAAAAAAIAPv/AQAFAAEAAAAMAAIAAQAAAAIAAAAMAAMAAQAAAAMAAAANAAIAAQABAAIAAAANAAMAAQABAAMAAAALAAIAAQAAAAIAAAAKAAIAAQAAAAIAAAALAAMAAQAAAAMAAAAKAAMAAQAAAAMAAAAJAAIAAQAAAAIAAAAJAAMAAQAAAAMAAAAIAAIAAQAAAAIAAAAIAAMAAQAAAAMAAAA=")
+tile_map_data = PackedByteArray("AAD+//7/AQACAAEAAAD9//7/AQABAAEAAAD9////AQABAAIAAAD9/wAAAQABAAMAAAD+//3/AQACAAAAAAD9//3/AQABAAAAAAD8//7/AQAAAAEAAAD8////AQAAAAIAAAD8/wAAAQAAAAMAAAD8//3/AQAAAAEAAAD///3/AQACAAAAAAAAAP3/AQACAAAAAAD///7/AQABAAEAAAAAAP7/AQACAAEAAAD7////AQAAAAIAAAD7/wAAAQAAAAMAAAD6//7/AQAAAAEAAAD6////AQAAAAIAAAD6/wAAAQAAAAMAAAD6//3/AQAAAAEAAAD8//z/AQAAAAEAAAD7//z/AQAAAAEAAAD6//z/AQAAAAEAAAAAAPz/AQACAAAAAAD9//z/AQABAAAAAAD///z/AQABAAAAAAD+//z/AQABAAAAAAD7//3/AQAAAAEAAAD7//7/AQAAAAEAAAABAP3/AQACAAAAAAABAP7/AQACAAEAAAACAP3/AQACAAAAAAACAP7/AQACAAEAAAADAP3/AQACAAAAAAADAP7/AQABAAEAAAAEAP3/AQACAAAAAAAEAP7/AQACAAEAAAAEAPz/AQACAAAAAAAGAPr/AQADAAAAAAAGAPv/AQADAAEAAAAMAAIAAQAAAAIAAAAMAAMAAQAAAAMAAAANAAIAAQABAAIAAAANAAMAAQABAAMAAAALAAIAAQAAAAIAAAAKAAIAAQAAAAIAAAALAAMAAQAAAAMAAAAKAAMAAQAAAAMAAAAJAAIAAQAAAAIAAAAJAAMAAQAAAAMAAAAIAAIAAQAAAAIAAAAIAAMAAQAAAAMAAAAHAPr/AQAEAAAAAAAHAPv/AQAEAAEAAAAIAPr/AQAFAAAAAAAIAPv/AQAFAAEAAAA=")
 tile_set = SubResource("TileSet_15dwq")
 
 [node name="Cocktailboard" type="Sprite2D" parent="."]
+z_index = -2
 position = Vector2(-147, -675)
 scale = Vector2(16, 6.5)
 texture = ExtResource("8_grmij")
 
-[node name="Glass" parent="." instance=ExtResource("7_grmij")]
-position = Vector2(431, -361)
-
 [node name="Labels" type="Node" parent="."]
 
 [node name="RecipesTitle" type="Label" parent="Labels"]
+z_index = -1
 offset_left = -205.0
 offset_top = -754.0
 offset_right = -131.0
@@ -93,6 +124,7 @@ theme_override_font_sizes/font_size = 20
 text = "Recipes"
 
 [node name="Recipes" type="Label" parent="Labels"]
+z_index = -1
 offset_left = -470.0
 offset_top = -719.0
 offset_right = 150.0
@@ -103,6 +135,9 @@ text = "Plum Wine  -  2 parts Wine & 1 part Plum Extract
 Cosmopolitan  -  1 part Vodka, 1 part Plum Extract & 1 part Tonic
 Magical & Milky (M&M) - 2 parts Baileys & 1 part Whiskey
 Plum Mocktail - 2 parts Tonic & 1 part Plum Extract"
+
+[node name="Glass" parent="." instance=ExtResource("7_grmij")]
+position = Vector2(428, -342)
 
 [node name="Ysort2" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -117,21 +152,25 @@ zoom = Vector2(0.7, 0.7)
 [node name="WorldBorder" parent="." instance=ExtResource("7_kquyu")]
 position = Vector2(-672, -50)
 scale = Vector2(1, 8)
+can_see = false
 
 [node name="WorldBorder3" parent="." instance=ExtResource("7_kquyu")]
 position = Vector2(584, -100)
 scale = Vector2(1, 8)
+can_see = false
 
 [node name="WorldBorder2" parent="." instance=ExtResource("7_kquyu")]
 position = Vector2(392, -676)
 rotation = 1.5708
 scale = Vector2(1, 10)
+can_see = false
 metadata/_edit_lock_ = true
 
 [node name="WorldBorder4" parent="." instance=ExtResource("7_kquyu")]
 position = Vector2(334, 195)
 rotation = 1.5708
 scale = Vector2(1, 10)
+can_see = false
 
 [node name="Bottle1" type="Sprite2D" parent="."]
 position = Vector2(-247.5, -362)
@@ -182,10 +221,10 @@ vframes = 2
 frame = 3
 
 [node name="Wine" type="Label" parent="."]
-offset_left = -266.0
-offset_top = -323.0
-offset_right = -226.0
-offset_bottom = -300.0
+offset_left = -269.0
+offset_top = -333.0
+offset_right = -229.0
+offset_bottom = -310.0
 text = "Wine"
 
 [node name="Baileys" type="Label" parent="."]
@@ -224,10 +263,10 @@ offset_bottom = -278.0
 text = "Plum Extract"
 
 [node name="DrinkHoldArea" parent="." instance=ExtResource("7_7ues7")]
-position = Vector2(49, -381)
+position = Vector2(91, -384)
+scale = Vector2(2, 1)
 drink_image = ExtResource("5_emny7")
 drink_held = "vodka"
-metadata/_edit_lock_ = true
 
 [node name="DrinkHoldArea2" parent="." instance=ExtResource("7_7ues7")]
 position = Vector2(-52, -384)
@@ -247,6 +286,7 @@ metadata/_edit_lock_ = true
 position = Vector2(-244, -383)
 drink_image = ExtResource("5_emny7")
 frame = 0
+metadata/_edit_lock_ = true
 
 [node name="DrinkHoldArea5" parent="." instance=ExtResource("7_7ues7")]
 position = Vector2(-363, -373)
@@ -258,3 +298,723 @@ position = Vector2(-479, -372)
 drink_image = ExtResource("5_emny7")
 frame = 2
 drink_held = "plum"
+
+[node name="Nephryl2" type="Node2D" parent="."]
+position = Vector2(326, -207)
+scale = Vector2(6, 6)
+
+[node name="Sprite2D" type="Sprite2D" parent="Nephryl2"]
+texture = ExtResource("9_5jxv6")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="Nephryl2"]
+texture = ExtResource("10_x5c8x")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="Nephryl2"]
+texture = ExtResource("11_8ccyl")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D4" type="Sprite2D" parent="Nephryl2"]
+texture = ExtResource("12_yswry")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D6" type="Sprite2D" parent="Nephryl2"]
+texture = ExtResource("13_6wn83")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D5" type="Sprite2D" parent="Nephryl2"]
+visible = false
+texture = ExtResource("14_p1omx")
+metadata/_edit_lock_ = true
+
+[node name="TShirt" type="ColorRect" parent="Nephryl2"]
+material = SubResource("CanvasItemMaterial_31c26")
+offset_left = -6.0
+offset_top = -9.0
+offset_right = 5.0
+offset_bottom = -2.0
+color = Color(0.770439, 3.70607e-06, 4.81307e-07, 0.215686)
+metadata/_edit_lock_ = true
+
+[node name="TShirt6" type="ColorRect" parent="Nephryl2"]
+material = SubResource("CanvasItemMaterial_1xxdy")
+offset_left = -1.0
+offset_top = -7.0
+offset_bottom = -6.0
+color = Color(1, 1, 1, 0.215686)
+metadata/_edit_lock_ = true
+
+[node name="TShirt2" type="ColorRect" parent="Nephryl2"]
+material = SubResource("CanvasItemMaterial_31c26")
+offset_left = -5.0
+offset_top = -11.0
+offset_right = 4.0
+offset_bottom = -9.0
+color = Color(0.770439, 3.70607e-06, 4.81307e-07, 0.215686)
+metadata/_edit_lock_ = true
+
+[node name="TShirt3" type="ColorRect" parent="Nephryl2"]
+material = SubResource("CanvasItemMaterial_31c26")
+offset_left = -2.0
+offset_top = -13.0
+offset_right = 1.0
+offset_bottom = -11.0
+color = Color(0.770439, 3.70607e-06, 4.81307e-07, 0.215686)
+metadata/_edit_lock_ = true
+
+[node name="TShirt4" type="ColorRect" parent="Nephryl2"]
+material = SubResource("CanvasItemMaterial_31c26")
+offset_left = -4.0
+offset_top = -2.0
+offset_right = 3.0
+color = Color(0.770439, 3.70607e-06, 4.81307e-07, 0.215686)
+metadata/_edit_lock_ = true
+
+[node name="TShirt5" type="ColorRect" parent="Nephryl2"]
+material = SubResource("CanvasItemMaterial_31c26")
+offset_left = -2.0
+offset_right = 1.0
+offset_bottom = 1.0
+color = Color(0.770439, 3.70607e-06, 4.81307e-07, 0.215686)
+metadata/_edit_lock_ = true
+
+[node name="TShirt7" type="ColorRect" parent="Nephryl2"]
+material = SubResource("CanvasItemMaterial_31c26")
+offset_left = -7.0
+offset_top = 1.0
+offset_right = -5.0
+offset_bottom = 9.0
+color = Color(0.347817, 0.347817, 0.347817, 0.215686)
+metadata/_edit_lock_ = true
+
+[node name="TShirt8" type="ColorRect" parent="Nephryl2"]
+material = SubResource("CanvasItemMaterial_31c26")
+offset_left = 3.83333
+offset_top = 1.0
+offset_right = 5.83333
+offset_bottom = 9.0
+color = Color(0.347817, 0.347817, 0.347817, 0.215686)
+metadata/_edit_lock_ = true
+
+[node name="TShirt9" type="ColorRect" parent="Nephryl2"]
+material = SubResource("CanvasItemMaterial_31c26")
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 8.0
+offset_bottom = 7.0
+color = Color(0.347817, 0.347817, 0.347817, 0.215686)
+metadata/_edit_lock_ = true
+
+[node name="TShirt10" type="ColorRect" parent="Nephryl2"]
+material = SubResource("CanvasItemMaterial_31c26")
+offset_left = -9.5
+offset_top = 4.0
+offset_right = -7.5
+offset_bottom = 7.0
+color = Color(0.347817, 0.347817, 0.347817, 0.215686)
+metadata/_edit_lock_ = true
+
+[node name="TShirt11" type="ColorRect" parent="Nephryl2"]
+material = SubResource("CanvasItemMaterial_31c26")
+offset_left = -5.0
+offset_top = 1.0
+offset_right = 4.0
+offset_bottom = 9.0
+color = Color(0.347817, 0.347817, 0.347817, 0.215686)
+metadata/_edit_lock_ = true
+
+[node name="TShirt12" type="ColorRect" parent="Nephryl2"]
+material = SubResource("CanvasItemMaterial_31c26")
+offset_left = 2.0
+offset_top = 9.0
+offset_right = 3.0
+offset_bottom = 15.0
+color = Color(0.0882488, 0.176129, 0.526867, 0.215686)
+metadata/_edit_lock_ = true
+
+[node name="TShirt13" type="ColorRect" parent="Nephryl2"]
+material = SubResource("CanvasItemMaterial_31c26")
+offset_left = -4.0
+offset_top = 9.0
+offset_right = -2.0
+offset_bottom = 15.0
+color = Color(0.0882488, 0.176129, 0.526867, 0.215686)
+metadata/_edit_lock_ = true
+
+[node name="TShirt14" type="ColorRect" parent="Nephryl2"]
+material = SubResource("CanvasItemMaterial_31c26")
+offset_left = -7.0
+offset_top = 14.0
+offset_right = -4.0
+offset_bottom = 15.0
+color = Color(0.0882488, 0.176129, 0.526867, 0.215686)
+metadata/_edit_lock_ = true
+
+[node name="TShirt15" type="ColorRect" parent="Nephryl2"]
+material = SubResource("CanvasItemMaterial_31c26")
+offset_left = 3.0
+offset_top = 13.8333
+offset_right = 6.0
+offset_bottom = 14.8333
+color = Color(0.0882488, 0.176129, 0.526867, 0.215686)
+metadata/_edit_lock_ = true
+
+[node name="Pants1" type="ColorRect" parent="Nephryl2"]
+visible = false
+material = SubResource("CanvasItemMaterial_31c26")
+offset_left = -4.0
+offset_top = 10.0
+offset_right = -1.0
+offset_bottom = 13.0
+color = Color(8.90419e-07, 0.510391, 0.142076, 0.215686)
+metadata/_edit_lock_ = true
+
+[node name="Pants" type="ColorRect" parent="Nephryl2"]
+visible = false
+material = SubResource("CanvasItemMaterial_31c26")
+offset_left = 1.0
+offset_top = 10.0
+offset_right = 3.0
+offset_bottom = 13.0
+color = Color(8.90419e-07, 0.510391, 0.142076, 0.215686)
+metadata/_edit_lock_ = true
+
+[node name="Leg" type="ColorRect" parent="Nephryl2"]
+visible = false
+material = SubResource("CanvasItemMaterial_31c26")
+offset_left = -4.0
+offset_top = 13.0
+offset_right = -1.0
+offset_bottom = 14.0
+color = Color(0.823529, 0.631373, 0.54902, 1)
+metadata/_edit_lock_ = true
+
+[node name="Leg2" type="ColorRect" parent="Nephryl2"]
+visible = false
+material = SubResource("CanvasItemMaterial_31c26")
+offset_left = -7.0
+offset_top = 14.0
+offset_right = -2.0
+offset_bottom = 15.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="Leg4" type="ColorRect" parent="Nephryl2"]
+visible = false
+material = SubResource("CanvasItemMaterial_31c26")
+offset_left = 2.0
+offset_top = 14.0
+offset_right = 7.0
+offset_bottom = 15.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="Leg3" type="ColorRect" parent="Nephryl2"]
+visible = false
+material = SubResource("CanvasItemMaterial_31c26")
+offset_left = 1.0
+offset_top = 13.0
+offset_right = 3.0
+offset_bottom = 14.0
+color = Color(0.513931, 0.855522, 1.92523e-06, 1)
+metadata/_edit_lock_ = true
+
+[node name="Face" type="ColorRect" parent="Nephryl2"]
+visible = false
+material = SubResource("CanvasItemMaterial_31c26")
+offset_left = -5.0
+offset_top = -15.0
+offset_right = 4.0
+offset_bottom = -7.0
+color = Color(0.513931, 0.855522, 1.92523e-06, 1)
+metadata/_edit_lock_ = true
+
+[node name="Face2" type="ColorRect" parent="Nephryl2"]
+visible = false
+material = SubResource("CanvasItemMaterial_31c26")
+offset_left = -4.0
+offset_top = -7.0
+offset_right = 3.0
+offset_bottom = 1.0
+color = Color(0.513931, 0.855522, 1.92523e-06, 1)
+metadata/_edit_lock_ = true
+
+[node name="Face3" type="ColorRect" parent="Nephryl2"]
+visible = false
+material = SubResource("CanvasItemMaterial_31c26")
+offset_left = -5.0
+offset_top = -3.0
+offset_right = -4.0
+offset_bottom = -2.0
+color = Color(0.513931, 0.855522, 1.92523e-06, 1)
+metadata/_edit_lock_ = true
+
+[node name="Face4" type="ColorRect" parent="Nephryl2"]
+visible = false
+material = SubResource("CanvasItemMaterial_31c26")
+offset_left = 3.0
+offset_top = -3.0
+offset_right = 4.0
+offset_bottom = -2.0
+color = Color(0.513931, 0.855522, 1.92523e-06, 1)
+metadata/_edit_lock_ = true
+
+[node name="Head06" type="Sprite2D" parent="Nephryl2"]
+visible = false
+modulate = Color(0.146364, 0.102277, 0, 1)
+position = Vector2(0, -8)
+scale = Vector2(0.90625, 0.875)
+texture = ExtResource("16_udg7p")
+metadata/_edit_lock_ = true
+
+[node name="Druvek" type="Node2D" parent="."]
+position = Vector2(-63, -203)
+scale = Vector2(6, 6)
+
+[node name="Sprite2D" type="Sprite2D" parent="Druvek"]
+texture = ExtResource("11_50405")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="Druvek"]
+texture = ExtResource("12_gas68")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="Druvek"]
+texture = ExtResource("12_cydil")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D4" type="Sprite2D" parent="Druvek"]
+texture = ExtResource("13_t6xna")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D5" type="Sprite2D" parent="Druvek"]
+texture = ExtResource("14_p1omx")
+metadata/_edit_lock_ = true
+
+[node name="TShirt" type="ColorRect" parent="Druvek"]
+material = SubResource("CanvasItemMaterial_udg7p")
+offset_left = -7.0
+offset_top = 1.0
+offset_right = 6.0
+offset_bottom = 10.0
+color = Color(0, 0, 1, 0.215686)
+metadata/_edit_lock_ = true
+
+[node name="Pants1" type="ColorRect" parent="Druvek"]
+material = SubResource("CanvasItemMaterial_udg7p")
+offset_left = -4.0
+offset_top = 10.0
+offset_right = -1.0
+offset_bottom = 13.0
+color = Color(8.90419e-07, 0.510391, 0.142076, 0.215686)
+metadata/_edit_lock_ = true
+
+[node name="Pants" type="ColorRect" parent="Druvek"]
+material = SubResource("CanvasItemMaterial_udg7p")
+offset_left = 1.0
+offset_top = 10.0
+offset_right = 3.0
+offset_bottom = 13.0
+color = Color(8.90419e-07, 0.510391, 0.142076, 0.215686)
+metadata/_edit_lock_ = true
+
+[node name="Leg" type="ColorRect" parent="Druvek"]
+material = SubResource("CanvasItemMaterial_udg7p")
+offset_left = -4.0
+offset_top = 13.0
+offset_right = -1.0
+offset_bottom = 14.0
+color = Color(0.823529, 0.631373, 0.54902, 1)
+metadata/_edit_lock_ = true
+
+[node name="Leg2" type="ColorRect" parent="Druvek"]
+material = SubResource("CanvasItemMaterial_udg7p")
+offset_left = -7.0
+offset_top = 14.0
+offset_right = -2.0
+offset_bottom = 15.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="Leg4" type="ColorRect" parent="Druvek"]
+material = SubResource("CanvasItemMaterial_udg7p")
+offset_left = 2.0
+offset_top = 14.0
+offset_right = 7.0
+offset_bottom = 15.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="Leg3" type="ColorRect" parent="Druvek"]
+material = SubResource("CanvasItemMaterial_udg7p")
+offset_left = 1.0
+offset_top = 13.0
+offset_right = 3.0
+offset_bottom = 14.0
+color = Color(0.513931, 0.855522, 1.92523e-06, 1)
+metadata/_edit_lock_ = true
+
+[node name="Face" type="ColorRect" parent="Druvek"]
+material = SubResource("CanvasItemMaterial_udg7p")
+offset_left = -5.0
+offset_top = -15.0
+offset_right = 4.0
+offset_bottom = -7.0
+color = Color(0.513931, 0.855522, 1.92523e-06, 1)
+metadata/_edit_lock_ = true
+
+[node name="Face2" type="ColorRect" parent="Druvek"]
+material = SubResource("CanvasItemMaterial_udg7p")
+offset_left = -4.0
+offset_top = -7.0
+offset_right = 3.0
+offset_bottom = 1.0
+color = Color(0.513931, 0.855522, 1.92523e-06, 1)
+metadata/_edit_lock_ = true
+
+[node name="Face3" type="ColorRect" parent="Druvek"]
+material = SubResource("CanvasItemMaterial_udg7p")
+offset_left = -5.0
+offset_top = -3.0
+offset_right = -4.0
+offset_bottom = -2.0
+color = Color(0.513931, 0.855522, 1.92523e-06, 1)
+metadata/_edit_lock_ = true
+
+[node name="Face4" type="ColorRect" parent="Druvek"]
+material = SubResource("CanvasItemMaterial_udg7p")
+offset_left = 3.0
+offset_top = -3.0
+offset_right = 4.0
+offset_bottom = -2.0
+color = Color(0.513931, 0.855522, 1.92523e-06, 1)
+metadata/_edit_lock_ = true
+
+[node name="Head06" type="Sprite2D" parent="Druvek"]
+modulate = Color(0.146364, 0.102277, 0, 1)
+position = Vector2(0, -8)
+scale = Vector2(0.90625, 0.875)
+texture = ExtResource("16_udg7p")
+metadata/_edit_lock_ = true
+
+[node name="Astriux" type="Node2D" parent="."]
+position = Vector2(-252, -188)
+scale = Vector2(6, 6)
+
+[node name="Sprite2D" type="Sprite2D" parent="Astriux"]
+texture = ExtResource("11_50405")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="Astriux"]
+texture = ExtResource("12_gas68")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="Astriux"]
+texture = ExtResource("13_cydil")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D4" type="Sprite2D" parent="Astriux"]
+position = Vector2(0, -1)
+scale = Vector2(1, 0.5)
+texture = ExtResource("14_t6xna")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Astriux"]
+visible = false
+texture = ExtResource("15_p1omx")
+metadata/_edit_lock_ = true
+
+[node name="TShirt" type="ColorRect" parent="Astriux"]
+material = SubResource("CanvasItemMaterial_x5c8x")
+offset_left = -4.0
+offset_top = 1.0
+offset_right = 3.0
+offset_bottom = 11.0
+color = Color(0.896608, 0.31469, 0, 0.215686)
+metadata/_edit_lock_ = true
+
+[node name="TShirt2" type="ColorRect" parent="Astriux"]
+material = SubResource("CanvasItemMaterial_x5c8x")
+offset_left = -4.0
+offset_top = 11.0
+offset_right = -2.0
+offset_bottom = 15.0
+color = Color(0.896608, 0.31469, 0, 0.215686)
+metadata/_edit_lock_ = true
+
+[node name="TShirt3" type="ColorRect" parent="Astriux"]
+material = SubResource("CanvasItemMaterial_x5c8x")
+offset_left = 2.0
+offset_top = 11.0
+offset_right = 4.0
+offset_bottom = 15.0
+color = Color(0.896608, 0.31469, 0, 0.215686)
+metadata/_edit_lock_ = true
+
+[node name="TShirt6" type="ColorRect" parent="Astriux"]
+material = SubResource("CanvasItemMaterial_x5c8x")
+offset_left = 4.0
+offset_top = 1.0
+offset_right = 6.0
+offset_bottom = 9.0
+color = Color(0.896608, 0.31469, 0, 0.215686)
+metadata/_edit_lock_ = true
+
+[node name="TShirt8" type="ColorRect" parent="Astriux"]
+material = SubResource("CanvasItemMaterial_x5c8x")
+offset_left = 3.0
+offset_right = 4.0
+offset_bottom = 3.0
+color = Color(0.896608, 0.31469, 0, 0.215686)
+metadata/_edit_lock_ = true
+
+[node name="TShirt9" type="ColorRect" parent="Astriux"]
+material = SubResource("CanvasItemMaterial_x5c8x")
+offset_left = -5.0
+offset_right = -4.0
+offset_bottom = 3.0
+color = Color(0.896608, 0.31469, 0, 0.215686)
+metadata/_edit_lock_ = true
+
+[node name="TShirt10" type="ColorRect" parent="Astriux"]
+material = SubResource("CanvasItemMaterial_x5c8x")
+offset_left = -5.0
+offset_top = -11.0
+offset_right = 4.0
+color = Color(0.456166, 0.176156, 1, 0.215686)
+metadata/_edit_lock_ = true
+
+[node name="TShirt7" type="ColorRect" parent="Astriux"]
+material = SubResource("CanvasItemMaterial_x5c8x")
+offset_left = -6.83333
+offset_top = 1.33333
+offset_right = -4.83333
+offset_bottom = 9.33333
+color = Color(0.896608, 0.31469, 0, 0.215686)
+metadata/_edit_lock_ = true
+
+[node name="TShirt4" type="ColorRect" parent="Astriux"]
+material = SubResource("CanvasItemMaterial_x5c8x")
+offset_left = 4.0
+offset_top = 14.0
+offset_right = 6.0
+offset_bottom = 15.0
+color = Color(0, 0, 0, 0.215686)
+metadata/_edit_lock_ = true
+
+[node name="TShirt5" type="ColorRect" parent="Astriux"]
+material = SubResource("CanvasItemMaterial_x5c8x")
+offset_left = -7.0
+offset_top = 14.0
+offset_right = -4.0
+offset_bottom = 15.0
+color = Color(0, 0, 0, 0.215686)
+metadata/_edit_lock_ = true
+
+[node name="Pants1" type="ColorRect" parent="Astriux"]
+visible = false
+material = SubResource("CanvasItemMaterial_x5c8x")
+offset_left = -4.0
+offset_top = 10.0
+offset_right = -1.0
+offset_bottom = 13.0
+color = Color(8.90419e-07, 0.510391, 0.142076, 0.215686)
+metadata/_edit_lock_ = true
+
+[node name="Pants" type="ColorRect" parent="Astriux"]
+visible = false
+material = SubResource("CanvasItemMaterial_x5c8x")
+offset_left = 1.0
+offset_top = 10.0
+offset_right = 3.0
+offset_bottom = 13.0
+color = Color(8.90419e-07, 0.510391, 0.142076, 0.215686)
+metadata/_edit_lock_ = true
+
+[node name="Leg" type="ColorRect" parent="Astriux"]
+visible = false
+material = SubResource("CanvasItemMaterial_x5c8x")
+offset_left = -4.0
+offset_top = 13.0
+offset_right = -1.0
+offset_bottom = 14.0
+color = Color(0.823529, 0.631373, 0.54902, 1)
+metadata/_edit_lock_ = true
+
+[node name="Leg2" type="ColorRect" parent="Astriux"]
+visible = false
+material = SubResource("CanvasItemMaterial_x5c8x")
+offset_left = -7.0
+offset_top = 14.0
+offset_right = -2.0
+offset_bottom = 15.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="Leg4" type="ColorRect" parent="Astriux"]
+visible = false
+material = SubResource("CanvasItemMaterial_x5c8x")
+offset_left = 2.0
+offset_top = 14.0
+offset_right = 7.0
+offset_bottom = 15.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="Leg3" type="ColorRect" parent="Astriux"]
+visible = false
+material = SubResource("CanvasItemMaterial_x5c8x")
+offset_left = 1.0
+offset_top = 13.0
+offset_right = 3.0
+offset_bottom = 14.0
+color = Color(0.513931, 0.855522, 1.92523e-06, 1)
+metadata/_edit_lock_ = true
+
+[node name="Face" type="ColorRect" parent="Astriux"]
+visible = false
+material = SubResource("CanvasItemMaterial_x5c8x")
+offset_left = -5.0
+offset_top = -15.0
+offset_right = 4.0
+offset_bottom = -7.0
+color = Color(0.513931, 0.855522, 1.92523e-06, 1)
+metadata/_edit_lock_ = true
+
+[node name="Face2" type="ColorRect" parent="Astriux"]
+visible = false
+material = SubResource("CanvasItemMaterial_x5c8x")
+offset_left = -4.0
+offset_top = -7.0
+offset_right = 3.0
+offset_bottom = 1.0
+color = Color(0.513931, 0.855522, 1.92523e-06, 1)
+metadata/_edit_lock_ = true
+
+[node name="Face3" type="ColorRect" parent="Astriux"]
+visible = false
+material = SubResource("CanvasItemMaterial_x5c8x")
+offset_left = -5.0
+offset_top = -3.0
+offset_right = -4.0
+offset_bottom = -2.0
+color = Color(0.513931, 0.855522, 1.92523e-06, 1)
+metadata/_edit_lock_ = true
+
+[node name="Face4" type="ColorRect" parent="Astriux"]
+visible = false
+material = SubResource("CanvasItemMaterial_x5c8x")
+offset_left = 3.0
+offset_top = -3.0
+offset_right = 4.0
+offset_bottom = -2.0
+color = Color(0.513931, 0.855522, 1.92523e-06, 1)
+metadata/_edit_lock_ = true
+
+[node name="Head06" type="Sprite2D" parent="Astriux"]
+visible = false
+modulate = Color(0.146364, 0.102277, 0, 1)
+position = Vector2(0, -8)
+scale = Vector2(0.90625, 0.875)
+texture = ExtResource("16_udg7p")
+metadata/_edit_lock_ = true
+
+[node name="Head01" type="Sprite2D" parent="Astriux"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0, -7.5)
+texture = ExtResource("17_5jxv6")
+metadata/_edit_lock_ = true
+
+[node name="OrderManager" type="Node2D" parent="."]
+script = ExtResource("12_ce6sy")
+metadata/_edit_lock_ = true
+
+[node name="NephrylPos" type="Marker2D" parent="."]
+position = Vector2(327, -240)
+
+[node name="DruvekPos" type="Marker2D" parent="."]
+position = Vector2(-58, -236)
+
+[node name="AstriuxPos" type="Marker2D" parent="."]
+position = Vector2(-247, -232)
+
+[node name="AstriuxRect" type="ColorRect" parent="."]
+offset_left = -418.0
+offset_top = -223.0
+offset_right = -303.0
+offset_bottom = -189.0
+
+[node name="AstriuxText" type="Label" parent="."]
+offset_left = -412.0
+offset_top = -221.0
+offset_right = -311.0
+offset_bottom = -192.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 15
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DruvekRect" type="ColorRect" parent="."]
+offset_left = 6.0
+offset_top = -231.0
+offset_right = 121.0
+offset_bottom = -197.0
+
+[node name="DruvekText" type="Label" parent="."]
+offset_left = 12.0
+offset_top = -229.0
+offset_right = 116.0
+offset_bottom = -200.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 15
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NephrylRect" type="ColorRect" parent="."]
+offset_left = 160.0
+offset_top = -230.0
+offset_right = 275.0
+offset_bottom = -196.0
+
+[node name="NephrylText" type="Label" parent="."]
+offset_left = 166.0
+offset_top = -228.0
+offset_right = 270.0
+offset_bottom = -199.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 15
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Countdown" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("13_28hlx")
+metadata/_edit_lock_ = true
+
+[node name="Timer" type="Timer" parent="Countdown"]
+wait_time = 90.0
+
+[node name="Label" type="Label" parent="Countdown"]
+layout_mode = 0
+offset_left = -473.0
+offset_top = 90.0
+offset_right = -274.0
+offset_bottom = 227.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 100
+text = "1:00"
+
+[node name="Score" type="Label" parent="."]
+offset_left = 1150.0
+offset_top = -735.0
+offset_right = 1224.0
+offset_bottom = -557.0
+theme_override_font_sizes/font_size = 130
+text = "0"
+
+[node name="UI" parent="." instance=ExtResource("14_58qxh")]
+
+[connection signal="drink_served" from="Glass" to="OrderManager" method="_on_glass_drink_served"]
